@@ -1,61 +1,48 @@
 import React from 'react';
-import { MapPin, Award, FileCheck, Building2, Users, Home, Sun } from 'lucide-react';
+import { Award, Building2, Users, MapPin, FileCheck } from 'lucide-react';
 
 const StatsSection: React.FC = () => {
     const stats = [
-        { icon: <MapPin size={48} />, count: '13+', label: 'Cities' },
-        { icon: <Award size={48} />, count: '13+', label: 'Years of Expertise' },
-        { icon: <Award size={48} />, count: '13+', label: 'Awards' },
-        { icon: <FileCheck size={48} />, count: '100%', label: 'Clear Documentation\n& Transactions' },
-        { icon: <Building2 size={48} />, count: '125+', label: 'Premium Projects' },
-        { icon: <Home size={48} />, count: '4,000+', label: 'Acres of land\nDelivered' },
-        { icon: <Users size={48} />, count: '20,000+', label: 'Happy Customers' },
-        { icon: <Users size={48} />, count: '5 Lakh +', label: 'Trees Planted' },
-        { icon: <Sun size={48} />, count: '100%', label: 'Solar Powered\nCities' },
+        { icon: <Award size={32} strokeWidth={1} />, count: '13+', label: 'Years of Expertise' },
+        { icon: <Building2 size={32} strokeWidth={1} />, count: '125+', label: 'Premium Projects' },
+        { icon: <Users size={32} strokeWidth={1} />, count: '20,000+', label: 'Happy Customers' },
+        { icon: <MapPin size={32} strokeWidth={1} />, count: '4,000+', label: 'Acres Delivered' },
+        { icon: <FileCheck size={32} strokeWidth={1} />, count: '100%', label: 'Clear Titles' },
     ];
 
     return (
-        <section className="py-20 bg-white">
-            <div className="max-w-[1400px] mx-auto px-4">
-                {/* Main Heading */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                        INDIA'S LARGEST PLOTTED REAL ESTATE DEVELOPER
-                    </h1>
-                    <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                        We understand the importance of investing in the house of your dreams – a lifestyle that is unconditional & unrestricted. G Square is India's most trusted plot real estate developer, with every project and property in your favorite metro's most prime & potential addresses.
+        <section className="section-padding bg-stone-light border-b border-border-gray">
+            <div className="container-tight">
+                {/* Main Heading - Calm Authority */}
+                <div className="text-center mb-24">
+                    <h2 className="text-title-lg md:text-title-xl text-charcoal mb-8">
+                        India's largest plotted <br className="hidden md:block" /> real estate developer.
+                    </h2>
+                    <p className="text-body-lg text-charcoal-light max-w-2xl mx-auto font-light leading-relaxed opacity-80">
+                        Securing prime addresses for your legacy. We understand the importance of investing in the house of your dreams.
                     </p>
                 </div>
 
-                {/* Stats - Horizontal Scrollable */}
-                <div className="relative">
-                    <div
-                        className="flex gap-8 md:gap-12 overflow-x-auto scroll-smooth pb-4"
-                        style={{
-                            scrollbarWidth: 'none',
-                            msOverflowStyle: 'none',
-                            WebkitOverflowScrolling: 'touch'
-                        }}
-                    >
-                        {stats.map((stat, idx) => (
-                            <div key={idx} className="flex flex-col items-center text-center flex-shrink-0 group cursor-default">
-                                {/* Icon Circle */}
-                                <div className="w-28 h-28 md:w-32 md:h-32 bg-[#0091D0] rounded-full flex items-center justify-center text-white mb-4 shadow-lg transform transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:bg-[#007AB8]">
-                                    {stat.icon}
-                                </div>
-
-                                {/* Count */}
-                                <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                                    {stat.count}
-                                </div>
-
-                                {/* Label */}
-                                <div className="text-sm md:text-base text-gray-700 font-medium whitespace-pre-line w-32">
-                                    {stat.label}
-                                </div>
+                {/* Stats - Grid with Dividers */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12 gap-x-8 border-t border-charcoal/10 pt-12">
+                    {stats.map((stat, idx) => (
+                        <div key={idx} className="flex flex-col items-center text-center group">
+                            {/* Icon - Very Subtle */}
+                            <div className="text-charcoal mb-6 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                                {stat.icon}
                             </div>
-                        ))}
-                    </div>
+
+                            {/* Count - Serif & Expensive */}
+                            <div className="text-4xl md:text-5xl font-serif text-charcoal mb-4">
+                                {stat.count}
+                            </div>
+
+                            {/* Label - Micro Typography */}
+                            <div className="text-xs uppercase tracking-wide-caps text-charcoal-light font-medium opacity-60">
+                                {stat.label}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

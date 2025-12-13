@@ -1,195 +1,99 @@
-import React, { useState } from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, ChevronDown, ChevronUp } from 'lucide-react';
+import React from 'react';
+import { Facebook, Instagram, Linkedin, Youtube, ArrowUp } from 'lucide-react';
 
 const Footer: React.FC = () => {
-    const [openOffice, setOpenOffice] = useState<string | null>(null);
-    const [openSection, setOpenSection] = useState<string | null>(null);
-
-    const offices = [
-        { name: 'Chennai - Registered Office', locations: [] },
-        { name: 'Chennai - Corporate Office', locations: [] },
-        { name: 'Chennai - Corporate Office', locations: [] },
-        { name: 'Coimbatore - Zonal Office', locations: [] },
-        { name: 'Hyderabad - Zonal Office', locations: [] },
-        { name: 'Trichy- Zonal Office', locations: [] },
-        { name: 'Mysuru- Zonal Office', locations: [] },
-    ];
-
-    const residentialPlots = {
-        'South Chennai': ['Anna Nagar', 'Adyar', 'Velachery'],
-        'North Chennai': ['Puzhal', 'Redhills', 'Thiruvallur'],
-        'Rest of Chennai': ['Tambaram', 'Chromepet', 'Pallavaram'],
-        'Hyderabad': ['Kompally', 'Bachupally'],
-        'Trichy': ['Samayapuram', 'Thuvakudi'],
-        'Myuru': ['Mysore Road'],
-        'Coimbatore': ['Saravanampatti', 'Thondamuthur'],
-        'Hosur': ['Denkanikottai'],
-        'Other Locations': ['Bangalore', 'Pune']
-    };
-
-    const commercialPlots = {
-        'Chennai': ['OMR', 'GST Road'],
-        'ECR': ['East Coast Road'],
-        'OMB': ['Old Mahabalipuram Road'],
-        'Trichy': ['Trichy Main'],
-        'Coimbatore': ['Coimbatore Main']
-    };
-
-    const toggleOffice = (office: string) => {
-        setOpenOffice(openOffice === office ? null : office);
-    };
-
-    const toggleSection = (section: string) => {
-        setOpenSection(openSection === section ? null : section);
-    };
-
     return (
-        <footer className="bg-[#3a3a3a] text-white">
-            {/* Our Offices Section */}
-            <div className="bg-[#4a4a4a] py-8">
-                <div className="max-w-[1400px] mx-auto px-4">
-                    <h3 className="text-xl font-bold mb-6 text-center">OUR OFFICES</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {offices.map((office, idx) => (
-                            <div key={idx}>
-                                <button
-                                    onClick={() => toggleOffice(office.name)}
-                                    className="w-full flex items-center justify-between text-left text-sm py-2 px-3 bg-[#3a3a3a] rounded hover:bg-[#2a2a2a] transition-colors"
-                                >
-                                    <span>{office.name}</span>
-                                    <ChevronDown size={16} />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+        <footer className="bg-[#050505] text-white pt-24 pb-12 overflow-hidden relative">
+            {/* Subtle Top Border */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
-            {/* Residential & Commercial Plots */}
-            <div className="py-12 border-b border-gray-600">
-                <div className="max-w-[1400px] mx-auto px-4">
-                    {/* Residential Plots */}
-                    <div className="mb-10">
-                        <h3 className="text-lg font-bold mb-6">RESIDENTIAL PLOTS</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-4">
-                            {Object.entries(residentialPlots).map(([location]) => (
-                                <div key={location}>
-                                    <button
-                                        onClick={() => toggleSection(`res-${location}`)}
-                                        className="flex items-center gap-2 text-sm font-medium mb-2 hover:text-[#0091D0] transition-colors"
-                                    >
-                                        {location}
-                                        <ChevronDown size={14} />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Commercial Plots */}
-                    <div>
-                        <h3 className="text-lg font-bold mb-6">COMMERCIAL PLOTS</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-4">
-                            {Object.entries(commercialPlots).map(([location]) => (
-                                <div key={location}>
-                                    <button
-                                        onClick={() => toggleSection(`com-${location}`)}
-                                        className="flex items-center gap-2 text-sm font-medium mb-2 hover:text-[#0091D0] transition-colors"
-                                    >
-                                        {location}
-                                        <ChevronDown size={14} />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Bottom Footer */}
-            <div className="py-8">
-                <div className="max-w-[1400px] mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
-                        {/* Logo */}
-                        <div>
-                            <img
-                                src="https://www.gsquarehousing.com/wp-content/uploads/2023/10/g-square-logo.svg"
-                                alt="G Square"
-                                className="h-12 brightness-0 invert mb-4"
-                            />
-                        </div>
-
-                        {/* Column 1 */}
-                        <div>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Overview</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Seller's Spot</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Awards</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">CSR</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 2 */}
-                        <div>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">News & Media</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Blog</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Built - To - Suit</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Investor Page</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Customer Referral</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 3 */}
-                        <div>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Contact Us</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Build Assist</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Testimonials</a></li>
-                                <li><a href="#" className="hover:text-[#0091D0] transition-colors">Employee Life</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Social Media */}
-                        <div>
-                            <h4 className="text-sm font-semibold mb-4">Follow Us On</h4>
-                            <div className="flex gap-3">
-                                <a href="#" className="w-8 h-8 bg-[#0091D0] rounded flex items-center justify-center hover:bg-[#007AB8] transition-colors">
-                                    <Facebook size={16} />
-                                </a>
-                                <a href="#" className="w-8 h-8 bg-[#0091D0] rounded flex items-center justify-center hover:bg-[#007AB8] transition-colors">
-                                    <Twitter size={16} />
-                                </a>
-                                <a href="#" className="w-8 h-8 bg-[#0091D0] rounded flex items-center justify-center hover:bg-[#007AB8] transition-colors">
-                                    <Instagram size={16} />
-                                </a>
-                                <a href="#" className="w-8 h-8 bg-[#0091D0] rounded flex items-center justify-center hover:bg-[#007AB8] transition-colors">
-                                    <Linkedin size={16} />
-                                </a>
-                                <a href="#" className="w-8 h-8 bg-[#0091D0] rounded flex items-center justify-center hover:bg-[#007AB8] transition-colors">
-                                    <Youtube size={16} />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Copyright */}
-                    <div className="text-center pt-6 border-t border-gray-600">
-                        <p className="text-xs text-gray-400">
-                            COPYRIGHTS © 2025. ALL RIGHTS RESERVED. <a href="#" className="hover:text-[#0091D0]">PRIVACY POLICY</a>
+            <div className="max-w-[1400px] mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+                    {/* Brand Column */}
+                    <div className="md:col-span-4 flex flex-col items-start">
+                        <h2 className="text-5xl font-serif text-white mb-6 tracking-tight">G SQUARE</h2>
+                        <p className="text-gray-500 font-light text-sm leading-relaxed max-w-sm mb-10">
+                            Curating India's finest land parcels. We build the foundation for your legacy, blending luxury with transparency.
                         </p>
+
+                        {/* Social Signals */}
+                        <div className="flex gap-6">
+                            {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
+                                <a key={i} href="#" className="text-gray-600 hover:text-amber-500 transition-colors duration-300">
+                                    <Icon size={20} strokeWidth={1.5} />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Navigation - Collections */}
+                    <div className="md:col-span-2">
+                        <h3 className="text-lg font-serif mb-6 text-white">Collections</h3>
+                        <ul className="space-y-4">
+                            {['Residential Plots', 'Commercial Zones', 'Industrial Parks', 'Villa Communities'].map((item) => (
+                                <li key={item}>
+                                    <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors duration-300 block">
+                                        {item}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Navigation - Corporate */}
+                    <div className="md:col-span-2">
+                        <h3 className="text-lg font-serif mb-6 text-white">Corporate</h3>
+                        <ul className="space-y-4">
+                            {['About G Square', 'Leadership Team', 'Careers', 'Press Room', 'Contact'].map((item) => (
+                                <li key={item}>
+                                    <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors duration-300 block">
+                                        {item}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Newsletter - The Edit */}
+                    <div className="md:col-span-4">
+                        <h3 className="text-lg font-serif mb-6 text-white">The Edit</h3>
+                        <p className="text-gray-500 text-sm mb-6 font-light">
+                            Subscribe to receive exclusive market insights and priority access to new launches.
+                        </p>
+                        <form className="flex border-b border-white/20 pb-2">
+                            <input
+                                type="email"
+                                placeholder="Email Address"
+                                className="bg-transparent w-full outline-none text-white text-sm placeholder-gray-700"
+                            />
+                            <button className="text-xs font-bold uppercase tracking-widest text-amber-500 hover:text-white transition-colors">
+                                Subscribe
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </div>
 
-            {/* Scroll to Top Button */}
-            <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="fixed bottom-8 right-8 w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg hover:bg-gray-100 transition-all z-40 flex items-center justify-center"
-                aria-label="Scroll to top"
-            >
-                <ChevronUp size={24} />
-            </button>
+                {/* Footer Bottom */}
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
+                        <p className="text-gray-600 text-xs tracking-wider uppercase">
+                            © 2025 G Square. All rights reserved.
+                        </p>
+                        <div className="flex gap-6">
+                            <a href="#" className="text-gray-600 hover:text-white text-xs tracking-wider uppercase transition-colors">Privacy</a>
+                            <a href="#" className="text-gray-600 hover:text-white text-xs tracking-wider uppercase transition-colors">Terms</a>
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="group flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:text-amber-500 transition-colors"
+                    >
+                        Back to Top
+                        <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform duration-300" />
+                    </button>
+                </div>
+            </div>
         </footer>
     );
 };

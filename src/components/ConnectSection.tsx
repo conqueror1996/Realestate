@@ -3,70 +3,77 @@ import React from 'react';
 const ConnectSection: React.FC = () => {
     const connections = [
         {
-            title: 'As an Employee',
-            description: 'We believe in creating a workplace that not only builds extraordinary structures but also nurtures the growth and well-being of our people.',
-            image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop',
+            title: 'Careers',
+            role: 'Join the Team',
+            description: 'We build extraordinary structures and nurture the growth of our people. Create your legacy with us.',
+            image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=1000&fit=crop',
             link: '#'
         },
         {
-            title: 'As an Investor',
-            description: 'Elevate your investment stature with G Square, the discerning choice for a fusion of financial supremacy and visionary partnerships.',
-            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
+            title: 'Investors',
+            role: 'Grow Wealth',
+            description: 'Elevate your portfolio with G Square. Experience the fusion of financial supremacy and visionary partnerships.',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=1000&fit=crop',
             link: '#'
         },
         {
-            title: 'As a Customer',
-            description: 'Unlock the gateway to unparalleled living with G Square. Discover meticulously crafted properties, innovative design, and a commitment to excellence.',
-            image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop',
+            title: 'Customers',
+            role: 'Live Grand',
+            description: 'Unlock the gateway to unparalleled living. Discover meticulously crafted properties and innovative design.',
+            image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=1000&fit=crop',
             link: '#'
         }
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-white">
-            <div className="max-w-[1400px] mx-auto px-4">
+        <section className="py-32 bg-[#F5F5F0]">
+            <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-                        CONNECT WITH US
+                <div className="text-center mb-24">
+                    <h2 className="text-4xl md:text-6xl font-serif text-[#1C1C1C] mb-6">
+                        Partner With Us
                     </h2>
+                    <p className="text-gray-500 font-light tracking-wide uppercase text-sm">
+                        Choose your path to excellence
+                    </p>
                 </div>
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {connections.map((connection, idx) => (
+                {/* Editorial Columns with Dividers */}
+                <div className="grid grid-cols-1 md:grid-cols-3">
+                    {connections.map((item, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
+                            className={`group relative p-8 md:p-12 flex flex-col items-center text-center transition-all duration-500 hover:bg-white border-gray-300/50 ${idx !== connections.length - 1 ? 'md:border-r border-b md:border-b-0' : ''
+                                }`}
                         >
-                            {/* Content */}
-                            <div className="p-6 text-center">
-                                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                                    {connection.title}
-                                </h3>
-                                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
-                                    {connection.description}
-                                </p>
-                            </div>
+                            {/* Role Label */}
+                            <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-600 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-y-2 group-hover:translate-y-0">
+                                {item.role}
+                            </span>
 
                             {/* Image */}
-                            <div className="h-64 overflow-hidden">
+                            <div className="w-full aspect-[4/5] overflow-hidden mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-out">
                                 <img
-                                    src={connection.image}
-                                    alt={connection.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                 />
                             </div>
 
-                            {/* Button */}
-                            <div className="p-0">
-                                <a
-                                    href={connection.link}
-                                    className="block w-full bg-[#FFA500] text-black font-bold text-center py-4 hover:bg-[#FF8C00] transition-colors"
-                                >
-                                    Enquire Now
-                                </a>
-                            </div>
+                            {/* Title */}
+                            <h3 className="text-3xl font-serif text-[#1C1C1C] mb-4 group-hover:text-amber-700 transition-colors">
+                                {item.title}
+                            </h3>
+
+                            {/* Description */}
+                            <p className="text-gray-500 font-light text-sm leading-relaxed mb-8 max-w-xs opacity-70 group-hover:opacity-100 transition-opacity">
+                                {item.description}
+                            </p>
+
+                            {/* CTA */}
+                            <button className="mt-auto px-8 py-3 bg-transparent border border-[#1C1C1C] text-[#1C1C1C] text-xs font-bold uppercase tracking-widest hover:bg-[#1C1C1C] hover:text-white transition-all duration-300">
+                                Start Conversation
+                            </button>
                         </div>
                     ))}
                 </div>

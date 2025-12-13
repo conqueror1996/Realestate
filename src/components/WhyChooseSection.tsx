@@ -26,15 +26,15 @@ const features = [
 
 const WhyChooseSection: React.FC = () => {
     return (
-        <section className="py-16 md:py-24 bg-white">
-            <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+        <section className="section-padding bg-stone-light">
+            <div className="container-tight">
                 {/* Section Header */}
-                <div className="text-center mb-12 md:mb-16">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                        How We Add Value To Your Living
+                <div className="text-center mb-20 scroll-mt-20">
+                    <h2 className="text-title-lg text-charcoal mb-6">
+                        Why choose G Square?
                     </h2>
-                    <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-                        We are committed to delivering excellence and building trust with every square foot
+                    <p className="text-body-lg text-charcoal-light font-light opacity-80 max-w-2xl mx-auto">
+                        We are committed to delivering excellence and building trust with every square foot.
                     </p>
                 </div>
 

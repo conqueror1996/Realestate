@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary-blue: #0091D0;
-  --secondary-blue: #0066A1;
-  --accent-yellow: #FFA500;
-  --dark-navy: #003366;
-  --text-gray: #333333;
-  --light-gray-bg: #F5F7FA;
+  /* Luxury Palette - Restrained & Authoritative */
+  --color-charcoal: #1C1C1C;
+  --color-charcoal-light: #333333;
+  --color-stone-light: #F4F4F2;
+  --color-white: #FFFFFF;
+
+  /* Functional Colors */
+  --color-accent: #2C2C2C;
+  --color-border: #E5E5E5;
 }
 
 @layer base {
@@ -18,79 +21,98 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @apply text-[17px] leading-[1.6];
   }
 
   body {
-    font-family: 'Outfit', sans-serif;
-    color: var(--text-gray);
-    overflow-x: hidden;
+    background-color: var(--color-white);
+    color: var(--color-charcoal-light);
+    font-family: 'Inter', sans-serif;
   }
 
+  /* Typography System */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply tracking-tight;
+    font-family: 'Libre Baskerville', serif;
+    color: var(--color-charcoal);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    /* Default for H2-H6, overridden for H1 */
+  }
+
+  h1 {
+    @apply text-[46px] md:text-[64px] lg:text-[72px];
+    line-height: 1.05 !important;
+    /* Critical Luxury Rule */
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    @apply text-[36px] md:text-[44px];
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    @apply text-[24px] md:text-[28px];
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: var(--color-charcoal-light);
+    font-weight: 400;
+    line-height: 1.65;
+    /* Relaxed reading experience */
+  }
+
+  /* Button & UI Text Rules */
+  button,
+  .btn,
+  label,
+  nav a,
+  .uppercase {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    /* Wide tracking for caps */
+    font-size: 13px;
+    /* Slightly smaller to compensate for width */
+    font-weight: 500;
   }
 }
 
 @layer components {
+
+  /* Inviting, non-aggressive buttons */
   .btn-primary {
-    @apply bg-[var(--primary-blue)] text-white px-6 py-3 rounded font-semibold hover:bg-[var(--secondary-blue)] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95;
+    @apply bg-[#1C1C1C] text-white px-8 py-4 inline-flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#333333];
   }
 
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
-  }
-}
-
-/* Custom Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  .btn-outline {
+    @apply bg-transparent border border-[#1C1C1C] text-[#1C1C1C] px-8 py-4 inline-flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#1C1C1C] hover:text-white;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  /* Layout Utilities */
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  .container-tight {
+    @apply max-w-7xl mx-auto px-6 md:px-12;
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Marquee Animation for TopBar */
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-marquee {
-  display: inline-block;
-  animation: marquee 25s linear infinite;
-}
-
-/* Hide scrollbar for horizontal scroll (Global Utility) */
-.overflow-x-auto::-webkit-scrollbar {
-  display: none;
-}
-
+/* Utilities */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }

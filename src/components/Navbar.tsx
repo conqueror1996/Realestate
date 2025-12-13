@@ -94,11 +94,13 @@ const Navbar: React.FC = () => {
                             </button>
 
                             <div className="mb-8 mt-2">
-                                <img
-                                    src="https://www.gsquarehousing.com/wp-content/uploads/2023/10/g-square-logo.svg"
-                                    alt="G Square"
-                                    className="h-12"
-                                />
+                                <a href="/" onClick={() => setIsOpen(false)} className="block">
+                                    <img
+                                        src="https://www.gsquarehousing.com/wp-content/uploads/2023/10/g-square-logo.svg"
+                                        alt="G Square"
+                                        className="h-12"
+                                    />
+                                </a>
                             </div>
 
                             <nav className="space-y-1">

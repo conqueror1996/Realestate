@@ -48,15 +48,12 @@ const TestimonialsSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-r from-[#0066A1] to-[#0091D0]">
-            <div className="max-w-[1400px] mx-auto px-4">
+        <section className="section-padding bg-stone-light">
+            <div className="container-tight">
                 {/* Section Header */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                        TRUSTED BY THOUSANDS OF{' '}
-                        <span className="bg-[#FFA500] text-black px-4 py-2 inline-block">
-                            HAPPY CUSTOMERS
-                        </span>
+                <div className="text-center mb-16">
+                    <h2 className="text-title-lg text-charcoal mb-4">
+                        Trusted by thousands of <br className="hidden md:block" />happy customers.
                     </h2>
                 </div>
 

@@ -1,82 +1,43 @@
-import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import React from 'react';
 
 const Hero: React.FC = () => {
-    const [activeTab, setActiveTab] = useState('residential');
-
     return (
-        <section className="relative w-full mb-16">
-            {/* Background Image with Overlay */}
-            <div className="relative h-[400px] md:h-[500px] bg-cover bg-center"
+        <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden">
+            {/* Background Image - Parallax Effect would go here, static for now */}
+            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
                 style={{
                     backgroundImage: 'url(/hero_background_estate_1765609063537.png)',
-                    backgroundPosition: 'center'
                 }}>
-                {/* Blue Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0066A1]/90 to-[#0091D0]/80"></div>
+                {/* Cinematic Dark Overlay - Sophisticated & Readable */}
+                <div className="absolute inset-0 bg-black/30"></div>
             </div>
 
-            {/* Search Bar Section */}
-            <div className="absolute bottom-0 left-0 w-full z-20 transform translate-y-1/2 md:translate-y-0 md:bottom-[-20px]">
-                <div className="max-w-[1400px] mx-auto px-4 md:px-0">
-                    <div className="bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-100">
-                        {/* Tabs */}
-                        <div className="flex border-b border-gray-100">
-                            <button
-                                className={`flex-1 md:flex-none px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'residential'
-                                    ? 'bg-[#0091D0] text-white shadow-inner'
-                                    : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
-                                    }`}
-                                onClick={() => setActiveTab('residential')}
-                            >
-                                Residential Projects
-                            </button>
-                            <button
-                                className={`flex-1 md:flex-none px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'commercial'
-                                    ? 'bg-[#0091D0] text-white shadow-inner'
-                                    : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
-                                    }`}
-                                onClick={() => setActiveTab('commercial')}
-                            >
-                                Commercial Projects
-                            </button>
-                        </div>
+            {/* Content Container - Centered & Authoritative */}
+            <div className="relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8 z-10">
+                <span className="text-white/90 uppercase tracking-wide-caps text-sm md:text-base font-medium mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                    Est. 2024 • Tamil Nadu
+                </span>
 
-                        {/* Search Form */}
-                        <div className="p-4 md:p-6 flex flex-col md:flex-row gap-4 items-center">
-                            {/* Dropdown */}
-                            <div className="w-full md:w-1/4 relative">
-                                <select
-                                    className="w-full h-12 px-4 bg-gray-50 border border-gray-200 rounded text-gray-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0091D0] focus:border-transparent transition-all cursor-pointer appearance-none"
-                                >
-                                    <option>All Zones</option>
-                                    <option>Chennai - South</option>
-                                    <option>Chennai - North</option>
-                                    <option>Coimbatore</option>
-                                </select>
-                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </div>
-                            </div>
+                <h1 className="text-white mb-8 border-b-0 max-w-4xl tracking-tight-headings leading-[1.1] drop-shadow-sm animate-fade-up" style={{ animationDelay: '0.2s' }}>
+                    Defining the Skyline.<br />
+                    Securing Your Legacy.
+                </h1>
 
-                            {/* Search Input */}
-                            <div className="w-full md:flex-1 relative">
-                                <input
-                                    type="text"
-                                    placeholder="Search by Location or Property Name"
-                                    className="w-full h-12 pl-10 pr-4 bg-gray-50 border border-gray-200 rounded text-gray-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0091D0] focus:border-transparent transition-all placeholder-gray-400"
-                                />
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-                            </div>
+                <p className="text-stone-100 max-w-xl text-lg md:text-xl font-light leading-relaxed mb-10 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+                    Premium land parcels curated for the discerning investor.
+                </p>
 
-                            {/* Search Button */}
-                            <button className="w-full md:w-auto px-8 h-12 bg-[#FFA500] hover:bg-[#FF9000] text-black font-bold uppercase text-sm tracking-wide rounded shadow-md hover:shadow-lg transform active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
-                                <Search className="w-4 h-4" />
-                                Search
-                            </button>
-                        </div>
-                    </div>
+                <div className="flex gap-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+                    <button className="bg-white text-charcoal px-8 py-4 uppercase tracking-wide-caps text-xs md:text-sm font-semibold hover:bg-stone-200 transition-colors duration-500">
+                        Explore Portfolio
+                    </button>
+                    <button className="bg-transparent border border-white text-white px-8 py-4 uppercase tracking-wide-caps text-xs md:text-sm font-semibold hover:bg-white hover:text-charcoal transition-all duration-500">
+                        Contact Private Office
+                    </button>
                 </div>
+
+                {/* Dynamic Ad/Discount Container - Kept layout neutral */}
+                <div id="adBanner" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 invisible"></div>
             </div>
         </section>
     );
