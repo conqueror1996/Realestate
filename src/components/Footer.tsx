@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
                     <div className="mb-10">
                         <h3 className="text-lg font-bold mb-6">RESIDENTIAL PLOTS</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-4">
-                            {Object.entries(residentialPlots).map(([location, areas]) => (
+                            {Object.entries(residentialPlots).map(([location]) => (
                                 <div key={location}>
                                     <button
                                         onClick={() => toggleSection(`res-${location}`)}
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
                     <div>
                         <h3 className="text-lg font-bold mb-6">COMMERCIAL PLOTS</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-4">
-                            {Object.entries(commercialPlots).map(([location, areas]) => (
+                            {Object.entries(commercialPlots).map(([location]) => (
                                 <div key={location}>
                                     <button
                                         onClick={() => toggleSection(`com-${location}`)}
