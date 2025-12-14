@@ -27,17 +27,8 @@ const Hero: React.FC = () => {
                     Premium land parcels curated for the discerning investor.
                 </p>
 
-                <div className="flex gap-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-                    <button className="bg-white text-charcoal px-8 py-4 uppercase tracking-wide-caps text-xs md:text-sm font-semibold hover:bg-stone-200 transition-colors duration-500">
-                        Explore Portfolio
-                    </button>
-                    <button className="bg-transparent border border-white text-white px-8 py-4 uppercase tracking-wide-caps text-xs md:text-sm font-semibold hover:bg-white hover:text-charcoal transition-all duration-500">
-                        Contact Private Office
-                    </button>
-                </div>
-
-                {/* Dynamic Ad/Discount Container - Kept layout neutral */}
-                <div id="adBanner" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 invisible"></div>
+                {/* Dynamic Ad/Discount Container - Placeholder for future updates */}
+                <div id="adBanner" className="mt-10 min-h-[50px] animate-fade-up" style={{ animationDelay: '0.4s' }}></div>
             </div>
         </section>
     );
