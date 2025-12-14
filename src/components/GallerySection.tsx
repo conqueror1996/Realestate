@@ -79,7 +79,7 @@ const GallerySection: React.FC = () => {
                         <span className="text-ui-label text-[#0091D0] mb-4 block">
                             Timeline
                         </span>
-                        <h2 className="leading-tight">
+                        <h2 className="text-5xl md:text-7xl leading-tight">
                             Our Journey
                         </h2>
                     </div>
@@ -125,7 +125,7 @@ const GallerySection: React.FC = () => {
                                 </div>
                             </div>
                             <div>
-                                <h3 className="text-lg font-serif text-[#1C1C1C] mb-1">{photo.title}</h3>
+                                <h3 className="text-lg font-sans text-[#1C1C1C] mb-1">{photo.title}</h3>
                                 {/* Decorative Line */}
                                 <div className="w-12 h-px bg-gray-300 group-hover:w-full group-hover:bg-[#0091D0] transition-all duration-700 ease-in-out"></div>
                             </div>
@@ -137,7 +137,7 @@ const GallerySection: React.FC = () => {
                         <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-sm">
                             <ArrowRight size={24} className="text-[#1C1C1C]" />
                         </div>
-                        <span className="text-charcoal font-serif text-xl">View Archive</span>
+                        <span className="text-charcoal font-sans text-xl">View Archive</span>
                         <span className="text-xs text-gray-500 mt-2 uppercase tracking-widest">All Photos</span>
                     </div>
                 </div>

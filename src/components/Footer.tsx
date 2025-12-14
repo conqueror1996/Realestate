@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
 
                 {/* Row 2: Contact Pill Bar - Replaced Here */}
                 <div className="bg-white py-3 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 mb-16 shadow-xl relative z-10 border border-white/10">
-                    <div className="font-serif text-lg text-[#1C1C1C] font-bold">Need Help?</div>
+                    <div className="font-sans text-lg text-[#1C1C1C] font-bold">Need Help?</div>
 
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
                         <div className="flex items-center gap-3 group cursor-pointer">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
 
                     {/* Description */}
                     <div className="lg:col-span-4 pr-8">
-                        <h4 className="font-serif text-xl mb-6 text-white">About Us</h4>
+                        <h4 className="font-sans text-xl mb-6 text-white">About Us</h4>
                         <p className="text-blue-100 text-sm leading-8 font-light max-w-sm">
                             South India's Largest & Most Trusted Real Estate Developer. We don't just sell plots; we build legacies.
                             Experience excellence with Future Group.
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                     {/* Navigation */}
                     <div className="lg:col-span-4 flex justify-between md:justify-start md:gap-32">
                         <div>
-                            <h4 className="font-serif text-xl mb-6 text-white">Explore</h4>
+                            <h4 className="font-sans text-xl mb-6 text-white">Explore</h4>
                             <ul className="space-y-3">
                                 {['Home', 'Properties', 'Blog', 'Contact'].map((item) => (
                                     <li key={item}>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="font-serif text-xl mb-6 text-white">Company</h4>
+                            <h4 className="font-sans text-xl mb-6 text-white">Company</h4>
                             <ul className="space-y-3">
                                 {['About Us', 'Careers', 'Privacy', 'Terms'].map((item) => (
                                     <li key={item}>
@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
 
                     {/* Awards */}
                     <div className="lg:col-span-4">
-                        <h4 className="font-serif text-xl mb-6 text-white">Accolades</h4>
+                        <h4 className="font-sans text-xl mb-6 text-white">Accolades</h4>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="bg-white/10 p-5 shadow-sm border border-white/20 flex flex-col items-start gap-4 hover:bg-white/20 transition-all group">
                                 <Award className="text-white group-hover:scale-110 transition-transform duration-300" size={28} strokeWidth={1} />

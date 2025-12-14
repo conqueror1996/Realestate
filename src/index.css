@@ -10,8 +10,8 @@
   --color-white: #FFFFFF;
 
   /* Font Stack - Authority + Calm */
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Montserrat", sans-serif;
 }
 
 @layer base {
@@ -41,6 +41,8 @@
     font-family: var(--font-heading);
     color: var(--color-charcoal);
     margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   h1 {

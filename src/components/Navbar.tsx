@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
                                 onMouseEnter={() => setActiveDropdown(group.title)}
                                 onMouseLeave={() => setActiveDropdown(null)}
                             >
-                                <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#0091D0] transition-colors py-8 tracking-wide">
+                                <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#0091D0] transition-colors py-8 tracking-wide uppercase">
                                     {group.title}
                                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === group.title ? 'rotate-180' : ''}`} />
                                 </button>

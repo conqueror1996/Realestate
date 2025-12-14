@@ -22,7 +22,7 @@ const FounderSection: React.FC = () => {
                         </div>
                     </div>
                     <div className="mt-6 border-l-2 border-[#1C1C1C] pl-4">
-                        <h4 className="text-xl font-serif text-[#1C1C1C] leading-none mb-1">Mr. Bala Ramajayam</h4>
+                        <h4 className="text-xl font-sans text-[#1C1C1C] leading-none mb-1">Mr. Bala Ramajayam</h4>
                         <p className="text-xs tracking-widest uppercase text-charcoal-light opacity-70">Managing Director • 12+ Years of Excellence</p>
                     </div>
                 </div>
@@ -33,8 +33,8 @@ const FounderSection: React.FC = () => {
                         Leadership Note
                     </span>
 
-                    <blockquote className="text-3xl md:text-5xl font-serif text-[#1C1C1C] leading-tight mb-10 relative">
-                        <span className="text-8xl text-gray-200 absolute -top-10 -left-6 -z-10 font-serif">“</span>
+                    <blockquote className="text-3xl md:text-5xl font-sans text-[#1C1C1C] leading-tight mb-10 relative">
+                        <span className="text-8xl text-gray-200 absolute -top-10 -left-6 -z-10 font-sans">“</span>
                         We don't just sell plots; we curate the foundation for your family's next generation.
                     </blockquote>
 

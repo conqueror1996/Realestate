@@ -59,7 +59,7 @@ const ValueSection: React.FC = () => {
 
                             {/* Content */}
                             <div className="px-2 pb-4">
-                                <h3 className="text-2xl font-serif text-white mb-4 whitespace-pre-line leading-tight group-hover:text-stone-200">
+                                <h3 className="text-2xl font-sans text-white mb-4 whitespace-pre-line leading-tight group-hover:text-stone-200">
                                     {item.title}
                                 </h3>
                                 <p className="text-gray-400 text-sm leading-relaxed font-light mb-6">

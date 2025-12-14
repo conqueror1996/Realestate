@@ -33,7 +33,7 @@ const StatsSection: React.FC = () => {
                             </div>
 
                             {/* Count - Serif & Expensive */}
-                            <div className="text-4xl md:text-5xl font-serif text-charcoal mb-4">
+                            <div className="text-4xl md:text-5xl font-sans text-charcoal mb-4">
                                 {stat.count}
                             </div>
 

@@ -15,8 +15,8 @@ export default {
                 'border-gray': '#E5E5E5',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                serif: ['Playfair Display', 'serif'],
+                sans: ['Montserrat', 'sans-serif'],
+                serif: ['Montserrat', 'sans-serif'],
             },
             letterSpacing: {
                 'tight-headings': '-0.02em',

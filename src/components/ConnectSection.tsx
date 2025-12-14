@@ -28,7 +28,7 @@ const ConnectSection: React.FC = () => {
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-20">
-                    <h2 className="mb-6">
+                    <h2 className="mb-6 text-5xl md:text-7xl">
                         Connect With Us
                     </h2>
                     <p className="text-ui-label text-gray-500">

@@ -26,7 +26,7 @@ const BlogsSection: React.FC = () => {
         <section className="py-32 bg-white relative overflow-hidden">
             {/* Background Watermark */}
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
-                <span className="text-[20vw] font-serif font-bold tracking-tighter text-black">
+                <span className="text-[20vw] font-sans font-bold tracking-tighter text-black">
                     INSIGHTS
                 </span>
             </div>
@@ -35,7 +35,7 @@ const BlogsSection: React.FC = () => {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#0091D0] mb-4">OUR UPDATES</p>
-                    <h2 className="text-5xl font-serif text-[#1C1C1C]">
+                    <h2 className="text-5xl md:text-7xl font-sans text-[#1C1C1C]">
                         News & Events
                     </h2>
                 </div>
