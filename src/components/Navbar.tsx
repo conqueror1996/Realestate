@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
                                 </button>
 
                                 {/* Dropdown Menu */}
-                                <div className={`absolute top-full left-0 w-64 bg-white shadow-xl border-t-2 border-[#0091D0] rounded-b-lg overflow-hidden transition-all duration-300 transform origin-top ${activeDropdown === group.title ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                                <div className={`absolute top-full left-0 w-64 bg-white shadow-xl border-t-2 border-[#0091D0] rounded-none overflow-hidden transition-all duration-300 transform origin-top ${activeDropdown === group.title ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
                                     <div className="py-2">
                                         {group.items.map((item) => (
                                             <a
@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
                         </button>
                         <a
                             href="#"
-                            className="bg-[#0091D0] text-white px-6 py-3 rounded-md text-sm font-bold uppercase tracking-wider hover:bg-[#007bb5] transition-colors shadow-lg shadow-blue-200"
+                            className="bg-[#0091D0] text-white px-6 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#007bb5] transition-colors shadow-lg shadow-blue-200"
                         >
                             Enquire
                         </a>
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <div className="mt-10 pt-6 border-t border-gray-100">
-                        <a href="#" className="block w-full bg-[#0091D0] text-white text-center py-4 rounded font-bold uppercase tracking-wider text-sm shadow-lg">
+                        <a href="#" className="block w-full bg-[#0091D0] text-white text-center py-4 rounded-none font-bold uppercase tracking-wider text-sm shadow-lg">
                             Enquire Now
                         </a>
                     </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,13 +7,13 @@
 :root {
   /* Luxury Palette - Restrained & Authoritative */
   --color-charcoal: #1C1C1C;
-  --color-charcoal-light: #333333;
+  --color-charcoal-light: #222222;
   --color-stone-light: #F4F4F2;
   --color-white: #FFFFFF;
 
-  /* Functional Colors */
-  --color-accent: #2C2C2C;
-  --color-border: #E5E5E5;
+  /* Font Stack - Soft Luxury */
+  --font-heading: "Outfit", sans-serif;
+  --font-body: "Outfit", sans-serif;
 }
 
 @layer base {
@@ -21,13 +21,13 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply text-[17px] leading-[1.6];
+    @apply text-[15px] leading-[1.6];
   }
 
   body {
     background-color: var(--color-white);
-    color: var(--color-charcoal-light);
-    font-family: 'Inter', sans-serif;
+    color: var(--color-charcoal);
+    font-family: var(--font-body);
   }
 
   /* Typography System */
@@ -37,52 +37,62 @@
   h4,
   h5,
   h6 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: var(--font-heading);
     color: var(--color-charcoal);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    /* Default for H2-H6, overridden for H1 */
+    margin-bottom: 1.25rem;
   }
 
   h1 {
-    @apply text-[46px] md:text-[64px] lg:text-[72px];
-    line-height: 1.05 !important;
-    /* Critical Luxury Rule */
+    font-size: clamp(48px, 5vw, 64px);
+    line-height: 1.1;
+    font-weight: 500;
+    /* Medium for clean luxury */
+    letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
   }
 
   h2 {
-    @apply text-[36px] md:text-[44px];
-    margin-bottom: 1.25rem;
+    font-size: clamp(32px, 4vw, 42px);
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 
   h3 {
-    @apply text-[24px] md:text-[28px];
-    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: 600;
+    /* SemiBold for contrast */
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    color: var(--color-charcoal);
   }
 
   p {
     margin-bottom: 1.5rem;
     color: var(--color-charcoal-light);
     font-weight: 400;
-    line-height: 1.65;
-    /* Relaxed reading experience */
+    line-height: 1.7;
+    font-size: 15px;
   }
 
-  /* Button & UI Text Rules */
-  button,
-  .btn,
+  /* Specific UI/Label Rules */
   label,
-  nav a,
-  .uppercase {
-    font-family: 'Inter', sans-serif;
+  .label-text,
+  .meta-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    /* Wide tracking for caps */
+  }
+
+  /* Button Overrides */
+  button,
+  .btn {
+    font-family: var(--font-body);
     font-size: 13px;
-    /* Slightly smaller to compensate for width */
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
 }
 
@@ -90,11 +100,11 @@
 
   /* Inviting, non-aggressive buttons */
   .btn-primary {
-    @apply bg-[#1C1C1C] text-white px-8 py-4 inline-flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#333333];
+    @apply bg-[#1C1C1C] text-white px-8 py-4 inline-flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#333333] rounded-sm;
   }
 
   .btn-outline {
-    @apply bg-transparent border border-[#1C1C1C] text-[#1C1C1C] px-8 py-4 inline-flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#1C1C1C] hover:text-white;
+    @apply bg-transparent border border-[#1C1C1C] text-[#1C1C1C] px-8 py-4 inline-flex items-center justify-center transition-all duration-500 ease-out hover:bg-[#1C1C1C] hover:text-white rounded-sm;
   }
 
   /* Layout Utilities */

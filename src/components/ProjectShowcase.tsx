@@ -43,21 +43,21 @@ const ProjectShowcase: React.FC = () => {
                 {/* Section Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-serif text-[#1C1C1C] mb-4">
-                        Curated Collections
+                        Your Home. Your Dream. Your Choice
                     </h2>
                     <p className="text-gray-500 font-light max-w-2xl mx-auto">
-                        Handpicked locations offering the perfect blend of connectivity, appreciation, and lifestyle.
+                        Choose your plot from India's Largest Plotted Real Estate Developer
                     </p>
                 </div>
 
                 {/* Filters */}
                 <div className="flex justify-center mb-12">
-                    <div className="inline-flex bg-white p-1 rounded-full shadow-sm border border-gray-100">
+                    <div className="inline-flex bg-white p-1 rounded-none shadow-sm border border-gray-100">
                         {['Mumbai', 'Navi Mumbai', 'Mumbai 3.0'].map((city) => (
                             <button
                                 key={city}
-                                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
-                                    ? 'bg-[#0091D0] text-white shadow-md'
+                                className={`px-10 py-4 rounded-none text-base font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
+                                    ? 'bg-[#0091D0] text-white shadow-sm'
                                     : 'text-gray-500 hover:text-[#0091D0] hover:bg-gray-50'
                                     }`}
                                 onClick={() => setActiveTab(city.toLowerCase().replace(' ', '_'))}
@@ -71,13 +71,13 @@ const ProjectShowcase: React.FC = () => {
                 {/* Project Grid */}
                 <div className="flex flex-nowrap overflow-x-auto gap-8 pb-12 px-4 md:justify-center snap-x scrollbar-hide">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="group min-w-[85vw] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
+                        <div key={idx} className="group min-w-[85vw] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
                             {/* Image Header */}
                             <div className="relative h-60 overflow-hidden">
-                                <div className="absolute top-3 left-3 z-10 bg-white/95 backdrop-blur px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-charcoal">
+                                <div className="absolute top-3 left-3 z-10 bg-white/95 backdrop-blur px-3 py-1 rounded-none text-[10px] font-bold uppercase tracking-wider text-charcoal">
                                     {project.status}
                                 </div>
-                                <div className="absolute top-3 right-3 z-10 bg-[#0091D0] text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">
+                                <div className="absolute top-3 right-3 z-10 bg-[#0091D0] text-white px-3 py-1 rounded-none text-[10px] font-bold uppercase tracking-wider">
                                     {project.idealFor}
                                 </div>
                                 <img
@@ -114,10 +114,10 @@ const ProjectShowcase: React.FC = () => {
                                     <div className="col-span-2">
                                         <p className="text-[10px] text-gray-400 uppercase tracking-wider font-bold mb-1">Highlights</p>
                                         <div className="flex gap-2">
-                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 rounded text-[10px] text-gray-600 border border-gray-100">
+                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 rounded-none text-[10px] text-gray-600 border border-gray-100">
                                                 <CheckCircle size={10} className="text-green-500" /> Villa Ready
                                             </span>
-                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 rounded text-[10px] text-gray-600 border border-gray-100">
+                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 rounded-none text-[10px] text-gray-600 border border-gray-100">
                                                 <CheckCircle size={10} className="text-green-500" /> 5 Years Maint.
                                             </span>
                                         </div>
@@ -126,7 +126,7 @@ const ProjectShowcase: React.FC = () => {
 
                                 {/* CTA */}
                                 <div className="mt-auto">
-                                    <button className="w-full py-3 border border-[#0091D0] text-[#0091D0] font-bold text-xs uppercase tracking-widest rounded hover:bg-[#0091D0] hover:text-white transition-all flex items-center justify-center gap-2 group/btn">
+                                    <button className="w-full py-3 border border-[#0091D0] text-[#0091D0] font-bold text-xs uppercase tracking-widest rounded-none hover:bg-[#0091D0] hover:text-white transition-all flex items-center justify-center gap-2 group/btn">
                                         View Details
                                         <ArrowUpRight size={14} className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                                     </button>

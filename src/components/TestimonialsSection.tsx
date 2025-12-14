@@ -62,11 +62,11 @@ const TestimonialsSection: React.FC = () => {
                     {testimonials.map((testimonial, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+                            className="bg-white rounded-none p-6 shadow-lg hover:shadow-xl transition-shadow"
                         >
                             {/* Header with Avatar and Name */}
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                                <div className="w-12 h-12 bg-gray-300 rounded-none flex items-center justify-center flex-shrink-0">
                                     <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                     </svg>
@@ -88,7 +88,7 @@ const TestimonialsSection: React.FC = () => {
 
                             {/* Optional Image */}
                             {testimonial.image && (
-                                <div className="mt-4 rounded overflow-hidden">
+                                <div className="mt-4 rounded-none overflow-hidden">
                                     <img
                                         src={testimonial.image}
                                         alt={`${testimonial.name}'s experience`}

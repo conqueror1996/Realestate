@@ -8,7 +8,7 @@ const FounderSection: React.FC = () => {
 
                 {/* Image Side */}
                 <div className="lg:col-span-5 order-2 lg:order-1 relative group cursor-pointer">
-                    <div className="relative aspect-[3/4] overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700 ease-out">
+                    <div className="relative aspect-[3/4] overflow-hidden rounded-none grayscale group-hover:grayscale-0 transition-all duration-700 ease-out">
                         <img
                             src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
                             alt="Mr. Bala Ramajayam"
@@ -16,7 +16,7 @@ const FounderSection: React.FC = () => {
                         />
                         {/* Video Overlay Button */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50">
+                            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-none flex items-center justify-center border border-white/50">
                                 <Play size={24} fill="white" className="text-white ml-1" />
                             </div>
                         </div>
@@ -53,8 +53,8 @@ const FounderSection: React.FC = () => {
                             alt="Signature"
                             className="h-12 opacity-60"
                         />
-                        <button className="flex items-center gap-3 px-6 py-3 border border-gray-200 rounded-full hover:border-[#1C1C1C] hover:bg-[#1C1C1C] hover:text-white transition-all duration-300 group">
-                            <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-white/10 text-[#1C1C1C] group-hover:text-white transition-colors">
+                        <button className="flex items-center gap-3 px-6 py-3 border border-gray-200 rounded-none hover:border-[#1C1C1C] hover:bg-[#1C1C1C] hover:text-white transition-all duration-300 group">
+                            <span className="w-8 h-8 rounded-none bg-gray-100 flex items-center justify-center group-hover:bg-white/10 text-[#1C1C1C] group-hover:text-white transition-colors">
                                 <Play size={12} fill="currentColor" />
                             </span>
                             <span className="text-xs font-bold uppercase tracking-widest">Watch Message (45s)</span>
