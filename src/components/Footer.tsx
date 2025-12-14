@@ -11,7 +11,13 @@ const Footer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
                     {/* Brand & Stats Column */}
                     <div className="flex flex-col items-start">
-                        <h2 className="text-4xl font-serif text-white mb-6 tracking-tight">G SQUARE</h2>
+                        <div className="bg-white p-3 rounded-lg inline-block mb-6">
+                            <img
+                                src="/future_group_logo.png"
+                                alt="Future Group"
+                                className="h-10"
+                            />
+                        </div>
                         <p className="text-blue-100 font-light text-sm leading-relaxed mb-8">
                             South India's Largest & Most Trusted Real Estate Developer. We don't just sell plots; we build legacies.
                         </p>

@@ -32,8 +32,8 @@ const Navbar: React.FC = () => {
                     <div className="flex-shrink-0">
                         <a href="/" className="block">
                             <img
-                                src="https://www.gsquarehousing.com/wp-content/uploads/2023/10/g-square-logo.svg"
-                                alt="G Square"
+                                src="/future_group_logo.png"
+                                alt="Future Group"
                                 className="h-10 md:h-12"
                             />
                         </a>
@@ -109,9 +109,9 @@ const Navbar: React.FC = () => {
 
                     <div className="mb-10 mt-2">
                         <img
-                            src="https://www.gsquarehousing.com/wp-content/uploads/2023/10/g-square-logo.svg"
-                            alt="G Square"
-                            className="h-10"
+                            src="/future_group_logo.png"
+                            alt="Future Group"
+                            className="h-10 md:h-12"
                         />
                     </div>
 
