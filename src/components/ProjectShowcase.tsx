@@ -42,10 +42,10 @@ const ProjectShowcase: React.FC = () => {
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-serif text-[#1C1C1C] mb-4">
+                    <h2 className="mb-4 text-3xl md:text-5xl lg:text-6xl text-charcoal leading-tight">
                         Your Home. Your Dream. Your Choice
                     </h2>
-                    <p className="text-gray-500 font-light max-w-2xl mx-auto">
+                    <p className="text-body-base text-gray-500 max-w-2xl mx-auto">
                         Choose your plot from India's Largest Plotted Real Estate Developer
                     </p>
                 </div>
@@ -74,10 +74,7 @@ const ProjectShowcase: React.FC = () => {
                         <div key={idx} className="group min-w-[85vw] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
                             {/* Image Header */}
                             <div className="relative h-60 overflow-hidden">
-                                <div className="absolute top-3 left-3 z-10 bg-white/95 backdrop-blur px-3 py-1 rounded-none text-[10px] font-bold uppercase tracking-wider text-charcoal">
-                                    {project.status}
-                                </div>
-                                <div className="absolute top-3 right-3 z-10 bg-[#0091D0] text-white px-3 py-1 rounded-none text-[10px] font-bold uppercase tracking-wider">
+                                <div className="absolute top-3 right-3 z-10 bg-[#0091D0] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
                                     {project.idealFor}
                                 </div>
                                 <img
@@ -88,37 +85,41 @@ const ProjectShowcase: React.FC = () => {
                             </div>
 
                             {/* Info Body */}
-                            <div className="p-6 flex flex-col flex-grow">
-                                <div className="mb-4">
-                                    <div className="flex items-start justify-between mb-1">
-                                        <h3 className="text-xl font-serif text-[#1C1C1C] leading-tight group-hover:text-[#0091D0] transition-colors">
+                            {/* Info Body */}
+                            <div className="p-5 md:p-6 flex flex-col flex-grow">
+                                <div className="mb-5">
+                                    <div className="flex justify-between items-start mb-2 gap-4">
+                                        <h3 className="text-title-card text-[#1C1C1C] leading-tight group-hover:text-[#0091D0] transition-colors">
                                             {project.title}
                                         </h3>
+                                        <div className="text-right flex-shrink-0">
+                                            <p className="text-sm md:text-base font-bold text-[#0091D0]">{project.price}</p>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-1 text-gray-500 text-xs font-medium">
-                                        <MapPin size={12} className="text-gray-400" />
-                                        <a href="#" className="hover:underline">{project.location}</a>
+                                    <div className="flex items-center gap-1.5 text-charcoal-light text-xs font-medium">
+                                        <MapPin size={14} className="text-gray-400" />
+                                        <span className="opacity-80">{project.location}</span>
                                     </div>
                                 </div>
 
                                 {/* Decision Data Grid */}
-                                <div className="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-gray-100 pt-4 mb-6">
+                                <div className="grid grid-cols-2 gap-y-4 gap-x-4 border-t border-gray-100 pt-4 mb-6">
                                     <div>
-                                        <p className="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Plot Size</p>
-                                        <p className="text-sm font-semibold text-gray-800">{project.size}</p>
+                                        <p className="text-ui-label text-gray-400 mb-1">Plot Size</p>
+                                        <p className="text-sm font-semibold text-charcoal">{project.size}</p>
                                     </div>
-                                    <div className="text-right">
-                                        <p className="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Price Range</p>
-                                        <p className="text-sm font-bold text-[#0091D0]">{project.price}</p>
+                                    <div>
+                                        <p className="text-ui-label text-gray-400 mb-1">Status</p>
+                                        <p className="text-sm font-medium text-charcoal">{project.status}</p>
                                     </div>
-                                    <div className="col-span-2">
-                                        <p className="text-[10px] text-gray-400 uppercase tracking-wider font-bold mb-1">Highlights</p>
-                                        <div className="flex gap-2">
-                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 rounded-none text-[10px] text-gray-600 border border-gray-100">
-                                                <CheckCircle size={10} className="text-green-500" /> Villa Ready
+                                    <div className="col-span-2 mt-2">
+                                        <p className="text-ui-label text-gray-400 mb-2">Highlights</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            <span className="inline-flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 text-[11px] font-medium text-charcoal-light border border-gray-100">
+                                                <CheckCircle size={10} className="text-[#0091D0]" /> Villa Ready
                                             </span>
-                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 rounded-none text-[10px] text-gray-600 border border-gray-100">
-                                                <CheckCircle size={10} className="text-green-500" /> 5 Years Maint.
+                                            <span className="inline-flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 text-[11px] font-medium text-charcoal-light border border-gray-100">
+                                                <CheckCircle size={10} className="text-[#0091D0]" /> 5Y Maint.
                                             </span>
                                         </div>
                                     </div>
@@ -126,9 +127,9 @@ const ProjectShowcase: React.FC = () => {
 
                                 {/* CTA */}
                                 <div className="mt-auto">
-                                    <button className="w-full py-3 border border-[#0091D0] text-[#0091D0] font-bold text-xs uppercase tracking-widest rounded-none hover:bg-[#0091D0] hover:text-white transition-all flex items-center justify-center gap-2 group/btn">
+                                    <button className="w-full py-3.5 bg-[#1C1C1C] text-white text-ui-btn hover:bg-[#0091D0] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
                                         View Details
-                                        <ArrowUpRight size={14} className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                                        <ArrowUpRight size={16} className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                                     </button>
                                 </div>
                             </div>

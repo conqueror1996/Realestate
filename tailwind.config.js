@@ -15,12 +15,12 @@ export default {
                 'border-gray': '#E5E5E5',
             },
             fontFamily: {
-                sans: ['Outfit', 'sans-serif'],
-                serif: ['Outfit', 'sans-serif'],
+                sans: ['Inter', 'sans-serif'],
+                serif: ['Playfair Display', 'serif'],
             },
             letterSpacing: {
                 'tight-headings': '-0.02em',
-                'wide-caps': '0.04em',
+                'wide-caps': '0.08em',
             },
             container: {
                 center: true,
@@ -30,13 +30,22 @@ export default {
                 },
             },
             fontSize: {
-                'title-h1': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '400' }],
-                'title-h2': ['36px', { lineHeight: '1.2', fontWeight: '400' }],
-                'title-card': ['20px', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '500' }],
-                'body-lg': ['18px', { lineHeight: '1.6' }],
-                'body-base': ['16px', { lineHeight: '1.6' }],
-                'ui-label': ['13px', { lineHeight: '1.4', letterSpacing: '0.04em', fontWeight: '500' }],
-                'ui-btn': ['14px', { lineHeight: '1.4', letterSpacing: '0.02em', fontWeight: '500' }],
+                // H1 - Hero Statement
+                'title-h1': ['80px', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '600' }],
+                // H2 - Section Headings
+                'title-h2': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
+                // H3 - Card / Feature Titles
+                'title-card': ['18px', { lineHeight: '1.3', fontWeight: '600' }],
+                // Extra Sizes
+                'title-xl': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '600' }],
+                'title-lg': ['48px', { lineHeight: '1.2', fontWeight: '500' }],
+                // Body Text
+                'body-base': ['15px', { lineHeight: '1.7', fontWeight: '400' }],
+                'body-lg': ['18px', { lineHeight: '1.6', fontWeight: '400' }],
+                // Small Meta / Labels
+                'ui-label': ['12px', { lineHeight: '1.4', letterSpacing: '0.08em', fontWeight: '500' }],
+                // Buttons
+                'ui-btn': ['14px', { lineHeight: '1.4', letterSpacing: '0.04em', fontWeight: '500' }],
             }
         },
     },

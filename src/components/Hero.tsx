@@ -1,4 +1,5 @@
 import React from 'react';
+import NewYearBanner from './NewYearBanner';
 
 const Hero: React.FC = () => {
     return (
@@ -28,7 +29,9 @@ const Hero: React.FC = () => {
                 </p>
 
                 {/* Dynamic Ad/Discount Container - Placeholder for future updates */}
-                <div id="adBanner" className="mt-10 min-h-[50px] animate-fade-up" style={{ animationDelay: '0.4s' }}></div>
+                <div id="adBanner" className="w-full max-w-3xl animate-fade-up" style={{ animationDelay: '0.4s' }}>
+                    <NewYearBanner />
+                </div>
             </div>
         </section>
     );

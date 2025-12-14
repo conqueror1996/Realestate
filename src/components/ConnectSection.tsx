@@ -28,10 +28,10 @@ const ConnectSection: React.FC = () => {
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl font-serif text-[#1C1C1C] mb-6">
+                    <h2 className="mb-6">
                         Connect With Us
                     </h2>
-                    <p className="text-gray-500 font-light tracking-wide uppercase text-sm">
+                    <p className="text-ui-label text-gray-500">
                         Choose your path to excellence
                     </p>
                 </div>
@@ -44,22 +44,22 @@ const ConnectSection: React.FC = () => {
                             className="bg-white p-10 md:p-12 flex flex-col items-center text-center shadow-lg border-t-4 border-[#0091D0] hover:-translate-y-2 transition-transform duration-300"
                         >
                             {/* Role Label */}
-                            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0091D0] mb-6">
+                            <span className="text-ui-label text-[#0091D0] mb-6">
                                 {item.role}
                             </span>
 
                             {/* Title */}
-                            <h3 className="text-3xl font-serif text-[#1C1C1C] mb-6">
+                            <h3 className="mb-6">
                                 {item.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-gray-500 font-light text-base leading-relaxed mb-10 max-w-xs">
+                            <p className="text-body-base text-charcoal-light mb-10 max-w-xs">
                                 {item.description}
                             </p>
 
                             {/* CTA Button */}
-                            <button className="mt-auto w-full py-4 bg-[#1C1C1C] text-white text-sm font-bold uppercase tracking-widest hover:bg-[#0091D0] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                            <button className="mt-auto w-full py-4 bg-[#1C1C1C] text-white text-ui-btn hover:bg-[#0091D0] transition-colors duration-300 flex items-center justify-center gap-2 group">
                                 {item.buttonText}
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </button>

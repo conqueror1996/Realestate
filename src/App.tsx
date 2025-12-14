@@ -1,6 +1,6 @@
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import HeroCarousel from './components/HeroCarousel';
 import StatsSection from './components/StatsSection';
 import ProjectShowcase from './components/ProjectShowcase';
 import GallerySection from './components/GallerySection';
@@ -18,7 +18,7 @@ function App() {
       <TopBar />
       <Navbar />
       <main>
-        <Hero />
+        <HeroCarousel />
         <StatsSection />
         <ProjectShowcase />
         <GallerySection />

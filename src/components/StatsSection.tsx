@@ -15,8 +15,8 @@ const StatsSection: React.FC = () => {
             <div className="container-tight">
                 {/* Main Heading - Calm Authority */}
                 <div className="text-center mb-24">
-                    <h2 className="text-title-lg md:text-title-xl text-charcoal mb-8">
-                        India's largest plotted <br className="hidden md:block" /> real estate developer.
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl text-charcoal mb-8 leading-tight">
+                        India's largest plotted real estate developer.
                     </h2>
                     <p className="text-body-lg text-charcoal-light max-w-2xl mx-auto font-light leading-relaxed opacity-80">
                         Securing prime addresses for your legacy. We understand the importance of investing in the house of your dreams.
