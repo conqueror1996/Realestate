@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import StatsSection from './components/StatsSection';
 import ProjectShowcase from './components/ProjectShowcase';
 import GallerySection from './components/GallerySection';
-import ValueSection from './components/ValueSection';
+
 import FounderSection from './components/FounderSection';
 import BlogsSection from './components/BlogsSection';
 
@@ -22,7 +22,7 @@ function App() {
         <StatsSection />
         <ProjectShowcase />
         <GallerySection />
-        <ValueSection />
+
         <FounderSection />
         <BlogsSection />
 
