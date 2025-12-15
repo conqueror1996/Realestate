@@ -6,34 +6,56 @@ const HeroCarousel: React.FC = () => {
 
     const slides = [
         {
+            id: 0,
+            hasCardInImage: true,
+            image: "/Users/urbanclay/.gemini/antigravity/brain/1554dbd7-c1c6-425c-a3b0-608fa5a25153/christmas_offer_banner_template_red_card_1765793512687.png",
+            topText: "BOOK A VILLA PLOT THIS",
+            heading: "CHRISTMAS & NEW YEAR",
+            offerValue: "50%",
+            offerLabel: "OFF",
+            offerSub: "STAMP DUTY CHARGES",
+            desc: "PREMIUM VILLA PLOTS ACROSS TAMILNADU",
+            price: "FROM ₹4.5L - ₹3CR",
+            buttonText: "Book Now"
+        },
+        {
             id: 1,
+            hasCardInImage: false,
             image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop",
-            subtitle: "New Year Exclusive",
-            title: <>New Beginnings.<br />Grand Savings.</>,
-            description: "Start your legacy in 2026 with a flat ₹2 Lakhs off on all premium plot bookings made this month.",
-            ctaPrimary: "Claim Offer",
-            ctaSecondary: "View Inventory",
-            overlayColor: "bg-black/40"
+            topText: "NEW YEAR EXCLUSIVE",
+            heading: "NEW BEGINNINGS",
+            offerValue: "₹2L",
+            offerLabel: "OFF",
+            offerSub: "ON ALL PREMIUM BOOKINGS",
+            desc: "START YOUR LEGACY IN 2026",
+            price: "PLOTS FROM ₹45L",
+            buttonText: "Claim Offer"
         },
         {
             id: 2,
+            hasCardInImage: false,
             image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80",
-            subtitle: "Est. 2024 • Tamil Nadu",
-            title: <>Defining the Skyline.<br />Securing Your Legacy.</>,
-            description: "Premium land parcels curated for the discerning investor. Experience the transparency of true ownership.",
-            ctaPrimary: "Explore Projects",
-            ctaSecondary: "Watch Film",
-            overlayColor: "bg-black/30"
+            topText: "EST. 2024 • TAMIL NADU",
+            heading: "DEFINING THE SKYLINE",
+            offerValue: "100%",
+            offerLabel: "CLEAR",
+            offerSub: "TITLES & OWNERSHIP",
+            desc: "SECURE LAND PARCELS FOR INVESTORS",
+            price: "HIGH APPRECIATION",
+            buttonText: "Explore Projects"
         },
         {
             id: 3,
+            hasCardInImage: false,
             image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
-            subtitle: "Community Living",
-            title: <>Nature.<br />Community. <br />Future.</>,
-            description: "Sustainable ecosystems designed for the next generation. Parks, wide roads, and seamless connectivity.",
-            ctaPrimary: "Schedule Visit",
-            ctaSecondary: "Download Brochure",
-            overlayColor: "bg-black/20"
+            topText: "COMMUNITY LIVING",
+            heading: "NATURE & FUTURE",
+            offerValue: "50+",
+            offerLabel: "AMENITIES",
+            offerSub: "WORLD CLASS LIFESTYLE",
+            desc: "SUSTAINABLE ECOSYSTEMS FOR YOU",
+            price: "VISIT TODAY",
+            buttonText: "Schedule Visit"
         }
     ];
 
@@ -51,7 +73,7 @@ const HeroCarousel: React.FC = () => {
         <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-charcoal group">
 
             {/* Slides */}
-            {slides.map((slide, index) => (
+            {slides.map((slide: any, index) => (
                 <div
                     key={slide.id}
                     className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
@@ -65,52 +87,78 @@ const HeroCarousel: React.FC = () => {
                             transform: index === currentSlide ? 'scale(1.1)' : 'scale(1.0)'
                         }}
                     >
-                        <div className={`absolute inset-0 ${slide.overlayColor}`}></div>
+                        {/* Dark overlay for readability on non-card images */}
+                        {!slide.hasCardInImage && <div className="absolute inset-0 bg-black/20"></div>}
                     </div>
 
-                    {/* Content */}
-                    <div className="relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8 z-20 container-tight mx-auto mt-8">
+                    {/* Content Layout - Unified Advertisement Banner Style */}
+                    <div className="relative h-full flex flex-col items-center justify-center text-center z-20 w-full">
 
-                        <span className={`
-                            inline-block py-1 px-3 mb-6 rounded-full border border-white/20 bg-white/10 backdrop-blur-md
-                            text-white/90 uppercase tracking-wide-caps text-xs md:text-sm font-medium 
-                            transform transition-all duration-700 delay-100
-                            ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
-                        `}>
-                            {slide.subtitle}
-                        </span>
-
-                        <h1 className={`
-                            text-white mb-6 border-b-0 max-w-5xl tracking-tight-headings leading-[1.1] drop-shadow-lg
-                            transform transition-all duration-700 delay-200
-                            ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
-                        `}>
-                            {slide.title}
-                        </h1>
-
-                        <p className={`
-                            text-stone-100 max-w-2xl text-lg md:text-xl font-light leading-relaxed mb-10
-                            transform transition-all duration-700 delay-300
-                            ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
-                        `}>
-                            {slide.description}
-                        </p>
-
+                        {/* Card Container */}
                         <div className={`
-                            flex flex-col sm:flex-row gap-4 
-                            transform transition-all duration-700 delay-400
+                            max-w-[320px] md:max-w-[420px] w-full flex flex-col items-center justify-center py-6 px-4 md:pt-10 md:pb-12 md:px-6
+                            transition-all duration-700 delay-100
+                            ${slide.hasCardInImage ? 'bg-transparent text-white' : 'bg-[#e31e24] text-white shadow-2xl rounded-lg mx-4 md:mx-0'}
                             ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
                         `}>
-                            <button className="btn-primary min-w-[160px] shadow-xl hover:shadow-2xl border border-transparent">
-                                {slide.ctaPrimary}
-                            </button>
-                            <button className="btn-outline border-white text-white hover:bg-white hover:text-charcoal min-w-[160px] backdrop-blur-sm">
-                                {slide.ctaSecondary}
-                            </button>
+
+                            <p className="text-sm md:text-base font-medium mb-1 tracking-wider uppercase opacity-90 drop-shadow-md">
+                                {slide.topText}
+                            </p>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-4 uppercase leading-tight drop-shadow-md max-w-xs">
+                                {slide.heading}
+                            </h2>
+
+                            {/* Offer Box */}
+                            <div className={`
+                                px-6 py-4 rounded-xl shadow-xl mb-4 transform -rotate-2 border-4 border-dashed
+                                ${slide.hasCardInImage
+                                    ? 'bg-white/90 text-[#b91c1c] border-[#b91c1c]/30'
+                                    : 'bg-white text-[#e31e24] border-[#e31e24]/30'}
+                            `}>
+                                <div className="flex items-baseline justify-center gap-2 leading-none">
+                                    <span className="text-xl font-bold text-gray-700">GET</span>
+                                    <span className="text-6xl md:text-7xl font-extrabold tracking-tighter">{slide.offerValue}</span>
+                                    <div className={`
+                                        flex flex-col items-start rounded-full w-12 h-12 justify-center items-center absolute -top-4 -right-4 shadow-md rotate-12
+                                        ${slide.hasCardInImage ? 'bg-[#b91c1c] text-white' : 'bg-[#e31e24] text-white ring-2 ring-white'}
+                                    `}>
+                                        <span className="text-[10px] font-bold">OFFER</span>
+                                    </div>
+                                </div>
+                                <div className={`
+                                    text-2xl md:text-3xl font-black leading-none mb-1
+                                    ${slide.hasCardInImage ? 'text-[#b91c1c]' : 'text-[#e31e24]'}
+                                `}>
+                                    {slide.offerLabel}
+                                </div>
+                            </div>
+
+                            <h3 className={`
+                                text-lg md:text-xl font-bold uppercase mb-4 px-3 py-1 shadow-sm border
+                                ${slide.hasCardInImage
+                                    ? 'bg-[#b91c1c] border-white/20'
+                                    : 'bg-[#b91c1c] border-white/30'}
+                            `}>
+                                {slide.offerSub}
+                            </h3>
+
+                            <div className="mb-2">
+                                <p className="text-xs md:text-sm uppercase tracking-widest font-medium mb-2 opacity-90">
+                                    {slide.desc}
+                                </p>
+                                <p className="text-2xl md:text-3xl font-extrabold text-[#FFF700] drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                                    {slide.price}
+                                </p>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
-            ))}
+
+            ))
+            }
 
             {/* Navigation Arrows */}
             <button
@@ -134,16 +182,15 @@ const HeroCarousel: React.FC = () => {
                         onClick={() => setCurrentSlide(idx)}
                         className={`
                             h-1 transition-all duration-500 rounded-full
-                            ${idx === currentSlide ? 'w-12 bg-[#0091D0]' : 'w-4 bg-[#0091D0]/40 hover:bg-[#0091D0]/60'}
+                            ${idx === currentSlide ? 'w-12 bg-[#1A71B7]' : 'w-4 bg-[#1A71B7]/40 hover:bg-[#1A71B7]/60'}
                         `}
                     />
                 ))}
             </div>
 
-            {/* Bottom Gradient for smoother section transition */}
-            <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
 
-        </section>
+
+        </section >
     );
 };
 

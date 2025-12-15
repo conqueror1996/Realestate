@@ -42,7 +42,7 @@ const WhyChooseSection: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
                     {features.map((feature, idx) => (
                         <div key={idx} className="text-center group">
-                            <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 bg-[#0091D0]/10 rounded-none flex items-center justify-center text-[#0091D0] group-hover:bg-[#0091D0] group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                            <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 bg-[#1A71B7]/10 rounded-none flex items-center justify-center text-[#1A71B7] group-hover:bg-[#1A71B7] group-hover:text-white transition-all duration-300 group-hover:scale-110">
                                 {feature.icon}
                             </div>
                             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">

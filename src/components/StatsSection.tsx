@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Building2, Users, MapPin, FileCheck } from 'lucide-react';
+import { Award, Building2, Users, MapPin, FileCheck, Map, TrendingUp } from 'lucide-react';
 
 const StatsSection: React.FC = () => {
     const stats = [
@@ -8,6 +8,8 @@ const StatsSection: React.FC = () => {
         { icon: <Users size={32} strokeWidth={1} />, count: '20,000+', label: 'Happy Customers' },
         { icon: <MapPin size={32} strokeWidth={1} />, count: '4,000+', label: 'Acres Delivered' },
         { icon: <FileCheck size={32} strokeWidth={1} />, count: '100%', label: 'Clear Titles' },
+        { icon: <Map size={32} strokeWidth={1} />, count: '6 Cities', label: 'Pan India Presence' },
+        { icon: <TrendingUp size={32} strokeWidth={1} />, count: '200%', label: 'Avg. Appreciation' },
     ];
 
     return (
@@ -23,17 +25,17 @@ const StatsSection: React.FC = () => {
                     </p>
                 </div>
 
-                {/* Stats - Grid with Dividers */}
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12 gap-x-8 border-t border-charcoal/10 pt-12">
+                {/* Stats - Centered Flex Layout for 7 items */}
+                <div className="flex flex-wrap justify-center gap-x-8 gap-y-12 border-t border-charcoal/10 pt-12">
                     {stats.map((stat, idx) => (
-                        <div key={idx} className="flex flex-col items-center text-center group">
+                        <div key={idx} className="flex flex-col items-center text-center group w-[45%] md:w-auto md:min-w-[140px]">
                             {/* Icon - Very Subtle */}
                             <div className="text-charcoal mb-6 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                                 {stat.icon}
                             </div>
 
                             {/* Count - Serif & Expensive */}
-                            <div className="text-4xl md:text-5xl font-sans text-charcoal mb-4">
+                            <div className="text-3xl md:text-4xl lg:text-5xl font-sans text-charcoal mb-4 whitespace-nowrap">
                                 {stat.count}
                             </div>
 

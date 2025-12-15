@@ -48,19 +48,19 @@ const Navbar: React.FC = () => {
                                 onMouseEnter={() => setActiveDropdown(group.title)}
                                 onMouseLeave={() => setActiveDropdown(null)}
                             >
-                                <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#0091D0] transition-colors py-8 tracking-wide uppercase">
+                                <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#1A71B7] transition-colors py-8 tracking-wide uppercase">
                                     {group.title}
                                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === group.title ? 'rotate-180' : ''}`} />
                                 </button>
 
                                 {/* Dropdown Menu */}
-                                <div className={`absolute top-full left-0 w-64 bg-white shadow-xl border-t-2 border-[#0091D0] rounded-none overflow-hidden transition-all duration-300 transform origin-top ${activeDropdown === group.title ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                                <div className={`absolute top-full left-0 w-64 bg-white shadow-xl border-t-2 border-[#1A71B7] rounded-none overflow-hidden transition-all duration-300 transform origin-top ${activeDropdown === group.title ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
                                     <div className="py-2">
                                         {group.items.map((item) => (
                                             <a
                                                 key={item}
                                                 href="#"
-                                                className="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#0091D0] transition-colors"
+                                                className="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1A71B7] transition-colors"
                                             >
                                                 {item}
                                             </a>
@@ -73,12 +73,12 @@ const Navbar: React.FC = () => {
 
                     {/* Right Actions */}
                     <div className="hidden lg:flex items-center gap-6">
-                        <button className="text-gray-500 hover:text-[#0091D0] transition-colors">
+                        <button className="text-gray-500 hover:text-[#1A71B7] transition-colors">
                             <Search size={20} />
                         </button>
                         <a
                             href="#"
-                            className="bg-[#0091D0] text-white px-6 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#007bb5] transition-colors shadow-lg shadow-blue-200"
+                            className="bg-[#1A71B7] text-white px-6 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#007bb5] transition-colors shadow-lg shadow-blue-200"
                         >
                             Enquire
                         </a>
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="lg:hidden p-2 text-gray-800 hover:text-[#0091D0]"
+                        className="lg:hidden p-2 text-gray-800 hover:text-[#1A71B7]"
                         aria-label="Toggle menu"
                     >
                         <Menu size={28} />
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
                                         <a
                                             key={item}
                                             href="#"
-                                            className="block py-2 text-gray-800 hover:text-[#0091D0] text-sm font-medium"
+                                            className="block py-2 text-gray-800 hover:text-[#1A71B7] text-sm font-medium"
                                         >
                                             {item}
                                         </a>
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <div className="mt-10 pt-6 border-t border-gray-100">
-                        <a href="#" className="block w-full bg-[#0091D0] text-white text-center py-4 rounded-none font-bold uppercase tracking-wider text-sm shadow-lg">
+                        <a href="#" className="block w-full bg-[#1A71B7] text-white text-center py-4 rounded-none font-bold uppercase tracking-wider text-sm shadow-lg">
                             Enquire Now
                         </a>
                     </div>

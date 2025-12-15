@@ -38,7 +38,7 @@ const ProjectShowcase: React.FC = () => {
     ];
 
     return (
-        <section className="py-24 bg-gray-50">
+        <section className="section-padding bg-gray-50">
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -57,8 +57,8 @@ const ProjectShowcase: React.FC = () => {
                             <button
                                 key={city}
                                 className={`px-10 py-4 rounded-none text-base font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
-                                    ? 'bg-[#0091D0] text-white shadow-sm'
-                                    : 'text-gray-500 hover:text-[#0091D0] hover:bg-gray-50'
+                                    ? 'bg-[#1A71B7] text-white shadow-sm'
+                                    : 'text-gray-500 hover:text-[#1A71B7] hover:bg-gray-50'
                                     }`}
                                 onClick={() => setActiveTab(city.toLowerCase().replace(' ', '_'))}
                             >
@@ -74,7 +74,7 @@ const ProjectShowcase: React.FC = () => {
                         <div key={idx} className="group min-w-[85vw] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
                             {/* Image Header */}
                             <div className="relative h-60 overflow-hidden">
-                                <div className="absolute top-3 right-3 z-10 bg-[#0091D0] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
+                                <div className="absolute top-3 right-3 z-10 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
                                     {project.idealFor}
                                 </div>
                                 <img
@@ -89,11 +89,11 @@ const ProjectShowcase: React.FC = () => {
                             <div className="p-5 md:p-6 flex flex-col flex-grow">
                                 <div className="mb-5">
                                     <div className="flex justify-between items-start mb-2 gap-4">
-                                        <h3 className="text-title-card text-[#1C1C1C] leading-tight group-hover:text-[#0091D0] transition-colors">
+                                        <h3 className="text-title-h3 text-[#1C1C1C] leading-tight group-hover:text-[#1A71B7] transition-colors">
                                             {project.title}
                                         </h3>
                                         <div className="text-right flex-shrink-0">
-                                            <p className="text-sm md:text-base font-bold text-[#0091D0]">{project.price}</p>
+                                            <p className="text-sm md:text-base font-bold text-[#1A71B7]">{project.price}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-1.5 text-charcoal-light text-xs font-medium">
@@ -116,10 +116,10 @@ const ProjectShowcase: React.FC = () => {
                                         <p className="text-ui-label text-gray-400 mb-2">Highlights</p>
                                         <div className="flex flex-wrap gap-2">
                                             <span className="inline-flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 text-[11px] font-medium text-charcoal-light border border-gray-100">
-                                                <CheckCircle size={10} className="text-[#0091D0]" /> Villa Ready
+                                                <CheckCircle size={10} className="text-[#1A71B7]" /> Villa Ready
                                             </span>
                                             <span className="inline-flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 text-[11px] font-medium text-charcoal-light border border-gray-100">
-                                                <CheckCircle size={10} className="text-[#0091D0]" /> 5Y Maint.
+                                                <CheckCircle size={10} className="text-[#1A71B7]" /> 5Y Maint.
                                             </span>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@ const ProjectShowcase: React.FC = () => {
 
                                 {/* CTA */}
                                 <div className="mt-auto">
-                                    <button className="w-full py-3.5 bg-[#1C1C1C] text-white text-ui-btn hover:bg-[#0091D0] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                    <button className="w-full py-3.5 bg-[#1C1C1C] text-white text-ui-btn hover:bg-[#1A71B7] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
                                         View Details
                                         <ArrowUpRight size={16} className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                                     </button>
@@ -138,7 +138,7 @@ const ProjectShowcase: React.FC = () => {
                 </div>
 
                 <div className="text-center mt-12">
-                    <button className="text-[#0091D0] font-bold text-sm hover:underline underline-offset-4">
+                    <button className="text-[#1A71B7] font-bold text-sm hover:underline underline-offset-4">
                         View All Projects in Chennai →
                     </button>
                 </div>

@@ -23,6 +23,7 @@
     font-size: 15px;
     line-height: 1.7;
     color: var(--color-charcoal-light);
+    overflow-x: hidden;
   }
 
   body {
@@ -31,6 +32,7 @@
     font-family: var(--font-body);
   }
 
+  /* Typography System */
   /* Typography System */
   h1,
   h2,
@@ -41,29 +43,57 @@
     font-family: var(--font-heading);
     color: var(--color-charcoal);
     margin-bottom: 1.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
   }
 
   h1 {
-    @apply text-5xl md:text-title-h1;
+    font-size: 3rem;
+    /* Fallback/Mobile */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+
+    @screen md {
+      font-size: 64px;
+    }
+
+    /* Purpose: Authority + Aspiration. Do NOT use all caps. */
+    text-transform: none;
     margin-bottom: 1.5rem;
   }
 
   h2 {
-    @apply text-4xl md:text-title-h2;
+    font-size: 2.25rem;
+    /* Fallback/Mobile */
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+
+    @screen md {
+      font-size: 40px;
+    }
+
+    /* Purpose: Structure & Navigation */
+    text-transform: none;
   }
 
   h3 {
     font-family: var(--font-body);
-    /* H3 is Inter per guidelines */
-    @apply text-title-card;
+    /* Purpose: Clarity */
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: 0;
+    font-weight: 600;
     margin-bottom: 0.75rem;
     color: var(--color-charcoal);
+    text-transform: none;
   }
 
   p {
-    @apply text-body-base;
+    font-size: 17px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    /* Purpose: Readability + Calm Luxury */
     margin-bottom: 1.5rem;
     color: var(--color-charcoal-light);
   }

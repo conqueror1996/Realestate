@@ -3,7 +3,8 @@ import Navbar from './components/Navbar';
 import HeroCarousel from './components/HeroCarousel';
 import StatsSection from './components/StatsSection';
 import ProjectShowcase from './components/ProjectShowcase';
-import GallerySection from './components/GallerySection';
+import JourneySection from './components/JourneySection';
+import BrochureSection from './components/BrochureSection';
 
 import FounderSection from './components/FounderSection';
 import BlogsSection from './components/BlogsSection';
@@ -21,7 +22,8 @@ function App() {
         <HeroCarousel />
         <StatsSection />
         <ProjectShowcase />
-        <GallerySection />
+        <JourneySection />
+        <BrochureSection />
 
         <FounderSection />
         <BlogsSection />

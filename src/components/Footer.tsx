@@ -3,7 +3,7 @@ import { Facebook, Instagram, Linkedin, Youtube, ArrowUp, Phone, Award } from 'l
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-[#0091D0] text-white pt-24 pb-12 relative overflow-hidden">
+        <footer className="bg-[#1A71B7] text-white pt-24 pb-12 relative overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6">
 
                 {/* Row 1: Logo & Socials */}
@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
 
                     <div className="flex gap-4">
                         {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
-                            <a key={i} href="#" className="w-12 h-12 bg-white/10 flex items-center justify-center text-white shadow-sm border border-white/20 hover:bg-white hover:text-[#0091D0] transition-all duration-300">
+                            <a key={i} href="#" className="w-12 h-12 bg-white/10 flex items-center justify-center text-white shadow-sm border border-white/20 hover:bg-white hover:text-[#1A71B7] transition-all duration-300">
                                 <Icon size={20} strokeWidth={1.5} />
                             </a>
                         ))}
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
 
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
                         <div className="flex items-center gap-3 group cursor-pointer">
-                            <div className="w-9 h-9 flex items-center justify-center bg-blue-50 text-[#0091D0] group-hover:bg-[#0091D0] group-hover:text-white transition-colors border border-blue-100">
+                            <div className="w-9 h-9 flex items-center justify-center bg-blue-50 text-[#1A71B7] group-hover:bg-[#1A71B7] group-hover:text-white transition-colors border border-blue-100">
                                 <Phone size={16} />
                             </div>
                             <div>
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
                             </div>
                         </div>
                         <div className="flex items-center gap-3 group cursor-pointer">
-                            <div className="w-9 h-9 flex items-center justify-center bg-blue-50 text-[#0091D0] group-hover:bg-[#0091D0] group-hover:text-white transition-colors border border-blue-100">
+                            <div className="w-9 h-9 flex items-center justify-center bg-blue-50 text-[#1A71B7] group-hover:bg-[#1A71B7] group-hover:text-white transition-colors border border-blue-100">
                                 <Phone size={16} />
                             </div>
                             <div>
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
                         <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
                         <button
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="bg-white text-[#0091D0] w-10 h-10 flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg"
+                            className="bg-white text-[#1A71B7] w-10 h-10 flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg"
                         >
                             <ArrowUp size={16} />
                         </button>

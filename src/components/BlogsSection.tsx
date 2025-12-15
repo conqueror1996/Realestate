@@ -23,7 +23,7 @@ const BlogsSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-32 bg-white relative overflow-hidden">
+        <section className="section-padding bg-white relative overflow-hidden">
             {/* Background Watermark */}
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
                 <span className="text-[20vw] font-sans font-bold tracking-tighter text-black">
@@ -34,7 +34,7 @@ const BlogsSection: React.FC = () => {
             <div className="max-w-[1400px] mx-auto px-6 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#0091D0] mb-4">OUR UPDATES</p>
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#1A71B7] mb-4">OUR UPDATES</p>
                     <h2 className="text-5xl md:text-7xl font-sans text-[#1C1C1C]">
                         News & Events
                     </h2>
@@ -57,14 +57,14 @@ const BlogsSection: React.FC = () => {
 
                             {/* Content */}
                             <div>
-                                <h3 className="text-xl font-bold text-[#1C1C1C] mb-2 group-hover:text-[#0091D0] transition-colors">
+                                <h3 className="text-xl font-bold text-[#1C1C1C] mb-2 group-hover:text-[#1A71B7] transition-colors">
                                     {article.title}
                                 </h3>
                                 <div className="flex items-center gap-2 mb-3">
-                                    <div className="w-4 h-4 rounded-full border border-[#0091D0] flex items-center justify-center">
-                                        <div className="w-1.5 h-1.5 bg-[#0091D0] rounded-none"></div>
+                                    <div className="w-4 h-4 rounded-full border border-[#1A71B7] flex items-center justify-center">
+                                        <div className="w-1.5 h-1.5 bg-[#1A71B7] rounded-none"></div>
                                     </div>
-                                    <span className="text-[#0091D0] text-sm font-medium">{article.category}</span>
+                                    <span className="text-[#1A71B7] text-sm font-medium">{article.category}</span>
                                 </div>
                                 <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">
                                     {article.description}
@@ -76,7 +76,7 @@ const BlogsSection: React.FC = () => {
 
                 {/* Explore More Button */}
                 <div className="text-center mt-12 mb-20">
-                    <button className="inline-flex items-center gap-2 border border-[#0091D0] text-[#0091D0] px-8 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#0091D0] hover:text-white transition-all duration-300 group">
+                    <button className="inline-flex items-center gap-2 border border-[#1A71B7] text-[#1A71B7] px-8 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#1A71B7] hover:text-white transition-all duration-300 group">
                         Explore More
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </button>

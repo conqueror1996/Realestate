@@ -29,7 +29,7 @@ const FounderSection: React.FC = () => {
 
                 {/* Content Side */}
                 <div className="lg:col-span-7 order-1 lg:order-2 lg:pl-12">
-                    <span className="block text-xs font-bold tracking-[0.2em] uppercase text-[#0091D0] mb-8">
+                    <span className="block text-xs font-bold tracking-[0.2em] uppercase text-[#1A71B7] mb-8">
                         Leadership Note
                     </span>
 

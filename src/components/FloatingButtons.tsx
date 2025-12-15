@@ -1,85 +1,89 @@
-import React, { useState } from 'react';
-import { Phone, MessageCircle, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, MessageCircle, Mail, ArrowUp } from 'lucide-react';
 
 const FloatingButtons: React.FC = () => {
-    const [showChatPopup, setShowChatPopup] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
+
+    // Show scroll-to-top button after scrolling down
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.scrollY > 300) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener('scroll', toggleVisibility);
+        return () => window.removeEventListener('scroll', toggleVisibility);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <>
-            {/* Right Side Floating Buttons */}
-            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
-                {/* Phone Button */}
+            {/* Unified Right Side Floating Dock */}
+            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-0 bg-white shadow-2xl rounded-l-2xl overflow-hidden border border-gray-100">
+
+                {/* Call Button */}
                 <a
                     href="tel:+918939540008"
-                    className="bg-[#0091D0] text-white p-4 rounded-none shadow-lg hover:pr-6 transition-all duration-300 flex items-center justify-center"
-                    aria-label="Call us"
+                    className="group relative p-4 hover:bg-gray-50 transition-colors flex items-center justify-center border-b border-gray-100 w-16 h-16"
+                    aria-label="Call Us"
                 >
-                    <Phone size={24} />
+                    <Phone size={22} className="text-gray-700 group-hover:text-[#1A71B7] transition-colors" />
+                    {/* Tooltip */}
+                    <span className="absolute right-full mr-2 bg-black text-white text-xs py-1 px-3 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                        Call Us
+                    </span>
                 </a>
 
-                {/* Message/Enquiry Button */}
-                <button
-                    className="bg-[#0091D0] text-white p-4 rounded-none shadow-lg hover:pr-6 transition-all duration-300 flex items-center justify-center"
-                    aria-label="Send message"
-                >
-                    <MessageCircle size={24} />
-                </button>
-            </div>
-
-            {/* Bottom Left WhatsApp Button */}
-            <div className="fixed bottom-6 left-6 z-50">
+                {/* WhatsApp Button */}
                 <a
                     href="https://wa.me/918939540008"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-16 h-16 bg-[#25D366] rounded-none shadow-lg flex items-center justify-center text-white hover:scale-110 transition-transform"
+                    className="group relative p-4 hover:bg-gray-50 transition-colors flex items-center justify-center border-b border-gray-100 w-16 h-16"
                     aria-label="WhatsApp"
                 >
-                    <MessageCircle size={32} fill="white" />
+                    <div className="relative">
+                        <MessageCircle size={22} className="text-gray-700 group-hover:text-[#25D366] transition-colors" />
+                        {/* Online Notification Dot */}
+                        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white"></span>
+                        </span>
+                    </div>
+                    <span className="absolute right-full mr-2 bg-[#25D366] text-white text-xs py-1 px-3 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                        WhatsApp
+                    </span>
                 </a>
-            </div>
 
-            {/* Bottom Right Chat Widget */}
-            <div className="fixed bottom-6 right-6 z-50">
-                <div className="relative">
-                    {/* Chat Popup */}
-                    {showChatPopup && (
-                        <div className="absolute bottom-full right-0 mb-3 bg-white rounded-none shadow-2xl p-4 w-64 animate-bounce">
-                            <button
-                                onClick={() => setShowChatPopup(false)}
-                                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-none p-1 hover:bg-red-600 transition-colors"
-                            >
-                                <X size={14} />
-                            </button>
-                            <div className="flex items-start gap-3">
-                                <div className="w-10 h-10 bg-gray-200 rounded-none flex-shrink-0"></div>
-                                <div>
-                                    <p className="font-bold text-sm text-gray-900 mb-1">We're Online!</p>
-                                    <p className="text-xs text-gray-600">How may I assist you today?</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Chat Button */}
-                    <button
-                        className="w-16 h-16 bg-[#0091D0] rounded-none shadow-lg flex items-center justify-center text-white hover:scale-110 transition-transform"
-                        aria-label="Chat with us"
-                    >
-                        <MessageCircle size={28} />
-                    </button>
-                </div>
+                {/* Enquiry / Chat Button */}
+                <button
+                    className="group relative p-4 hover:bg-gray-50 transition-colors flex items-center justify-center w-16 h-16"
+                    aria-label="Enquire Now"
+                >
+                    <Mail size={22} className="text-gray-700 group-hover:text-[#1A71B7] transition-colors" />
+                    <span className="absolute right-full mr-2 bg-[#1A71B7] text-white text-xs py-1 px-3 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                        Enquire
+                    </span>
+                </button>
             </div>
 
             {/* Scroll to Top Button */}
             <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="fixed bottom-24 right-6 w-12 h-12 bg-gray-800 text-white rounded-none shadow-lg hover:bg-gray-700 transition-all z-40 flex items-center justify-center"
+                onClick={scrollToTop}
+                className={`fixed bottom-8 right-8 w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 hover:border-[#1A71B7] hover:text-[#1A71B7] transition-all duration-300 z-40 flex items-center justify-center transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+                    }`}
                 aria-label="Scroll to top"
             >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                </svg>
+                <ArrowUp size={20} />
             </button>
         </>
     );

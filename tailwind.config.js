@@ -30,22 +30,25 @@ export default {
                 },
             },
             fontSize: {
-                // H1 - Hero Statement
-                'title-h1': ['80px', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '600' }],
-                // H2 - Section Headings
-                'title-h2': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
-                // H3 - Card / Feature Titles
-                'title-card': ['18px', { lineHeight: '1.3', fontWeight: '600' }],
-                // Extra Sizes
-                'title-xl': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '600' }],
-                'title-lg': ['48px', { lineHeight: '1.2', fontWeight: '500' }],
-                // Body Text
-                'body-base': ['15px', { lineHeight: '1.7', fontWeight: '400' }],
-                'body-lg': ['18px', { lineHeight: '1.6', fontWeight: '400' }],
+                // H1 - Hero Statement (Authority + Aspiration)
+                'title-h1': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
+                // H2 - Section Headings (Structure)
+                'title-h2': ['40px', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+                // H3 - Sub-Section / Cards
+                'title-h3': ['24px', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '600' }],
+                // Body Text (Readability)
+                'body-base': ['17px', { lineHeight: '1.7', letterSpacing: '0.01em', fontWeight: '400' }],
                 // Small Meta / Labels
-                'ui-label': ['12px', { lineHeight: '1.4', letterSpacing: '0.08em', fontWeight: '500' }],
+                'ui-label': ['13px', { lineHeight: '1.4', letterSpacing: '0.08em', fontWeight: '500' }],
                 // Buttons
-                'ui-btn': ['14px', { lineHeight: '1.4', letterSpacing: '0.04em', fontWeight: '500' }],
+                'ui-btn': ['14px', { lineHeight: '1.4', letterSpacing: '0.06em', fontWeight: '600' }],
+                // Legacy support (aliased to h3) to prevent build errors if used
+                'title-card': ['24px', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '600' }],
+
+                // Keep existing extras for backwards compat if needed, or adjust
+                '5xl': ['48px', { lineHeight: '1.1' }],
+                '6xl': ['60px', { lineHeight: '1.1' }],
+                '7xl': ['72px', { lineHeight: '1.1' }],
             }
         },
     },
