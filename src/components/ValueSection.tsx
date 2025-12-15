@@ -30,13 +30,13 @@ const ValueSection: React.FC = () => {
     ];
 
     return (
-        <section className="relative py-32 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop")' }}>
+        <section className="relative py-16 md:py-32 bg-fixed bg-center bg-cover" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop")' }}>
             {/* Parallax Overlay - Dark & Cinematic */}
             <div className="absolute inset-0 bg-[#0F0F0F]/90 backdrop-blur-[1px]"></div>
 
             <div className="relative z-10 container-tight">
                 {/* Header - Editorial Style */}
-                <div className="text-center mb-20 scroll-mt-20">
+                <div className="text-center mb-10 md:mb-20 scroll-mt-20">
                     <h2 className="text-title-lg md:text-title-xl text-white mb-6">
                         How we add value<br />to your living.
                     </h2>

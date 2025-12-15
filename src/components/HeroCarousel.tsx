@@ -70,7 +70,7 @@ const HeroCarousel: React.FC = () => {
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
     return (
-        <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-charcoal group">
+        <section className="relative w-full h-[85vh] min-h-[450px] md:min-h-[600px] overflow-hidden bg-charcoal group">
 
             {/* Slides */}
             {slides.map((slide: any, index) => (
@@ -96,34 +96,34 @@ const HeroCarousel: React.FC = () => {
 
                         {/* Card Container */}
                         <div className={`
-                            max-w-[320px] md:max-w-[420px] w-full flex flex-col items-center justify-center py-6 px-4 md:pt-10 md:pb-12 md:px-6
+                            max-w-[300px] md:max-w-[420px] w-full flex flex-col items-center justify-center py-6 px-4 md:pt-10 md:pb-12 md:px-6
                             transition-all duration-700 delay-100
                             ${slide.hasCardInImage ? 'bg-transparent text-white' : 'bg-[#e31e24] text-white shadow-2xl rounded-lg mx-4 md:mx-0'}
                             ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
                         `}>
 
-                            <p className="text-sm md:text-base font-medium mb-1 tracking-wider uppercase opacity-90 drop-shadow-md">
+                            <p className="text-xs md:text-base font-medium mb-1 tracking-wider uppercase opacity-90 drop-shadow-md">
                                 {slide.topText}
                             </p>
-                            <h2 className="text-2xl md:text-3xl font-bold mb-4 uppercase leading-tight drop-shadow-md max-w-xs">
+                            <h2 className="text-xl md:text-3xl font-bold mb-4 uppercase leading-tight drop-shadow-md max-w-xs">
                                 {slide.heading}
                             </h2>
 
                             {/* Offer Box */}
                             <div className={`
-                                px-6 py-4 rounded-xl shadow-xl mb-4 transform -rotate-2 border-4 border-dashed
+                                px-4 py-3 md:px-6 md:py-4 rounded-xl shadow-xl mb-4 transform -rotate-2 border-4 border-dashed
                                 ${slide.hasCardInImage
                                     ? 'bg-white/90 text-[#b91c1c] border-[#b91c1c]/30'
                                     : 'bg-white text-[#e31e24] border-[#e31e24]/30'}
                             `}>
                                 <div className="flex items-baseline justify-center gap-2 leading-none">
-                                    <span className="text-xl font-bold text-gray-700">GET</span>
-                                    <span className="text-6xl md:text-7xl font-extrabold tracking-tighter">{slide.offerValue}</span>
+                                    <span className="text-lg md:text-xl font-bold text-gray-700">GET</span>
+                                    <span className="text-5xl md:text-7xl font-extrabold tracking-tighter">{slide.offerValue}</span>
                                     <div className={`
-                                        flex flex-col items-start rounded-full w-12 h-12 justify-center items-center absolute -top-4 -right-4 shadow-md rotate-12
+                                        flex flex-col items-start rounded-full w-10 h-10 md:w-12 md:h-12 justify-center items-center absolute -top-3 -right-3 md:-top-4 md:-right-4 shadow-md rotate-12
                                         ${slide.hasCardInImage ? 'bg-[#b91c1c] text-white' : 'bg-[#e31e24] text-white ring-2 ring-white'}
                                     `}>
-                                        <span className="text-[10px] font-bold">OFFER</span>
+                                        <span className="text-[9px] md:text-[10px] font-bold">OFFER</span>
                                     </div>
                                 </div>
                                 <div className={`

@@ -15,7 +15,7 @@ const StatsSection: React.FC = () => {
         <section className="section-padding bg-white border-b border-border-gray">
             <div className="container-tight">
                 {/* Main Heading - Calm Authority */}
-                <div className="text-center mb-24">
+                <div className="text-center mb-12 md:mb-24">
                     <h2 className="text-3xl md:text-5xl lg:text-6xl text-charcoal mb-8 leading-tight font-bold">
                         India's Largest Plotted Real Estate Developer.
                     </h2>
