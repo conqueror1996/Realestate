@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import HeroCarousel from './components/HeroCarousel';
@@ -12,8 +13,20 @@ import BlogsSection from './components/BlogsSection';
 import ConnectSection from './components/ConnectSection';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
+import EnquiryModal from './components/EnquiryModal';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Show popup after 5 seconds
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="font-sans antialiased text-text-gray bg-white">
       <TopBar />
@@ -31,7 +44,8 @@ function App() {
         <ConnectSection />
       </main>
       <Footer />
-      <FloatingButtons />
+      <FloatingButtons onOpenEnquiry={() => setIsModalOpen(true)} />
+      <EnquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

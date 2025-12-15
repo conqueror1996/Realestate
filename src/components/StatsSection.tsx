@@ -3,21 +3,21 @@ import { Award, Building2, Users, MapPin, FileCheck, Map, TrendingUp } from 'luc
 
 const StatsSection: React.FC = () => {
     const stats = [
-        { icon: <Award size={32} strokeWidth={1} />, count: '13+', label: 'Years of Expertise' },
-        { icon: <Building2 size={32} strokeWidth={1} />, count: '125+', label: 'Premium Projects' },
-        { icon: <Users size={32} strokeWidth={1} />, count: '20,000+', label: 'Happy Customers' },
-        { icon: <MapPin size={32} strokeWidth={1} />, count: '4,000+', label: 'Acres Delivered' },
-        { icon: <FileCheck size={32} strokeWidth={1} />, count: '100%', label: 'Clear Titles' },
-        { icon: <Map size={32} strokeWidth={1} />, count: '6 Cities', label: 'Pan India Presence' },
-        { icon: <TrendingUp size={32} strokeWidth={1} />, count: '200%', label: 'Avg. Appreciation' },
+        { Icon: Award, count: '13+', label: 'Years of Expertise' },
+        { Icon: Building2, count: '125+', label: 'Premium Projects' },
+        { Icon: Users, count: '20,000+', label: 'Happy Customers' },
+        { Icon: MapPin, count: '4,000+', label: 'Acres Delivered' },
+        { Icon: FileCheck, count: '100%', label: 'Clear Titles' },
+        { Icon: Map, count: '6 Cities', label: 'Pan India Presence' },
+        { Icon: TrendingUp, count: '200%', label: 'Avg. Appreciation' },
     ];
 
     return (
-        <section className="section-padding bg-stone-light border-b border-border-gray">
+        <section className="section-padding bg-white border-b border-border-gray">
             <div className="container-tight">
                 {/* Main Heading - Calm Authority */}
                 <div className="text-center mb-24">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl text-charcoal mb-8 leading-tight">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl text-charcoal mb-8 leading-tight font-bold">
                         India's largest plotted real estate developer.
                     </h2>
                     <p className="text-body-lg text-charcoal-light max-w-2xl mx-auto font-light leading-relaxed opacity-80">
@@ -25,22 +25,22 @@ const StatsSection: React.FC = () => {
                     </p>
                 </div>
 
-                {/* Stats - Centered Flex Layout for 7 items */}
-                <div className="flex flex-wrap justify-center gap-x-8 gap-y-12 border-t border-charcoal/10 pt-12">
+                {/* Stats - Centered Flex Layout - Optimized for iPhone 4+ */}
+                <div className="flex flex-wrap justify-center gap-x-4 gap-y-10 md:gap-x-12 md:gap-y-16 pt-8 md:pt-12">
                     {stats.map((stat, idx) => (
-                        <div key={idx} className="flex flex-col items-center text-center group w-[45%] md:w-auto md:min-w-[140px]">
-                            {/* Icon - Very Subtle */}
-                            <div className="text-charcoal mb-6 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-                                {stat.icon}
+                        <div key={idx} className="flex flex-col items-center text-center group w-[45%] md:w-auto">
+                            {/* Icon - Responsive Blue Circle Bubble */}
+                            <div className="w-16 h-16 md:w-24 md:h-24 bg-[#1A71B7] rounded-full flex items-center justify-center mb-4 md:mb-6 shadow-xl group-hover:scale-110 transition-transform duration-500 ease-out">
+                                <stat.Icon className="w-8 h-8 md:w-10 md:h-10 text-white" strokeWidth={1.5} />
                             </div>
 
-                            {/* Count - Serif & Expensive */}
-                            <div className="text-3xl md:text-4xl lg:text-5xl font-sans text-charcoal mb-4 whitespace-nowrap">
+                            {/* Count - Bold & Clear */}
+                            <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-1 md:mb-2 whitespace-nowrap">
                                 {stat.count}
                             </div>
 
-                            {/* Label - Micro Typography */}
-                            <div className="text-xs uppercase tracking-wide-caps text-charcoal-light font-medium opacity-60">
+                            {/* Label - Clean Uppercase */}
+                            <div className="text-[10px] md:text-[11px] uppercase tracking-wide-caps text-gray-500 font-bold max-w-[120px] leading-tight">
                                 {stat.label}
                             </div>
                         </div>

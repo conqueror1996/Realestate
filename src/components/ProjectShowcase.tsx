@@ -56,7 +56,7 @@ const ProjectShowcase: React.FC = () => {
                         {['Mumbai', 'Navi Mumbai', 'Mumbai 3.0'].map((city) => (
                             <button
                                 key={city}
-                                className={`px-10 py-4 rounded-none text-base font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
+                                className={`px-8 py-2 rounded-none text-base font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
                                     ? 'bg-[#1A71B7] text-white shadow-sm'
                                     : 'text-gray-500 hover:text-[#1A71B7] hover:bg-gray-50'
                                     }`}
