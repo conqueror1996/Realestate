@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Search } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -73,9 +73,7 @@ const Navbar: React.FC = () => {
 
                     {/* Right Actions */}
                     <div className="hidden lg:flex items-center gap-6">
-                        <button className="text-gray-500 hover:text-[#1A71B7] transition-colors">
-                            <Search size={20} />
-                        </button>
+
                         <a
                             href="#"
                             className="bg-[#1A71B7] text-white px-6 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#007bb5] transition-colors shadow-lg shadow-blue-200"
