@@ -64,7 +64,7 @@ const BrochureSection: React.FC = () => {
     };
 
     return (
-        <section className="py-16 md:py-32 bg-white border-t border-gray-100 overflow-hidden">
+        <section className="py-12 md:py-16 bg-white border-t border-gray-100 overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 relative">
 
                 {/* Header */}
@@ -72,7 +72,7 @@ const BrochureSection: React.FC = () => {
                     <span className="text-sm font-bold tracking-[0.2em] text-[#1A71B7] mb-4 block uppercase">
                         DOWNLOADS
                     </span>
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl leading-tight font-light text-[#1C1C1C] uppercase tracking-wide">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl leading-tight font-bold text-[#1C1C1C]">
                         Our Brochures
                     </h2>
                 </div>

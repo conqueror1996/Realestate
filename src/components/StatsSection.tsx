@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Building2, Users, MapPin, FileCheck, Map, TrendingUp } from 'lucide-react';
+import { Award, Building2, Users, MapPin, FileCheck, Map } from 'lucide-react';
 
 const StatsSection: React.FC = () => {
     const stats = [
@@ -9,7 +9,6 @@ const StatsSection: React.FC = () => {
         { Icon: MapPin, count: '4,000+', label: 'Acres Delivered' },
         { Icon: FileCheck, count: '100%', label: 'Clear Titles' },
         { Icon: Map, count: '6 Cities', label: 'Pan India Presence' },
-        { Icon: TrendingUp, count: '200%', label: 'Avg. Appreciation' },
     ];
 
     return (
@@ -18,7 +17,7 @@ const StatsSection: React.FC = () => {
                 {/* Main Heading - Calm Authority */}
                 <div className="text-center mb-24">
                     <h2 className="text-3xl md:text-5xl lg:text-6xl text-charcoal mb-8 leading-tight font-bold">
-                        India's largest plotted real estate developer.
+                        India's Largest Plotted Real Estate Developer.
                     </h2>
                     <p className="text-body-lg text-charcoal-light max-w-2xl mx-auto font-light leading-relaxed opacity-80">
                         Securing prime addresses for your legacy. We understand the importance of investing in the house of your dreams.

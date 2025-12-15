@@ -42,7 +42,7 @@ const ProjectShowcase: React.FC = () => {
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="mb-4 text-3xl md:text-5xl lg:text-6xl text-charcoal leading-tight">
+                    <h2 className="mb-4 text-3xl md:text-5xl lg:text-6xl text-charcoal leading-tight font-bold">
                         Your Home. Your Dream. Your Choice
                     </h2>
                     <p className="text-body-base text-gray-500 max-w-2xl mx-auto">
@@ -138,8 +138,9 @@ const ProjectShowcase: React.FC = () => {
                 </div>
 
                 <div className="text-center mt-12">
-                    <button className="text-[#1A71B7] font-bold text-sm hover:underline underline-offset-4">
-                        View All Projects in Chennai →
+                    <button className="bg-white text-[#1A71B7] border border-[#1A71B7] px-8 py-3.5 text-ui-btn hover:bg-[#1A71B7] hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-2 uppercase tracking-wider font-bold rounded-none group">
+                        View All Projects in Chennai
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </button>
                 </div>
             </div>

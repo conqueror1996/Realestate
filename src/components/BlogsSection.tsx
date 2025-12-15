@@ -35,7 +35,7 @@ const BlogsSection: React.FC = () => {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#1A71B7] mb-4">OUR UPDATES</p>
-                    <h2 className="text-5xl md:text-7xl font-sans text-[#1C1C1C]">
+                    <h2 className="text-5xl md:text-7xl font-bold text-[#1C1C1C]">
                         News & Events
                     </h2>
                 </div>

@@ -78,7 +78,7 @@ const JourneySection: React.FC = () => {
     }, [isAutoPlaying]);
 
     return (
-        <section className="py-16 md:py-32 bg-stone-50 border-t border-gray-200 overflow-hidden">
+        <section className="py-12 md:py-16 bg-stone-50 border-t border-gray-200 overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 relative">
 
                 {/* Header */}
@@ -86,8 +86,8 @@ const JourneySection: React.FC = () => {
                     <span className="text-sm font-bold tracking-[0.2em] text-[#1A71B7] mb-4 block uppercase">
                         TIMELINE
                     </span>
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl leading-tight font-light text-[#1C1C1C] uppercase tracking-wide">
-                        VIEW OUR JOURNEY
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl leading-tight font-bold text-[#1C1C1C]">
+                        View Our Journey
                     </h2>
                 </div>
 
