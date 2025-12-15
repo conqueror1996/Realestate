@@ -56,7 +56,7 @@ const ProjectShowcase: React.FC = () => {
                         {['Mumbai', 'Navi Mumbai', 'Mumbai 3.0'].map((city) => (
                             <button
                                 key={city}
-                                className={`px-8 py-2 rounded-none text-base font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
+                                className={`px-4 py-1.5 text-xs md:px-8 md:py-2 md:text-base font-medium transition-all duration-300 ${activeTab === city.toLowerCase().replace(' ', '_')
                                     ? 'bg-[#1A71B7] text-white shadow-sm'
                                     : 'text-gray-500 hover:text-[#1A71B7] hover:bg-gray-50'
                                     }`}
@@ -69,9 +69,9 @@ const ProjectShowcase: React.FC = () => {
                 </div>
 
                 {/* Project Grid */}
-                <div className="flex flex-nowrap overflow-x-auto gap-8 pb-12 px-4 md:justify-center snap-x scrollbar-hide">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="group min-w-[85vw] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
+                        <div key={idx} className="group bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
                             {/* Image Header */}
                             <div className="relative h-60 overflow-hidden">
                                 <div className="absolute top-3 right-3 z-10 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">

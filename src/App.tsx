@@ -21,8 +21,8 @@ function App() {
   useEffect(() => {
     // Show popup after 5 seconds
     const timer = setTimeout(() => {
-      setIsModalOpen(true);
-    }, 5000);
+      // setIsModalOpen(true); // Temporarily disabled for testing
+    }, 500000);
 
     return () => clearTimeout(timer);
   }, []);
