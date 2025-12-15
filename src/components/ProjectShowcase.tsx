@@ -69,12 +69,12 @@ const ProjectShowcase: React.FC = () => {
                 </div>
 
                 {/* Project Grid */}
-                <div className="flex flex-nowrap overflow-x-auto gap-4 md:gap-8 pb-12 px-4 md:justify-center snap-x scrollbar-hide">
+                <div className="flex flex-nowrap overflow-x-auto gap-6 pb-12 px-4 md:justify-center snap-x snap-mandatory scrollbar-hide">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="group w-[270px] md:w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
-                            {/* Image Header */}
-                            <div className="relative h-48 md:h-60 overflow-hidden">
-                                <div className="absolute top-3 right-3 z-10 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
+                        <div key={idx} className="flex-none w-[85vw] md:w-[350px] snap-center group select-none flex flex-col">
+                            {/* Image Header with Aspect Ratio */}
+                            <div className="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-6 shadow-md border border-gray-100 transition-all duration-300 group-hover:shadow-xl">
+                                <div className="absolute top-4 right-4 z-20 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
                                     {project.idealFor}
                                 </div>
                                 <img
@@ -85,11 +85,10 @@ const ProjectShowcase: React.FC = () => {
                             </div>
 
                             {/* Info Body */}
-                            {/* Info Body */}
-                            <div className="p-4 md:p-6 flex flex-col flex-grow">
+                            <div className="flex flex-col flex-grow px-2">
                                 <div className="mb-5">
                                     <div className="flex justify-between items-start mb-2 gap-4">
-                                        <h3 className="text-title-h3 text-[#1C1C1C] leading-tight group-hover:text-[#1A71B7] transition-colors">
+                                        <h3 className="text-2xl font-light text-[#1C1C1C] leading-tight group-hover:text-[#1A71B7] transition-colors">
                                             {project.title}
                                         </h3>
                                         <div className="text-right flex-shrink-0">
