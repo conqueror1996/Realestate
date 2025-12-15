@@ -71,9 +71,9 @@ const ProjectShowcase: React.FC = () => {
                 {/* Project Grid */}
                 <div className="flex flex-nowrap overflow-x-auto gap-4 md:gap-8 pb-12 px-4 md:justify-center snap-x scrollbar-hide">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="group min-w-[260px] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
+                        <div key={idx} className="group w-[270px] md:w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
                             {/* Image Header */}
-                            <div className="relative h-60 overflow-hidden">
+                            <div className="relative h-48 md:h-60 overflow-hidden">
                                 <div className="absolute top-3 right-3 z-10 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
                                     {project.idealFor}
                                 </div>
@@ -86,7 +86,7 @@ const ProjectShowcase: React.FC = () => {
 
                             {/* Info Body */}
                             {/* Info Body */}
-                            <div className="p-5 md:p-6 flex flex-col flex-grow">
+                            <div className="p-4 md:p-6 flex flex-col flex-grow">
                                 <div className="mb-5">
                                     <div className="flex justify-between items-start mb-2 gap-4">
                                         <h3 className="text-title-h3 text-[#1C1C1C] leading-tight group-hover:text-[#1A71B7] transition-colors">
