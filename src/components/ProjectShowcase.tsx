@@ -71,7 +71,7 @@ const ProjectShowcase: React.FC = () => {
                 {/* Project Grid */}
                 <div className="flex flex-nowrap overflow-x-auto gap-4 md:gap-8 pb-12 px-4 md:justify-center snap-x scrollbar-hide">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="group min-w-[300px] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
+                        <div key={idx} className="group min-w-[260px] md:min-w-[380px] flex-shrink-0 snap-center bg-white rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
                             {/* Image Header */}
                             <div className="relative h-60 overflow-hidden">
                                 <div className="absolute top-3 right-3 z-10 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
