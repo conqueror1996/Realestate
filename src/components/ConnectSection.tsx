@@ -60,7 +60,7 @@ const ConnectSection: React.FC = () => {
                             </div>
 
                             {/* CTA Button */}
-                            <button className="w-full py-4 bg-[#F5C710] text-[#1C1C1C] font-semibold text-lg hover:bg-[#1C1C1C] hover:text-white transition-all duration-300 rounded-sm">
+                            <button className="w-full py-4 bg-[#1A71B7] text-white font-semibold text-lg hover:bg-[#1C1C1C] transition-all duration-300 rounded-sm">
                                 {item.buttonText}
                             </button>
                         </div>
