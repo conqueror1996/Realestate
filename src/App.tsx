@@ -14,6 +14,8 @@ import ConnectSection from './components/ConnectSection';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import EnquiryModal from './components/EnquiryModal';
+import { Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,7 +29,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  return (
+  const WebsiteLayout = () => (
     <div className="font-sans antialiased text-text-gray bg-white">
       <TopBar />
       <Navbar />
@@ -37,16 +39,21 @@ function App() {
         <ProjectShowcase />
         <JourneySection />
         <BrochureSection />
-
         <FounderSection />
         <BlogsSection />
-
         <ConnectSection />
       </main>
       <Footer />
       <FloatingButtons onOpenEnquiry={() => setIsModalOpen(true)} />
       <EnquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
+  );
+
+  return (
+    <Routes>
+      <Route path="/" element={<WebsiteLayout />} />
+      <Route path="/admin" element={<Dashboard />} />
+    </Routes>
   );
 }
 
