@@ -4,64 +4,64 @@ import { ArrowRight } from 'lucide-react';
 const ConnectSection: React.FC = () => {
     const connections = [
         {
-            title: 'Careers',
-            role: 'Join the Team',
-            description: 'We build extraordinary structures and nurture the growth of our people. Create your legacy with us.',
-            buttonText: 'See Openings'
+            title: 'As an Employee',
+            description: 'We believe in creating a workplace that not only builds extraordinary structures but also nurtures the growth and well-being of our people.',
+            buttonText: 'Enquire Now',
+            image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800'
         },
         {
-            title: 'Investors',
-            role: 'Grow Wealth',
-            description: 'Elevate your portfolio with G Square. Experience the fusion of financial supremacy and visionary partnerships.',
-            buttonText: 'Invest Now'
+            title: 'As an Investor',
+            description: 'Elevate your investment stature with G Square, the discerning choice for a fusion of financial supremacy and visionary partnerships.',
+            buttonText: 'Enquire Now',
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800'
         },
         {
-            title: 'Customers',
-            role: 'Live Grand',
-            description: 'Unlock the gateway to unparalleled living. Discover meticulously crafted properties and innovative design.',
-            buttonText: 'Find Home'
+            title: 'As a Customer',
+            description: 'Unlock the gateway to unparalleled living with G Square. Discover meticulously crafted properties, innovative design, and a commitment to excellence.',
+            buttonText: 'Enquire Now',
+            image: 'https://images.unsplash.com/photo-1556761175-4b46a891163e?auto=format&fit=crop&q=80&w=800'
         }
     ];
 
     return (
-        <section className="section-padding bg-[#F2F8FC]">
+        <section className="section-padding bg-white">
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
-                <div className="text-center mb-20">
-                    <h2 className="mb-6 text-5xl md:text-7xl font-bold">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold text-[#1C1C1C] uppercase tracking-wide">
                         Connect With Us
                     </h2>
-                    <p className="text-ui-label text-gray-500">
-                        Choose your path to excellence
-                    </p>
                 </div>
 
                 {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                     {connections.map((item, idx) => (
                         <div
                             key={idx}
-                            className="bg-white p-10 md:p-12 flex flex-col items-center text-center shadow-lg border-t-4 border-[#1A71B7] hover:-translate-y-2 transition-transform duration-300"
+                            className="flex flex-col items-center text-center group"
                         >
-                            {/* Role Label */}
-                            <span className="text-ui-label text-[#1A71B7] mb-6">
-                                {item.role}
-                            </span>
-
                             {/* Title */}
-                            <h3 className="mb-6">
+                            <h3 className="text-2xl font-medium text-[#1C1C1C] mb-4">
                                 {item.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-body-base text-charcoal-light mb-10 max-w-xs">
+                            <p className="text-body-base text-gray-600 mb-8 leading-relaxed max-w-sm mx-auto min-h-[80px]">
                                 {item.description}
                             </p>
 
+                            {/* Image */}
+                            <div className="w-full aspect-video overflow-hidden mb-6">
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                            </div>
+
                             {/* CTA Button */}
-                            <button className="mt-auto w-full py-4 bg-[#1C1C1C] text-white text-ui-btn hover:bg-[#1A71B7] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                            <button className="w-full py-4 bg-[#F5C710] text-[#1C1C1C] font-semibold text-lg hover:bg-[#1C1C1C] hover:text-white transition-all duration-300 rounded-sm">
                                 {item.buttonText}
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                     ))}
