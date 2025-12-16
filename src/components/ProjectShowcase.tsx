@@ -69,68 +69,58 @@ const ProjectShowcase: React.FC = () => {
                 </div>
 
                 {/* Project Grid */}
-                <div className="flex flex-nowrap overflow-x-auto gap-6 pb-12 px-4 md:justify-center snap-x snap-mandatory scrollbar-hide">
+                <div className="flex flex-nowrap overflow-x-auto gap-8 pb-12 px-4 md:justify-center snap-x snap-mandatory scrollbar-hide">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="flex-none w-[85vw] md:w-[350px] snap-center group select-none flex flex-col">
-                            {/* Image Header with Aspect Ratio */}
-                            <div className="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-6 shadow-md border border-gray-100 transition-all duration-300 group-hover:shadow-xl">
-                                <div className="absolute top-4 right-4 z-20 bg-[#1A71B7] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ui-label">
-                                    {project.idealFor}
-                                </div>
+                        <div key={idx} className="flex-none w-[300px] md:w-[360px] snap-center group select-none flex flex-col bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+                            {/* Image Header */}
+                            <div className="relative h-[320px] overflow-hidden bg-gray-100">
                                 <img
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
+                                {/* Title Overlay (Simulating the text in the sky from the image) */}
+                                <div className="absolute top-8 left-0 w-full text-center px-4">
+                                    <h3 className="text-2xl font-serif text-white drop-shadow-md mb-1">
+                                        {project.title}
+                                    </h3>
+                                    <div className="h-[1px] w-12 bg-white/80 mx-auto my-2"></div>
+                                    <p className="text-white/90 text-sm font-light drop-shadow-sm tracking-wide">
+                                        Shape Your Story Here
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Info Body */}
-                            <div className="flex flex-col flex-grow px-1">
-                                <div className="mb-3">
-                                    <div className="flex justify-between items-start mb-1 gap-2">
-                                        <h3 className="text-xl md:text-2xl font-light text-[#1C1C1C] leading-tight group-hover:text-[#1A71B7] transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <div className="text-right flex-shrink-0">
-                                            <p className="text-sm font-bold text-[#1A71B7]">{project.price}</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-1.5 text-charcoal-light text-xs font-medium">
-                                        <MapPin size={12} className="text-gray-400" />
-                                        <span className="opacity-80">{project.location}</span>
-                                    </div>
+                            <div className="p-6 flex flex-col items-start text-left bg-white">
+                                {/* Project Logo Placeholder */}
+                                <div className="mb-4">
+                                    <h4 className="text-[#1A71B7] font-bold uppercase tracking-tighter leading-none text-lg">
+                                        FUTURE GROUP<br />
+                                        <span className="text-black text-sm font-light">PROJECT</span>
+                                    </h4>
                                 </div>
 
-                                {/* Decision Data Grid */}
-                                <div className="grid grid-cols-2 gap-y-2 gap-x-2 border-t border-gray-100 pt-3 mb-4">
-                                    <div>
-                                        <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-0.5">Plot Size</p>
-                                        <p className="text-xs font-semibold text-charcoal">{project.size}</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-0.5">Status</p>
-                                        <p className="text-xs font-medium text-charcoal">{project.status}</p>
-                                    </div>
-                                    <div className="col-span-2 mt-1">
-                                        <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-1">Highlights</p>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 text-[10px] font-medium text-charcoal-light border border-gray-100">
-                                                <CheckCircle size={8} className="text-[#1A71B7]" /> Villa Ready
-                                            </span>
-                                            <span className="inline-flex items-center gap-1 bg-gray-50 px-2 py-1 text-[10px] font-medium text-charcoal-light border border-gray-100">
-                                                <CheckCircle size={8} className="text-[#1A71B7]" /> 5Y Maint.
-                                            </span>
-                                        </div>
-                                    </div>
+                                {/* Location */}
+                                <div className="flex items-center gap-2 mb-4 text-charcoal">
+                                    <MapPin size={18} className="text-gray-500" />
+                                    <span className="font-medium text-[15px]">{project.location}</span>
                                 </div>
 
-                                {/* CTA */}
-                                <div className="mt-auto">
-                                    <button className="w-full py-3 bg-[#1C1C1C] text-white text-sm font-medium hover:bg-[#1A71B7] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
-                                        View Details
-                                        <ArrowUpRight size={14} className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
-                                    </button>
+                                {/* Details */}
+                                <div className="space-y-1.5 mb-6 text-[15px] text-charcoal-light">
+                                    <p>
+                                        <span className="font-bold text-charcoal">Plot Sizes:</span> {project.size}
+                                    </p>
+                                    <p>
+                                        <span className="font-bold text-charcoal">Rate:</span> {project.price}
+                                    </p>
                                 </div>
+
+                                {/* CTA Button */}
+                                <button className="bg-[#1A71B7] text-white px-6 py-2.5 text-sm font-semibold rounded shadow-sm hover:bg-[#155a93] transition-colors duration-300">
+                                    Know More
+                                </button>
                             </div>
                         </div>
                     ))}
