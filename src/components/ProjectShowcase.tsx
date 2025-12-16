@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, CheckCircle, ArrowUpRight } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 const ProjectShowcase: React.FC = () => {
     const [activeTab, setActiveTab] = useState('mumbai');
