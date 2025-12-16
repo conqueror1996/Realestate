@@ -24,7 +24,7 @@ const ConnectSection: React.FC = () => {
     ];
 
     return (
-        <section className="section-padding bg-white">
+        <section className="section-padding pt-0 md:pt-0 bg-white">
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-16">

@@ -75,7 +75,7 @@ const BlogsSection: React.FC = () => {
                 </div>
 
                 {/* Explore More Button */}
-                <div className="text-center mt-12 mb-20">
+                <div className="text-center mt-12">
                     <button className="inline-flex items-center gap-2 border border-[#1A71B7] text-[#1A71B7] px-8 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#1A71B7] hover:text-white transition-all duration-300 group">
                         Explore More
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
