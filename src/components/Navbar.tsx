@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+    onOpenEnquiry?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -58,8 +64,11 @@ const Navbar: React.FC = () => {
                                 <button
                                     className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#1A71B7] transition-colors py-8 tracking-wide uppercase"
                                     onClick={() => {
+                                        if (group.title === 'Projects') {
+                                            navigate('/projects');
+                                        }
                                         if (group.title === 'About Us') {
-                                            window.location.href = '/about-us';
+                                            navigate('/about-us');
                                         }
                                         if (group.title === 'Contact') {
                                             const contactSection = document.getElementById('contact');
@@ -98,12 +107,12 @@ const Navbar: React.FC = () => {
                     {/* Right Actions */}
                     <div className="hidden lg:flex items-center gap-6">
 
-                        <a
-                            href="#"
+                        <button
+                            onClick={onOpenEnquiry}
                             className="bg-[#1A71B7] text-white px-6 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#007bb5] transition-colors shadow-lg shadow-blue-200"
                         >
                             Enquire
-                        </a>
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -171,7 +180,8 @@ const Navbar: React.FC = () => {
                                     <button
                                         onClick={() => {
                                             if (group.title === 'About Us') {
-                                                window.location.href = '/about-us';
+                                                navigate('/about-us');
+                                                setIsOpen(false);
                                             } else if (group.title === 'Contact') {
                                                 setIsOpen(false);
                                                 const contactSection = document.getElementById('contact');
@@ -190,9 +200,15 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <div className="mt-10 pt-6 border-t border-gray-100">
-                        <a href="#" className="block w-full bg-[#1A71B7] text-white text-center py-4 rounded-none font-bold uppercase tracking-wider text-sm shadow-lg">
+                        <button
+                            onClick={() => {
+                                setIsOpen(false);
+                                if (onOpenEnquiry) onOpenEnquiry();
+                            }}
+                            className="block w-full bg-[#1A71B7] text-white text-center py-4 rounded-none font-bold uppercase tracking-wider text-sm shadow-lg"
+                        >
                             Enquire Now
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

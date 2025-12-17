@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -10,6 +10,7 @@ import { useProjects } from '../context/ProjectContext';
 
 const ProjectsPage: React.FC = () => {
     const { city } = useParams<{ city?: string }>();
+    const navigate = useNavigate();
     const { projects } = useProjects();
     const [filterCity, setFilterCity] = useState(city || 'all');
     const [filteredProjects, setFilteredProjects] = useState(projects);
@@ -96,8 +97,11 @@ const ProjectsPage: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredProjects.map((project) => (
                             <div key={project.id} className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">
-                                {/* Image */}
-                                <div className="relative h-64 overflow-hidden">
+                                {/* Image (Clickable) */}
+                                <div
+                                    className="relative h-64 overflow-hidden cursor-pointer"
+                                    onClick={() => navigate(`/project/${project.id}`)}
+                                >
                                     <img
                                         src={project.image}
                                         alt={project.title}
@@ -111,7 +115,12 @@ const ProjectsPage: React.FC = () => {
                                 {/* Content */}
                                 <div className="p-6 flex flex-col flex-grow">
                                     <div className="flex justify-between items-start mb-2">
-                                        <h3 className="text-xl font-bold text-gray-800">{project.title}</h3>
+                                        <h3
+                                            onClick={() => navigate(`/project/${project.id}`)}
+                                            className="text-xl font-bold text-gray-800 cursor-pointer hover:text-[#1A71B7] transition-colors"
+                                        >
+                                            {project.title}
+                                        </h3>
                                         <span className="bg-gray-100 text-gray-600 text-[10px] uppercase font-bold px-2 py-1 rounded">
                                             {project.type}
                                         </span>
@@ -135,7 +144,7 @@ const ProjectsPage: React.FC = () => {
 
                                     <div className="mt-auto">
                                         <button
-                                            onClick={() => window.location.href = `/project/${project.id}`}
+                                            onClick={() => navigate(`/project/${project.id}`)}
                                             className="w-full bg-[#1A71B7] text-white py-3 rounded font-bold uppercase tracking-wider text-sm hover:bg-[#155a93] transition-colors shadow-lg shadow-blue-100"
                                         >
                                             View Details

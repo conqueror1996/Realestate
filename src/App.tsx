@@ -35,7 +35,7 @@ function App() {
   const WebsiteLayout = () => (
     <div className="font-sans antialiased text-text-gray bg-white">
       <TopBar />
-      <Navbar />
+      <Navbar onOpenEnquiry={() => setIsModalOpen(true)} />
       <main>
         <HeroCarousel />
         <StatsSection />
@@ -44,7 +44,7 @@ function App() {
         <BrochureSection />
         <FounderSection />
         <BlogsSection />
-        <ConnectSection />
+        <ConnectSection onOpenEnquiry={() => setIsModalOpen(true)} />
       </main>
       <Footer />
       <FloatingButtons onOpenEnquiry={() => setIsModalOpen(true)} />

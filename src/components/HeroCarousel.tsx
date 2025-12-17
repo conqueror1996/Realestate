@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const HeroCarousel: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const navigate = useNavigate();
 
     const slides = [
         {
@@ -55,8 +57,9 @@ const HeroCarousel: React.FC = () => {
             {slides.map((slide: Slide, index) => (
                 <div
                     key={slide.id}
+                    onClick={() => navigate('/projects')}
                     className={`
-                        transition-opacity duration-1000 ease-in-out w-full
+                        transition-opacity duration-1000 ease-in-out w-full cursor-pointer
                         ${index === currentSlide ? 'opacity-100 z-10 relative md:absolute md:inset-0' : 'opacity-0 z-0 absolute top-0 left-0 md:inset-0'}
                     `}
                 >
@@ -104,7 +107,7 @@ const HeroCarousel: React.FC = () => {
                                 </p>
                                 <h2 className="text-xl md:text-3xl font-bold mb-4 uppercase leading-tight drop-shadow-md max-w-xs">
                                     {slide.heading}
-                                </h2>
+                                </h2 >
 
                                 {/* Offer Box */}
                                 <div className={`
@@ -160,13 +163,13 @@ const HeroCarousel: React.FC = () => {
 
             {/* Navigation Arrows */}
             <button
-                onClick={prevSlide}
+                onClick={(e) => { e.stopPropagation(); prevSlide(); }}
                 className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex"
             >
                 <ChevronLeft size={24} />
             </button>
             <button
-                onClick={nextSlide}
+                onClick={(e) => { e.stopPropagation(); nextSlide(); }}
                 className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex"
             >
                 <ChevronRight size={24} />
@@ -178,7 +181,7 @@ const HeroCarousel: React.FC = () => {
                     {slides.map((_, idx) => (
                         <button
                             key={idx}
-                            onClick={() => setCurrentSlide(idx)}
+                            onClick={(e) => { e.stopPropagation(); setCurrentSlide(idx); }}
                             className={`
                             h-1 transition-all duration-500 rounded-full shadow-sm
                             ${idx === currentSlide ? 'w-12 bg-[#1A71B7]' : 'w-4 bg-white/60 hover:bg-white'}

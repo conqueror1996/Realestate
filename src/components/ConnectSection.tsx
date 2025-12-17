@@ -1,10 +1,15 @@
 import { useContent } from '../context/ContentContext';
 
-const ConnectSection: React.FC = () => {
+interface ConnectSectionProps {
+    onOpenEnquiry?: () => void;
+}
+
+const ConnectSection: React.FC<ConnectSectionProps> = ({ onOpenEnquiry }) => {
     const { content } = useContent();
     const config = content.connect;
 
     const connections = [
+        // ... (connection items remain same)
         {
             title: 'As an Employee',
             description: 'We believe in creating a workplace that not only builds extraordinary structures but also nurtures the growth and well-being of our people.',
@@ -31,7 +36,7 @@ const ConnectSection: React.FC = () => {
             className="section-padding pt-0 md:pt-0 bg-white bg-cover bg-center relative"
             style={config.backgroundImage ? { backgroundImage: `url(${config.backgroundImage})` } : {}}
         >
-            {/* Optional Overlay if background is present */}
+            {/* ... (rest of render) */}
             {config.backgroundImage && <div className="absolute inset-0 bg-white/90"></div>}
 
             <div className="max-w-[1400px] mx-auto px-6 relative z-10 pt-12 md:pt-20">
@@ -70,7 +75,10 @@ const ConnectSection: React.FC = () => {
                             </div>
 
                             {/* CTA Button */}
-                            <button className="w-full py-4 bg-[#1A71B7] text-white font-semibold text-lg hover:bg-[#1C1C1C] transition-all duration-300 rounded-sm">
+                            <button
+                                onClick={onOpenEnquiry}
+                                className="w-full py-4 bg-[#1A71B7] text-white font-semibold text-lg hover:bg-[#1C1C1C] transition-all duration-300 rounded-sm"
+                            >
                                 {item.buttonText}
                             </button>
                         </div>

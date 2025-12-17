@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { MapPin } from 'lucide-react';
 import { useProjects } from '../context/ProjectContext';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectShowcase: React.FC = () => {
     const { projects: allProjects } = useProjects();
     const [activeTab, setActiveTab] = useState('mumbai');
+    const navigate = useNavigate();
 
     // Filter projects based on active tab
     const projects = allProjects.filter(p => p.city === activeTab);
@@ -43,7 +45,11 @@ const ProjectShowcase: React.FC = () => {
                 {/* Project Grid */}
                 <div className="flex flex-nowrap overflow-x-auto gap-8 pb-12 px-4 md:justify-center snap-x snap-mandatory scrollbar-hide">
                     {projects.map((project, idx) => (
-                        <div key={idx} className="flex-none w-[300px] md:w-[360px] snap-center group select-none flex flex-col bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div
+                            key={idx}
+                            onClick={() => navigate(`/project/${project.id}`)}
+                            className="flex-none w-[300px] md:w-[360px] snap-center group select-none flex flex-col bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                        >
                             {/* Image Header */}
                             <div className="relative h-[320px] overflow-hidden bg-gray-100">
                                 <img
@@ -51,9 +57,9 @@ const ProjectShowcase: React.FC = () => {
                                     alt={project.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                {/* Title Overlay (Simulating the text in the sky from the image) */}
+                                {/* Title Overlay */}
                                 <div className="absolute top-8 left-0 w-full text-center px-4">
-                                    <h3 className="text-2xl font-serif text-white drop-shadow-md mb-1">
+                                    <h3 className="text-2xl font-serif text-white drop-shadow-md mb-1 hover:text-[#1A71B7] transition-colors">
                                         {project.title}
                                     </h3>
                                     <div className="h-[1px] w-12 bg-white/80 mx-auto my-2"></div>
@@ -90,7 +96,13 @@ const ProjectShowcase: React.FC = () => {
                                 </div>
 
                                 {/* CTA Button */}
-                                <button className="bg-[#1A71B7] text-white px-6 py-2.5 text-sm font-semibold rounded shadow-sm hover:bg-[#155a93] transition-colors duration-300">
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Prevent double navigation if parent is also clickable
+                                        navigate(`/project/${project.id}`);
+                                    }}
+                                    className="bg-[#1A71B7] text-white px-6 py-2.5 text-sm font-semibold rounded shadow-sm hover:bg-[#155a93] transition-colors duration-300"
+                                >
                                     Know More
                                 </button>
                             </div>
@@ -99,8 +111,11 @@ const ProjectShowcase: React.FC = () => {
                 </div>
 
                 <div className="text-center mt-12">
-                    <button className="bg-white text-[#1A71B7] border border-[#1A71B7] px-8 py-3.5 text-ui-btn hover:bg-[#1A71B7] hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-2 uppercase tracking-wider font-bold rounded-none group">
-                        View All Projects in Chennai
+                    <button
+                        onClick={() => navigate(`/projects/${activeTab}`)}
+                        className="bg-white text-[#1A71B7] border border-[#1A71B7] px-8 py-3.5 text-ui-btn hover:bg-[#1A71B7] hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-2 uppercase tracking-wider font-bold rounded-none group"
+                    >
+                        View All Projects in {activeTab === 'mumbai_3.0' ? 'Mumbai 3.0' : activeTab.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </button>
                 </div>

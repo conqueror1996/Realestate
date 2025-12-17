@@ -1,11 +1,14 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { useContent } from '../context/ContentContext';
 
 const BlogsSection: React.FC = () => {
     const { content } = useContent();
+    const navigate = useNavigate();
+
+    // ... (articles mapping logic same as before)
     const articles = content.news.map(item => ({
-        category: item.date, // Using Date as Category/Subtext for now as per design mismatch
+        category: item.date,
         title: item.title,
         description: item.excerpt,
         image: item.image
@@ -13,7 +16,7 @@ const BlogsSection: React.FC = () => {
 
     return (
         <section className="section-padding bg-white relative overflow-hidden">
-            {/* Background Watermark */}
+            {/* ... (rest of render same) */}
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
                 <span className="text-[20vw] font-sans font-bold tracking-tighter text-black">
                     INSIGHTS
@@ -65,7 +68,10 @@ const BlogsSection: React.FC = () => {
 
                 {/* Explore More Button */}
                 <div className="text-center mt-12">
-                    <button className="inline-flex items-center gap-2 border border-[#1A71B7] text-[#1A71B7] px-8 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#1A71B7] hover:text-white transition-all duration-300 group">
+                    <button
+                        onClick={() => navigate('/about-us')}
+                        className="inline-flex items-center gap-2 border border-[#1A71B7] text-[#1A71B7] px-8 py-3 rounded-none text-sm font-bold uppercase tracking-wider hover:bg-[#1A71B7] hover:text-white transition-all duration-300 group"
+                    >
                         Explore More
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </button>

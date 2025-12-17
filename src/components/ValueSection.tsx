@@ -65,7 +65,10 @@ const ValueSection: React.FC = () => {
                                 <p className="text-gray-400 text-sm leading-relaxed font-light mb-6">
                                     {item.description}
                                 </p>
-                                <button className="text-[#1A71B7] text-sm font-medium tracking-wider uppercase flex items-center gap-2 group/link hover:text-[#007AB8] transition-colors">
+                                <button
+                                    onClick={() => window.location.href = '/about-us'}
+                                    className="text-[#1A71B7] text-sm font-medium tracking-wider uppercase flex items-center gap-2 group/link hover:text-[#007AB8] transition-colors"
+                                >
                                     Know More
                                     <span className="text-lg transform transition-transform duration-300 group-hover/link:translate-x-1">→</span>
                                 </button>
