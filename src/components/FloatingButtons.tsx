@@ -5,7 +5,7 @@ interface FloatingButtonsProps {
     onOpenEnquiry?: () => void;
 }
 
-const FloatingButtons: React.FC<FloatingButtonsProps> = ({ onOpenEnquiry }) => {
+const FloatingButtons: React.FC<FloatingButtonsProps> = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     // Show scroll-to-top button after scrolling down
@@ -31,36 +31,12 @@ const FloatingButtons: React.FC<FloatingButtonsProps> = ({ onOpenEnquiry }) => {
 
     return (
         <>
-            {/* Right Side Floating Buttons (Call & Enquire) */}
-            <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
-                {/* Call Button */}
-                <a
-                    href="tel:+918939540008"
-                    className="bg-[#1A71B7] text-white p-3 rounded-l-md shadow-lg hover:bg-[#155a93] transition-all duration-300 transform hover:-translate-x-1 flex items-center justify-center w-12 h-12"
-                    aria-label="Call Us"
-                    title="Call Us"
-                >
-                    <Phone size={20} />
-                </a>
-
-                {/* Enquiry Button (Triggers Modal via URL hash or just links to contact for now) */}
-                <button
-                    onClick={onOpenEnquiry}
-                    className="bg-[#1A71B7] text-white p-3 rounded-l-md shadow-lg hover:bg-[#155a93] transition-all duration-300 transform hover:-translate-x-1 flex items-center justify-center w-12 h-12"
-                    aria-label="Enquire"
-                    title="Enquire Now"
-                // In a real app, this might trigger the modal state
-                >
-                    <Mail size={20} />
-                </button>
-            </div>
-
-            {/* WhatsApp Button - Bottom Left */}
+            {/* WhatsApp Button - Bottom Right */}
             <a
                 href="https://wa.me/918939540008"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-6 left-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center group"
+                className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center group"
                 aria-label="WhatsApp"
             >
                 <div className="relative">
@@ -73,10 +49,10 @@ const FloatingButtons: React.FC<FloatingButtonsProps> = ({ onOpenEnquiry }) => {
                 </div>
             </a>
 
-            {/* Scroll to Top Button - Bottom Right */}
+            {/* Scroll to Top Button - Positioned above WhatsApp */}
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-8 right-8 w-10 h-10 bg-white text-gray-800 rounded-full shadow-lg border border-gray-200 hover:bg-[#1A71B7] hover:text-white hover:border-[#1A71B7] transition-all duration-300 z-40 flex items-center justify-center transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+                className={`fixed bottom-28 right-8 w-10 h-10 bg-white text-gray-800 rounded-full shadow-lg border border-gray-200 hover:bg-[#1A71B7] hover:text-white hover:border-[#1A71B7] transition-all duration-300 z-40 flex items-center justify-center transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
                     }`}
                 aria-label="Scroll to top"
             >

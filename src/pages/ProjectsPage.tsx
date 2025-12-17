@@ -207,7 +207,10 @@ const ProjectsPage: React.FC = () => {
                                     </div>
 
                                     <div className="mt-auto">
-                                        <button className="w-full bg-[#1A71B7] text-white py-3 rounded font-bold uppercase tracking-wider text-sm hover:bg-[#155a93] transition-colors shadow-lg shadow-blue-100">
+                                        <button
+                                            onClick={() => window.location.href = `/project/${project.id}`}
+                                            className="w-full bg-[#1A71B7] text-white py-3 rounded font-bold uppercase tracking-wider text-sm hover:bg-[#155a93] transition-colors shadow-lg shadow-blue-100"
+                                        >
                                             View Details
                                         </button>
                                     </div>

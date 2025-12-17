@@ -6,22 +6,10 @@ const HeroCarousel: React.FC = () => {
 
     const slides = [
         {
-            id: 'banner-desktop',
+            id: 'responsive-banner',
             isFullBanner: true,
             image: "/banners/banner-desktop.jpg",
-            topText: "",
-            heading: "",
-            offerValue: "",
-            offerLabel: "",
-            offerSub: "",
-            desc: "",
-            price: "",
-            buttonText: ""
-        },
-        {
-            id: 'banner-mobile',
-            isFullBanner: true,
-            image: "/banners/banner-mobile.jpg",
+            mobileImage: "/banners/banner-mobile.jpg",
             topText: "",
             heading: "",
             offerValue: "",
@@ -61,51 +49,52 @@ const HeroCarousel: React.FC = () => {
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
     return (
-        <section className="relative w-full h-[85vh] min-h-[450px] md:min-h-[600px] overflow-hidden bg-charcoal group">
+        <section className="relative w-full md:h-[85vh] md:min-h-[600px] overflow-hidden bg-white group">
 
             {/* Slides */}
             {slides.map((slide: Slide, index) => (
                 <div
                     key={slide.id}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                        }`}
+                    className={`
+                        transition-opacity duration-1000 ease-in-out w-full
+                        ${index === currentSlide ? 'opacity-100 z-10 relative md:absolute md:inset-0' : 'opacity-0 z-0 absolute top-0 left-0 md:inset-0'}
+                    `}
                 >
-                    {/* Desktop Background Image */}
+                    {/* Desktop Background Image - Force Fit (Stretch) */}
                     <div
-                        className={`absolute inset-0 bg-center transition-transform duration-[6000ms] ease-out 
-                            ${slide.mobileImage ? 'hidden md:block' : ''}
-                            ${slide.isFullBanner ? 'bg-contain bg-no-repeat' : 'bg-cover scale-105'}`}
+                        className={`absolute inset-0 bg-center transition-transform duration-[6000ms] ease-out hidden md:block
+                            bg-no-repeat
+                            ${!slide.isFullBanner ? 'bg-black' : 'bg-[#e5e5e5]'} 
+                        `}
                         style={{
                             backgroundImage: `url(${slide.image})`,
-                            transform: index === currentSlide ? (slide.isFullBanner ? 'scale(1.0)' : 'scale(1.1)') : 'scale(1.0)'
+                            backgroundSize: '100% 100%', // FORCE FIT: Stretches image to cover container exactly
+                            transform: index === currentSlide ? 'scale(1.0)' : 'scale(1.0)'
                         }}
                     >
                         {/* Dark overlay for readability on non-card images */}
                         {!slide.isFullBanner && !slide.hasCardInImage && <div className="absolute inset-0 bg-black/20"></div>}
                     </div>
 
-                    {/* Mobile Background Image */}
-                    {slide.mobileImage && (
-                        <div
-                            className={`absolute inset-0 bg-center transition-transform duration-[6000ms] ease-out md:hidden
-                                ${slide.isFullBanner ? 'bg-contain bg-no-repeat' : 'bg-cover scale-105'}`}
-                            style={{
-                                backgroundImage: `url(${slide.mobileImage})`,
-                                transform: index === currentSlide ? (slide.isFullBanner ? 'scale(1.0)' : 'scale(1.1)') : 'scale(1.0)'
-                            }}
-                        >
-                            {!slide.isFullBanner && !slide.hasCardInImage && <div className="absolute inset-0 bg-black/20"></div>}
-                        </div>
-                    )}
+                    {/* Mobile Image - Adaptive Full Fit (Stretched) */}
+                    {/* "Replicate" content to fit container exactly: Fixed height + Force Fill */}
+                    <div className="block md:hidden w-full h-[60vh] relative bg-gray-50">
+                        <img
+                            src={slide.mobileImage || slide.image}
+                            alt={slide.heading || "Banner"}
+                            className="w-full h-full"
+                            style={{ objectFit: 'fill' }}
+                        />
+                        {!slide.isFullBanner && !slide.hasCardInImage && <div className="absolute inset-0 bg-black/20"></div>}
+                    </div>
 
                     {/* Content Layout - Unified Advertisement Banner Style */}
                     {!slide.isFullBanner && (
-                        <div className="relative h-full flex flex-col items-center justify-center text-center z-20 w-full">
-
-                            {/* Card Container */}
+                        <div className="absolute inset-0 h-full flex flex-col items-center justify-center text-center z-20 w-full pointer-events-none">
+                            {/* Card Container - pointer events enabled */}
                             <div className={`
                             max-w-[300px] md:max-w-[420px] w-full flex flex-col items-center justify-center py-6 px-4 md:pt-10 md:pb-12 md:px-6
-                            transition-all duration-700 delay-100
+                            transition-all duration-700 delay-100 pointer-events-auto
                             ${slide.hasCardInImage ? 'bg-transparent text-white' : 'bg-[#e31e24] text-white shadow-2xl rounded-lg mx-4 md:mx-0'}
                             ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}
                         `}>
@@ -172,32 +161,32 @@ const HeroCarousel: React.FC = () => {
             {/* Navigation Arrows */}
             <button
                 onClick={prevSlide}
-                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100"
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex"
             >
                 <ChevronLeft size={24} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100"
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex"
             >
                 <ChevronRight size={24} />
             </button>
 
             {/* Pagination Dots */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-3">
-                {slides.map((_, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`
-                            h-1 transition-all duration-500 rounded-full
-                            ${idx === currentSlide ? 'w-12 bg-[#1A71B7]' : 'w-4 bg-[#1A71B7]/40 hover:bg-[#1A71B7]/60'}
+            {slides.length > 1 && (
+                <div className="absolute bottom-4 md:bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+                    {slides.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setCurrentSlide(idx)}
+                            className={`
+                            h-1 transition-all duration-500 rounded-full shadow-sm
+                            ${idx === currentSlide ? 'w-12 bg-[#1A71B7]' : 'w-4 bg-white/60 hover:bg-white'}
                         `}
-                    />
-                ))}
-            </div>
-
-
+                        />
+                    ))}
+                </div>
+            )}
 
         </section >
     );

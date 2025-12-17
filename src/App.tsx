@@ -18,6 +18,7 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutUsPage from './pages/AboutUsPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,8 +26,8 @@ function App() {
   useEffect(() => {
     // Show popup after 5 seconds
     const timer = setTimeout(() => {
-      // setIsModalOpen(true); // Temporarily disabled for testing
-    }, 500000);
+      setIsModalOpen(true);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -56,6 +57,7 @@ function App() {
       <Route path="/" element={<WebsiteLayout />} />
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/projects/:city" element={<ProjectsPage />} />
+      <Route path="/project/:id" element={<ProjectDetailPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/admin" element={<Dashboard />} />
     </Routes>
