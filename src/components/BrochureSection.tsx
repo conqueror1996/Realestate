@@ -1,53 +1,19 @@
 import React, { useRef } from 'react';
 import { Download, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 
+import { useContent } from '../context/ContentContext';
+
 const BrochureSection: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const { content } = useContent();
 
-    const brochures = [
-        {
-            id: 1,
-            src: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=1000&fit=crop',
-            title: 'Project Brochure',
-            subtitle: 'Comprehensive Guide',
-            size: '12.5 MB'
-        },
-        {
-            id: 2,
-            src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=1000&fit=crop',
-            title: 'Floor Plans',
-            subtitle: 'Villas & Plots',
-            size: '8.2 MB'
-        },
-        {
-            id: 3,
-            src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=1000&fit=crop',
-            title: 'Amenities',
-            subtitle: 'Lifestyle & Recreation',
-            size: '5.4 MB'
-        },
-        {
-            id: 4,
-            src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=1000&fit=crop',
-            title: 'Location Map',
-            subtitle: 'Connectivity',
-            size: '2.1 MB'
-        },
-        {
-            id: 5,
-            src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&h=1000&fit=crop',
-            title: 'Sustainability',
-            subtitle: 'Green Initiatives',
-            size: '3.8 MB'
-        },
-        {
-            id: 6,
-            src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=1000&fit=crop',
-            title: 'Specifications',
-            subtitle: 'Materials & Finishes',
-            size: '4.5 MB'
-        }
-    ];
+    const brochures = content.brochures.map(item => ({
+        id: item.id,
+        src: item.thumbnail,
+        title: item.title,
+        subtitle: 'Download PDF',
+        size: 'PDF' // Mock size for now or add to context if needed
+    }));
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {

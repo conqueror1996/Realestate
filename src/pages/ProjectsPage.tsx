@@ -6,86 +6,13 @@ import Footer from '../components/Footer';
 import { MapPin, Filter, Search } from 'lucide-react';
 
 // Mock Data
-const ALL_PROJECTS = [
-    {
-        id: 1,
-        title: 'Northern Crown',
-        location: 'Navi Mumbai',
-        city: 'navi_mumbai',
-        image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop',
-        status: 'RERA Approved',
-        price: '₹45L Onwards',
-        size: '600 - 2400 Sq.ft',
-        type: 'Villa Plots',
-        idealFor: 'Living'
-    },
-    {
-        id: 2,
-        title: 'Medavakkam Royal',
-        location: 'Mumbai 3.0',
-        city: 'mumbai_3.0',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-        status: 'Ready to Build',
-        price: '₹85L - ₹2.5Cr',
-        size: '1200 - 4800 Sq.ft',
-        type: 'Premium Plots',
-        idealFor: 'Investment'
-    },
-    {
-        id: 3,
-        title: 'Blue Breeze',
-        location: 'Mumbai',
-        city: 'mumbai',
-        image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&h=600&fit=crop',
-        status: 'CMDA Approved',
-        price: '₹2.5Cr Onwards',
-        size: '2400 - 9600 Sq.ft',
-        type: 'Beachside Land',
-        idealFor: 'Luxury'
-    },
-    // Add more mock data to fill the grid
-    {
-        id: 4,
-        title: 'Green Valley',
-        location: 'Navi Mumbai',
-        city: 'navi_mumbai',
-        image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&h=600&fit=crop',
-        status: 'New Launch',
-        price: '₹55L Onwards',
-        size: '1000 - 3000 Sq.ft',
-        type: 'Eco Plots',
-        idealFor: 'Nature Lovers'
-    },
-    {
-        id: 5,
-        title: 'Skyline Towers',
-        location: 'Mumbai',
-        city: 'mumbai',
-        image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop',
-        status: 'Under Construction',
-        price: '₹1.8Cr Onwards',
-        size: '2 BHK / 3 BHK',
-        type: 'Apartments',
-        idealFor: 'Urban Living'
-    },
-    {
-        id: 6,
-        title: 'Future City',
-        location: 'Mumbai 3.0',
-        city: 'mumbai_3.0',
-        image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop',
-        status: 'Pre-Launch',
-        price: '₹35L Onwards',
-        size: '1500 Sq.ft Avg',
-        type: 'Integrated Township',
-        idealFor: 'Future Growth'
-    }
-];
+import { useProjects } from '../context/ProjectContext';
 
 const ProjectsPage: React.FC = () => {
     const { city } = useParams<{ city?: string }>();
+    const { projects } = useProjects();
     const [filterCity, setFilterCity] = useState(city || 'all');
-    const [filteredProjects, setFilteredProjects] = useState(ALL_PROJECTS);
+    const [filteredProjects, setFilteredProjects] = useState(projects);
 
     // Update filter when URL param changes
     useEffect(() => {
@@ -99,11 +26,11 @@ const ProjectsPage: React.FC = () => {
     // Filter logic
     useEffect(() => {
         if (filterCity === 'all') {
-            setFilteredProjects(ALL_PROJECTS);
+            setFilteredProjects(projects);
         } else {
-            setFilteredProjects(ALL_PROJECTS.filter(p => p.city === filterCity));
+            setFilteredProjects(projects.filter(p => p.city === filterCity));
         }
-    }, [filterCity]);
+    }, [filterCity, projects]);
 
     // Helper for display name
     const getCityDisplayName = (c: string) => {
@@ -119,7 +46,7 @@ const ProjectsPage: React.FC = () => {
             {/* Page Header */}
             <div className="bg-[#1A71B7] py-20 px-6 text-center text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-4 relative z-10">
+                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-4 relative z-10 text-white">
                     {filterCity === 'all' ? 'All Projects' : `Projects in ${getCityDisplayName(filterCity)}`}
                 </h1>
                 <p className="text-lg text-white/80 max-w-2xl mx-auto relative z-10">

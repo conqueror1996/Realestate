@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
     const navGroups = [
         {
@@ -141,19 +142,29 @@ const Navbar: React.FC = () => {
                             <div key={group.title}>
                                 {group.items.length > 0 ? (
                                     <>
-                                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">
+                                        <button
+                                            onClick={() => setMobileExpanded(mobileExpanded === group.title ? null : group.title)}
+                                            className={`flex items-center justify-between w-full text-xs font-bold uppercase tracking-widest mb-2 border-b border-gray-100 pb-2 transition-colors ${mobileExpanded === group.title ? 'text-[#1A71B7]' : 'text-gray-800'}`}
+                                        >
                                             {group.title}
-                                        </h4>
-                                        <div className="space-y-2">
-                                            {group.items.map((item) => (
-                                                <a
-                                                    key={item}
-                                                    href={getLink(group.title, item)}
-                                                    className="block py-2 text-gray-800 hover:text-[#1A71B7] text-sm font-medium"
-                                                >
-                                                    {item}
-                                                </a>
-                                            ))}
+                                            <ChevronDown
+                                                size={16}
+                                                className={`transition-transform duration-300 ${mobileExpanded === group.title ? 'rotate-180' : ''}`}
+                                            />
+                                        </button>
+                                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === group.title ? 'max-h-64 opacity-100 mb-4' : 'max-h-0 opacity-0'}`}>
+                                            <div className="space-y-2 pl-4">
+                                                {group.items.map((item) => (
+                                                    <a
+                                                        key={item}
+                                                        href={getLink(group.title, item)}
+                                                        className="block py-2 text-gray-600 hover:text-[#1A71B7] text-sm font-medium"
+                                                        onClick={() => setIsOpen(false)}
+                                                    >
+                                                        {item}
+                                                    </a>
+                                                ))}
+                                            </div>
                                         </div>
                                     </>
                                 ) : (

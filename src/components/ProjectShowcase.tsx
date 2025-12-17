@@ -1,41 +1,13 @@
 import React, { useState } from 'react';
 import { MapPin } from 'lucide-react';
+import { useProjects } from '../context/ProjectContext';
 
 const ProjectShowcase: React.FC = () => {
+    const { projects: allProjects } = useProjects();
     const [activeTab, setActiveTab] = useState('mumbai');
 
-    const projects = [
-        {
-            title: 'Northern Crown',
-            location: 'Navi Mumbai',
-            image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop',
-            status: 'RERA Approved',
-            price: '₹45L Onwards',
-            size: '600 - 2400 Sq.ft',
-            type: 'Villa Plots',
-            idealFor: 'Living'
-        },
-        {
-            title: 'Medavakkam Royal',
-            location: 'Mumbai 3.0',
-            image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-            status: 'Ready to Build',
-            price: '₹85L - ₹2.5Cr',
-            size: '1200 - 4800 Sq.ft',
-            type: 'Premium Plots',
-            idealFor: 'Investment'
-        },
-        {
-            title: 'Blue Breeze',
-            location: 'Mumbai',
-            image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&h=600&fit=crop',
-            status: 'CMDA Approved',
-            price: '₹2.5Cr Onwards',
-            size: '2400 - 9600 Sq.ft',
-            type: 'Beachside Land',
-            idealFor: 'Luxury'
-        }
-    ];
+    // Filter projects based on active tab
+    const projects = allProjects.filter(p => p.city === activeTab);
 
     return (
         <section className="section-padding bg-gray-50">

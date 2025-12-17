@@ -1,6 +1,9 @@
-import React from 'react';
+import { useContent } from '../context/ContentContext';
 
 const ConnectSection: React.FC = () => {
+    const { content } = useContent();
+    const config = content.connect;
+
     const connections = [
         {
             title: 'As an Employee',
@@ -23,13 +26,21 @@ const ConnectSection: React.FC = () => {
     ];
 
     return (
-        <section id="contact" className="section-padding pt-0 md:pt-0 bg-white">
-            <div className="max-w-[1400px] mx-auto px-6">
+        <section
+            id="contact"
+            className="section-padding pt-0 md:pt-0 bg-white bg-cover bg-center relative"
+            style={config.backgroundImage ? { backgroundImage: `url(${config.backgroundImage})` } : {}}
+        >
+            {/* Optional Overlay if background is present */}
+            {config.backgroundImage && <div className="absolute inset-0 bg-white/90"></div>}
+
+            <div className="max-w-[1400px] mx-auto px-6 relative z-10 pt-12 md:pt-20">
                 {/* Section Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-[#1C1C1C] uppercase tracking-wide">
-                        Connect With Us
+                        {config.title}
                     </h2>
+                    <p className="text-gray-500 mt-4 text-lg">{config.subtitle}</p>
                 </div>
 
                 {/* Cards Grid */}

@@ -23,6 +23,21 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
         };
     }, [isOpen]);
 
+    const [formData, setFormData] = useState({
+        name: '',
+        mobile: '',
+        email: ''
+    });
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const { name, mobile, email } = formData;
+        const message = `New Enquiry:%0A%0AName: ${name}%0AMobile: ${mobile}%0AEmail: ${email}`;
+        const whatsappUrl = `https://wa.me/917021983877?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+        onClose();
+    };
+
     if (!isVisible && !isOpen) return null;
 
     return (
@@ -84,13 +99,16 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
                         <p className="text-gray-500 text-sm">Fill the form below and our experts will contact you shortly.</p>
                     </div>
 
-                    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-5" onSubmit={handleSubmit}>
                         <div className="relative group">
                             <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#1A71B7] transition-colors" size={20} />
                             <input
                                 type="text"
                                 placeholder="Full Name"
                                 className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:border-[#1A71B7] focus:ring-1 focus:ring-[#1A71B7] transition-all"
+                                value={formData.name}
+                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                required
                             />
                         </div>
 
@@ -103,6 +121,9 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
                                 type="tel"
                                 placeholder="Mobile Number"
                                 className="w-full pl-16 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:border-[#1A71B7] focus:ring-1 focus:ring-[#1A71B7] transition-all"
+                                value={formData.mobile}
+                                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                                required
                             />
                         </div>
 
@@ -112,6 +133,8 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
                                 type="email"
                                 placeholder="Email Address (Optional)"
                                 className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:border-[#1A71B7] focus:ring-1 focus:ring-[#1A71B7] transition-all"
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
                         </div>
 

@@ -1,40 +1,19 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 const JourneySection: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-    const photos = [
-        {
-            id: 1,
-            src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=1200&fit=crop',
-            year: '2015',
-            title: 'Inception',
-            description: 'The vision was born with our first acquisition.'
-        },
-        {
-            id: 2,
-            src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
-            year: '2018',
-            title: 'Breaking Ground',
-            description: 'Laying the foundation for a new community standard.'
-        },
-        {
-            id: 3,
-            src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=1000&fit=crop',
-            year: '2021',
-            title: 'Expansion',
-            description: 'Growing our footprint and influence across the region.'
-        },
-        {
-            id: 4,
-            src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
-            year: '2024',
-            title: 'Modern Living',
-            description: 'Delivering world-class amenities to 500+ families.'
-        }
-    ];
+    const { content } = useContent();
+    const photos = content.journey.map(item => ({
+        id: item.id,
+        src: item.image,
+        year: item.year,
+        title: item.title,
+        description: item.description
+    }));
 
     const scroll = (direction: 'left' | 'right') => {
         setIsAutoPlaying(false); // Stop autoplay on user interaction

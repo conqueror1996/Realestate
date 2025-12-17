@@ -1,26 +1,15 @@
 import React from 'react';
 
+import { useContent } from '../context/ContentContext';
+
 const BlogsSection: React.FC = () => {
-    const articles = [
-        {
-            category: 'Navi Mumbai',
-            title: 'Phase 2 Launch: Northern Crown',
-            description: 'Experience the grand unveiling of our premium villa plots in the heart of the growth corridor.',
-            image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop'
-        },
-        {
-            category: 'Bangalore',
-            title: 'Sustainability Summit 2024',
-            description: 'Future Group awarded "Best Eco-Friendly Developer" for our massive green initiatives.',
-            image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=600&fit=crop'
-        },
-        {
-            category: 'Hyderabad',
-            title: 'Community Weekend Carnival',
-            description: 'A vibrant weekend of food, music, and joy for over 500 happy families at Blue Breeze.',
-            image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop'
-        }
-    ];
+    const { content } = useContent();
+    const articles = content.news.map(item => ({
+        category: item.date, // Using Date as Category/Subtext for now as per design mismatch
+        title: item.title,
+        description: item.excerpt,
+        image: item.image
+    }));
 
     return (
         <section className="section-padding bg-white relative overflow-hidden">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Youtube, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
     return (
@@ -74,9 +75,16 @@ const Footer: React.FC = () => {
                     <div className="md:col-span-4 lg:col-span-3">
                         <h4 className="text-lg font-bold uppercase tracking-wider mb-6 text-white">Links</h4>
                         <ul className="space-y-4">
-                            {['Home', 'Projects', 'News', 'Careers'].map((link) => (
-                                <li key={link}>
-                                    <a href="#" className="text-white/80 hover:text-white text-sm transition-colors">{link}</a>
+                            {[
+                                { label: 'Home', path: '/' },
+                                { label: 'Projects', path: '/projects' },
+                                { label: 'News', path: '#' },
+                                { label: 'Careers', path: '#' }
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <Link to={link.path} className="text-white/80 hover:text-white text-sm transition-colors">
+                                        {link.label}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

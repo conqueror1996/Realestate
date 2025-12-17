@@ -5,11 +5,35 @@ import Footer from '../components/Footer';
 import FloatingButtons from '../components/FloatingButtons';
 import EnquiryModal from '../components/EnquiryModal';
 import { MapPin, CheckCircle2, Download, Phone, Car, School, Hospital, ShoppingBag } from 'lucide-react';
+import { useProjects } from '../context/ProjectContext';
 
 const ProjectDetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('overview');
+
+    // Hero Form State
+    const [heroForm, setHeroForm] = useState({ name: '', mobile: '' });
+    // Sidebar Form State
+    const [sidebarForm, setSidebarForm] = useState({ name: '', mobile: '', email: '' });
+
+    const handleHeroSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const { name, mobile } = heroForm;
+        const message = `New Enquiry (Hero):%0A%0AName: ${name}%0AMobile: ${mobile}`;
+        const whatsappUrl = `https://wa.me/917021983877?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+        setHeroForm({ name: '', mobile: '' });
+    };
+
+    const handleSidebarSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const { name, mobile, email } = sidebarForm;
+        const message = `New Enquiry (Sidebar):%0A%0AName: ${name}%0AMobile: ${mobile}%0AEmail: ${email}`;
+        const whatsappUrl = `https://wa.me/917021983877?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+        setSidebarForm({ name: '', mobile: '', email: '' });
+    };
 
     useEffect(() => {
         // Show popup after 5 seconds
@@ -19,49 +43,38 @@ const ProjectDetailPage: React.FC = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    // Mock data based on the route ID - in a real app this would be a fetch
-    // Defaulting to "Northern Crown" data for demo purposes since that was the user's reference
+    const { projects } = useProjects();
+
+    // Find project by ID
+    const projectData = projects.find(p => p.id.toString() === id);
+
+    if (!projectData) {
+        return <div className="p-20 text-center text-xl">Project not found</div>;
+    }
+
+    // Adapt the context data to the component's expected format (specifically icons)
     const project = {
-        title: "Northern Crown",
-        location: "Puzhal, Chennai",
-        type: "Premium Residential Plots",
-        price: "₹45L Onwards",
-        status: "RERA Approved | Ready to Construct",
-        reraId: "TN/02/Layout/0123/2024",
-        heroImage: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1600&h=800&fit=crop",
-        description: "Experience the royal life at Northern Crown. Located in the rapidly expanding corridor of Puzhal, this project offers the perfect blend of connectivity and serenity. With 100+ amenities and world-class infrastructure, it is the ideal place to build your dream home.",
-        highlights: [
-            "2 Minutes from Puzhal Junction",
-            "500+ Premium Villa Plots",
-            "24x7 CCTV Surveillance",
-            "Blacktop Roads & Street Lights",
-            "5 Years Free Maintenance"
-        ],
-        configurations: [
-            { type: "Villa Plot", size: "600 Sq.ft", price: "₹45 Lakhs" },
-            { type: "Villa Plot", size: "1200 Sq.ft", price: "₹90 Lakhs" },
-            { type: "Villa Plot", size: "2400 Sq.ft", price: "₹1.80 Cr" },
-        ],
-        amenities: [
-            { icon: CheckCircle2, label: "Gated Community" },
-            { icon: CheckCircle2, label: "Kids Play Area" },
-            { icon: CheckCircle2, label: "Landscaped Gardens" },
-            { icon: CheckCircle2, label: "Jogging Track" },
-            { icon: CheckCircle2, label: "Outdoor Gym" },
-            { icon: CheckCircle2, label: "Yoga Deck" },
-        ],
-        locationAdvantages: [
-            { icon: School, title: "Schools", items: ["Velammal Global School (5 min)", "Don Bosco (10 min)"] },
-            { icon: Hospital, title: "Hospitals", items: ["Apollo Hospitals (15 min)", "Kauvery Hospital (12 min)"] },
-            { icon: Car, title: "Connectivity", items: ["Puzhal Metro (2 min)", "Chennai Bypass (5 min)"] },
-            { icon: ShoppingBag, title: "Entertainment", items: ["VR Mall (20 min)", "Spectrum Mall (15 min)"] }
-        ],
-        images: [
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop"
-        ]
+        ...projectData,
+        // Ensure arrays exist
+        highlights: projectData.highlights || [],
+        configurations: projectData.configurations || [],
+        amenities: (projectData.amenities || []).map(a => ({
+            icon: CheckCircle2,
+            label: a.label
+        })),
+        locationAdvantages: (projectData.locationAdvantages || []).map(adv => {
+            let Icon = MapPin;
+            if (adv.title.toLowerCase().includes('school')) Icon = School;
+            if (adv.title.toLowerCase().includes('hospital')) Icon = Hospital;
+            if (adv.title.toLowerCase().includes('connect')) Icon = Car;
+            if (adv.title.toLowerCase().includes('entertain')) Icon = ShoppingBag;
+            return {
+                icon: Icon,
+                title: adv.title,
+                items: adv.items
+            };
+        }),
+        images: projectData.galleryImages || []
     };
 
     const scrollToSection = (id: string) => {
@@ -110,9 +123,23 @@ const ProjectDetailPage: React.FC = () => {
                     <div className="bg-white p-6 rounded-lg shadow-2xl w-full md:w-[360px] hidden md:block border-t-4 border-[#1A71B7]">
                         <h3 className="text-xl font-bold text-[#1C1C1C] mb-2 uppercase">Interested?</h3>
                         <p className="text-sm text-gray-500 mb-6">Download the brochure & get price sheet.</p>
-                        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setIsModalOpen(true); }}>
-                            <input type="text" placeholder="Name" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-sm focus:outline-none focus:border-[#1A71B7]" />
-                            <input type="text" placeholder="Mobile Number" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-sm focus:outline-none focus:border-[#1A71B7]" />
+                        <form className="space-y-4" onSubmit={handleHeroSubmit}>
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-sm focus:outline-none focus:border-[#1A71B7]"
+                                value={heroForm.name}
+                                onChange={(e) => setHeroForm({ ...heroForm, name: e.target.value })}
+                                required
+                            />
+                            <input
+                                type="tel"
+                                placeholder="Mobile Number"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-sm focus:outline-none focus:border-[#1A71B7]"
+                                value={heroForm.mobile}
+                                onChange={(e) => setHeroForm({ ...heroForm, mobile: e.target.value })}
+                                required
+                            />
                             <button type="submit" className="w-full bg-[#1A71B7] text-white font-bold py-3 rounded hover:bg-[#155a93] transition-colors uppercase tracking-wider text-sm shadow-lg">
                                 Download Brochure
                             </button>
@@ -275,10 +302,30 @@ const ProjectDetailPage: React.FC = () => {
                         <div className="bg-[#1C1C1C] text-white p-8 rounded-lg shadow-2xl">
                             <h3 className="text-2xl font-bold mb-2 text-center uppercase">Get Best Quote</h3>
                             <p className="text-gray-400 text-center text-sm mb-6">Fill the form to get exclusive offers.</p>
-                            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setIsModalOpen(true); }}>
-                                <input type="text" placeholder="Name" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:border-[#1A71B7] placeholder:text-gray-500" />
-                                <input type="text" placeholder="Mobile Number" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:border-[#1A71B7] placeholder:text-gray-500" />
-                                <input type="email" placeholder="Email ID" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:border-[#1A71B7] placeholder:text-gray-500" />
+                            <form className="space-y-4" onSubmit={handleSidebarSubmit}>
+                                <input
+                                    type="text"
+                                    placeholder="Name"
+                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:border-[#1A71B7] placeholder:text-gray-500"
+                                    value={sidebarForm.name}
+                                    onChange={(e) => setSidebarForm({ ...sidebarForm, name: e.target.value })}
+                                    required
+                                />
+                                <input
+                                    type="tel"
+                                    placeholder="Mobile Number"
+                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:border-[#1A71B7] placeholder:text-gray-500"
+                                    value={sidebarForm.mobile}
+                                    onChange={(e) => setSidebarForm({ ...sidebarForm, mobile: e.target.value })}
+                                    required
+                                />
+                                <input
+                                    type="email"
+                                    placeholder="Email ID"
+                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:border-[#1A71B7] placeholder:text-gray-500"
+                                    value={sidebarForm.email}
+                                    onChange={(e) => setSidebarForm({ ...sidebarForm, email: e.target.value })}
+                                />
                                 <button type="submit" className="w-full bg-[#1A71B7] text-white font-bold py-3 rounded hover:bg-[#155a93] transition-colors uppercase tracking-wider text-sm">
                                     Get Callback
                                 </button>
