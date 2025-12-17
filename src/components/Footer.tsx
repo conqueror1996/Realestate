@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Linkedin, Youtube, ArrowUp, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
     return (
@@ -11,15 +11,13 @@ const Footer: React.FC = () => {
                     {/* Logo Placeholder */}
                     <div className="mb-6 md:mb-0">
                         {/* Assuming existing logo or text if not available */}
+                        {/* Logo */}
                         <div className="flex items-center gap-2">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Logo" className="h-8 brightness-0 invert opacity-0 w-0" /> {/* Hidden hack or just use text if no real logo file provided in prompt yet, sticking to text/generic or keeping previous logo code if valid? User said "same copy everything". Previous logo was /future_group_logo.png. Let's keep a generic placeholder or previous one. */}
-                            {/* Reverting to a simple text/icon for safety or previous img tag if it worked */}
-                            <div className="text-3xl font-bold tracking-tighter flex items-center gap-2">
-                                <div className="w-8 h-8 border-2 border-white flex items-center justify-center rounded-sm">
-                                    <ArrowUp className="rotate-45" size={20} strokeWidth={3} />
-                                </div>
-                                <span>FUTURE GROUP</span>
-                            </div>
+                            <img
+                                src="/footer-logo.png"
+                                alt="Future Group"
+                                className="h-12 w-auto object-contain brightness-0 invert"
+                            />
                         </div>
                     </div>
 

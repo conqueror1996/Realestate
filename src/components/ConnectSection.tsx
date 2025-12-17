@@ -18,12 +18,12 @@ const ConnectSection: React.FC = () => {
             title: 'As a Customer',
             description: 'Unlock the gateway to unparalleled living with G Square. Discover meticulously crafted properties, innovative design, and a commitment to excellence.',
             buttonText: 'Enquire Now',
-            image: 'https://images.unsplash.com/photo-1556761175-4b46a891163e?auto=format&fit=crop&q=80&w=800'
+            image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800'
         }
     ];
 
     return (
-        <section className="section-padding pt-0 md:pt-0 bg-white">
+        <section id="contact" className="section-padding pt-0 md:pt-0 bg-white">
             <div className="max-w-[1400px] mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-16">

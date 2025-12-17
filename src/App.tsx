@@ -16,6 +16,8 @@ import FloatingButtons from './components/FloatingButtons';
 import EnquiryModal from './components/EnquiryModal';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import ProjectsPage from './pages/ProjectsPage';
+import AboutUsPage from './pages/AboutUsPage';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,6 +54,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<WebsiteLayout />} />
+      <Route path="/projects" element={<ProjectsPage />} />
+      <Route path="/projects/:city" element={<ProjectsPage />} />
+      <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/admin" element={<Dashboard />} />
     </Routes>
   );

@@ -8,21 +8,27 @@ const Navbar: React.FC = () => {
     const navGroups = [
         {
             title: 'Projects',
-            items: ['Residential Plots', 'Villa Communities', 'Commercial', 'Industrial']
+            items: ['Mumbai', 'Navi Mumbai', 'Mumbai 3.0']
         },
         {
-            title: 'Why G Square',
-            items: ['About Us', "Founder's Note", 'Clear Titles Promise', 'Customer Stories']
+            title: 'About Us',
+            items: []
         },
-        {
-            title: 'Resources',
-            items: ['Blogs', 'NRI Corner', 'The Edit']
-        },
+
         {
             title: 'Contact',
-            items: ['Enquire Now', 'Schedule Visit', 'Office Locations']
+            items: []
         }
     ];
+
+    const getLink = (groupTitle: string, item: string) => {
+        if (groupTitle === 'Projects') {
+            const slug = item.toLowerCase().replace(' ', '_').replace('.', '_');
+            return `/projects/${slug}`;
+        }
+        if (item === 'About Us') return '/about-us';
+        return '#';
+    };
 
     return (
         <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -48,25 +54,42 @@ const Navbar: React.FC = () => {
                                 onMouseEnter={() => setActiveDropdown(group.title)}
                                 onMouseLeave={() => setActiveDropdown(null)}
                             >
-                                <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#1A71B7] transition-colors py-8 tracking-wide uppercase">
+                                <button
+                                    className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#1A71B7] transition-colors py-8 tracking-wide uppercase"
+                                    onClick={() => {
+                                        if (group.title === 'About Us') {
+                                            window.location.href = '/about-us';
+                                        }
+                                        if (group.title === 'Contact') {
+                                            const contactSection = document.getElementById('contact');
+                                            if (contactSection) {
+                                                contactSection.scrollIntoView({ behavior: 'smooth' });
+                                            }
+                                        }
+                                    }}
+                                >
                                     {group.title}
-                                    <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === group.title ? 'rotate-180' : ''}`} />
+                                    {group.items.length > 0 && (
+                                        <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === group.title ? 'rotate-180' : ''}`} />
+                                    )}
                                 </button>
 
                                 {/* Dropdown Menu */}
-                                <div className={`absolute top-full left-0 w-64 bg-white shadow-xl border-t-2 border-[#1A71B7] rounded-none overflow-hidden transition-all duration-300 transform origin-top ${activeDropdown === group.title ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
-                                    <div className="py-2">
-                                        {group.items.map((item) => (
-                                            <a
-                                                key={item}
-                                                href="#"
-                                                className="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1A71B7] transition-colors"
-                                            >
-                                                {item}
-                                            </a>
-                                        ))}
+                                {group.items.length > 0 && (
+                                    <div className={`absolute top-full left-0 w-64 bg-white shadow-xl border-t-2 border-[#1A71B7] rounded-none overflow-hidden transition-all duration-300 transform origin-top ${activeDropdown === group.title ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                                        <div className="py-2">
+                                            {group.items.map((item) => (
+                                                <a
+                                                    key={item}
+                                                    href={getLink(group.title, item)}
+                                                    className="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1A71B7] transition-colors"
+                                                >
+                                                    {item}
+                                                </a>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -116,20 +139,41 @@ const Navbar: React.FC = () => {
                     <div className="space-y-6">
                         {navGroups.map((group) => (
                             <div key={group.title}>
-                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">
-                                    {group.title}
-                                </h4>
-                                <div className="space-y-2">
-                                    {group.items.map((item) => (
-                                        <a
-                                            key={item}
-                                            href="#"
-                                            className="block py-2 text-gray-800 hover:text-[#1A71B7] text-sm font-medium"
-                                        >
-                                            {item}
-                                        </a>
-                                    ))}
-                                </div>
+                                {group.items.length > 0 ? (
+                                    <>
+                                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">
+                                            {group.title}
+                                        </h4>
+                                        <div className="space-y-2">
+                                            {group.items.map((item) => (
+                                                <a
+                                                    key={item}
+                                                    href={getLink(group.title, item)}
+                                                    className="block py-2 text-gray-800 hover:text-[#1A71B7] text-sm font-medium"
+                                                >
+                                                    {item}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            if (group.title === 'About Us') {
+                                                window.location.href = '/about-us';
+                                            } else if (group.title === 'Contact') {
+                                                setIsOpen(false);
+                                                const contactSection = document.getElementById('contact');
+                                                if (contactSection) {
+                                                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }
+                                        }}
+                                        className="block text-xs font-bold text-gray-800 uppercase tracking-widest mb-3 border-b border-gray-100 pb-2 hover:text-[#1A71B7] w-full text-left"
+                                    >
+                                        {group.title}
+                                    </button>
+                                )}
                             </div>
                         ))}
                     </div>
