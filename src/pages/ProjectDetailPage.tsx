@@ -9,6 +9,7 @@ import { useProjects } from '../context/ProjectContext';
 
 const ProjectDetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    if (!id) return <div className="p-20 text-center text-xl">Invalid Project ID</div>;
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('overview');
 
