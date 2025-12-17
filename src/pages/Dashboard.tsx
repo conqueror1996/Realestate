@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2 } from 'lucide-react';
+import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2, Info } from 'lucide-react';
 import { useProjects, type Project } from '../context/ProjectContext';
 import { useContent } from '../context/ContentContext';
 
@@ -20,7 +20,9 @@ const Dashboard: React.FC = () => {
         { id: 'brochures', label: 'Brochures', icon: FileText },
         { id: 'leadership', label: 'Leadership', icon: UserCheck },
         { id: 'news', label: 'News & Updates', icon: Newspaper },
+        { id: 'news', label: 'News & Updates', icon: Newspaper },
         { id: 'connect', label: 'Connect Section', icon: LinkIcon },
+        { id: 'about', label: 'About Us', icon: Info },
     ];
 
     // --- Project Handlers ---
@@ -163,6 +165,158 @@ const Dashboard: React.FC = () => {
                     value={content.connect.backgroundImage}
                     onChange={val => updateSection('connect', { ...content.connect, backgroundImage: val })}
                 />
+            </div>
+        </div>
+    );
+
+    const renderAboutUs = () => (
+        <div className="space-y-6 max-w-4xl">
+            {/* Hero Section */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Hero Section</h3>
+                <div className="space-y-4">
+                    <textarea
+                        className="w-full p-2 border rounded"
+                        placeholder="Hero Title"
+                        rows={2}
+                        value={content.aboutUs.heroTitle}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, heroTitle: e.target.value })}
+                    />
+                    <textarea
+                        className="w-full p-2 border rounded"
+                        placeholder="Hero Subtitle"
+                        rows={3}
+                        value={content.aboutUs.heroSubtitle}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, heroSubtitle: e.target.value })}
+                    />
+                    <ImageUpload
+                        label="Hero Background Image"
+                        value={content.aboutUs.heroImage}
+                        onChange={val => updateSection('aboutUs', { ...content.aboutUs, heroImage: val })}
+                    />
+                </div>
+            </div>
+
+            {/* Our Story */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Our Story</h3>
+                <div className="space-y-4">
+                    <input
+                        className="w-full p-2 border rounded font-bold"
+                        placeholder="Story Title"
+                        value={content.aboutUs.storyTitle}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, storyTitle: e.target.value })}
+                    />
+                    <textarea
+                        className="w-full p-2 border rounded"
+                        placeholder="Story Description"
+                        rows={6}
+                        value={content.aboutUs.storyDescription}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, storyDescription: e.target.value })}
+                    />
+                    <input
+                        className="w-full p-2 border rounded"
+                        placeholder="Years of Experience (e.g. 10+)"
+                        value={content.aboutUs.yearsOfExperience}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, yearsOfExperience: e.target.value })}
+                    />
+                    <ImageUpload
+                        label="Story Image"
+                        value={content.aboutUs.storyImage}
+                        onChange={val => updateSection('aboutUs', { ...content.aboutUs, storyImage: val })}
+                    />
+                </div>
+            </div>
+
+            {/* Stats */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Key Stats</h3>
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="text-xs font-bold text-gray-500 uppercase">Projects</label>
+                        <input
+                            className="w-full p-2 border rounded"
+                            value={content.aboutUs.stats.projects}
+                            onChange={e => updateSection('aboutUs', { ...content.aboutUs, stats: { ...content.aboutUs.stats, projects: e.target.value } })}
+                        />
+                    </div>
+                    <div>
+                        <label className="text-xs font-bold text-gray-500 uppercase">Sq. Ft Developed</label>
+                        <input
+                            className="w-full p-2 border rounded"
+                            value={content.aboutUs.stats.sqft}
+                            onChange={e => updateSection('aboutUs', { ...content.aboutUs, stats: { ...content.aboutUs.stats, sqft: e.target.value } })}
+                        />
+                    </div>
+                    <div>
+                        <label className="text-xs font-bold text-gray-500 uppercase">Happy Families</label>
+                        <input
+                            className="w-full p-2 border rounded"
+                            value={content.aboutUs.stats.families}
+                            onChange={e => updateSection('aboutUs', { ...content.aboutUs, stats: { ...content.aboutUs.stats, families: e.target.value } })}
+                        />
+                    </div>
+                    <div>
+                        <label className="text-xs font-bold text-gray-500 uppercase">Legal Clarity</label>
+                        <input
+                            className="w-full p-2 border rounded"
+                            value={content.aboutUs.stats.clarity}
+                            onChange={e => updateSection('aboutUs', { ...content.aboutUs, stats: { ...content.aboutUs.stats, clarity: e.target.value } })}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* Founder Note */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Founder's Note</h3>
+                <div className="space-y-4">
+                    <textarea
+                        className="w-full p-2 border rounded"
+                        placeholder="Message"
+                        rows={4}
+                        value={content.aboutUs.founderMessage}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, founderMessage: e.target.value })}
+                    />
+                    <input
+                        className="w-full p-2 border rounded"
+                        placeholder="Author Name / Title"
+                        value={content.aboutUs.founderName}
+                        onChange={e => updateSection('aboutUs', { ...content.aboutUs, founderName: e.target.value })}
+                    />
+                </div>
+            </div>
+
+            {/* Core Values */}
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Core Values</h3>
+                <div className="space-y-4">
+                    {content.aboutUs.values.map((val, idx) => (
+                        <div key={idx} className="border p-4 rounded bg-gray-50">
+                            <input
+                                className="w-full p-2 border rounded mb-2 font-bold"
+                                placeholder="Value Title"
+                                value={val.title}
+                                onChange={e => {
+                                    const newValues = [...content.aboutUs.values];
+                                    newValues[idx].title = e.target.value;
+                                    updateSection('aboutUs', { ...content.aboutUs, values: newValues });
+                                }}
+                            />
+                            <textarea
+                                className="w-full p-2 border rounded"
+                                placeholder="Value Description"
+                                rows={2}
+                                value={val.desc}
+                                onChange={e => {
+                                    const newValues = [...content.aboutUs.values];
+                                    newValues[idx].desc = e.target.value;
+                                    updateSection('aboutUs', { ...content.aboutUs, values: newValues });
+                                }}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
@@ -310,6 +464,7 @@ const Dashboard: React.FC = () => {
 
                 {activeTab === 'leadership' && renderLeadership()}
                 {activeTab === 'connect' && renderConnect()}
+                {activeTab === 'about' && renderAboutUs()}
 
                 {activeTab === 'journey' && renderListEditor(
                     'Journey Milestones',

@@ -3,8 +3,12 @@ import TopBar from '../components/TopBar';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Award, Users, Target, ShieldCheck } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 const AboutUsPage: React.FC = () => {
+    const { content } = useContent();
+    const { aboutUs } = content;
+
     return (
         <div className="font-sans antialiased text-text-gray bg-white">
             <TopBar />
@@ -12,15 +16,14 @@ const AboutUsPage: React.FC = () => {
 
             {/* Hero Section */}
             <div className="relative h-[60vh] min-h-[500px] flex items-center justify-center text-center overflow-hidden">
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')" }}></div>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${aboutUs.heroImage}')` }}></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
                 <div className="relative z-10 max-w-4xl mx-auto px-6">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-wider drop-shadow-lg">
-                        Building Legacies, <br />
-                        <span className="text-[#1A71B7] bg-white px-2 mt-2 inline-block rounded-sm">Fulfilling Dreams</span>
+                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-wider drop-shadow-lg whitespace-pre-line">
+                        {aboutUs.heroTitle}
                     </h1>
                     <p className="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
-                        We are India's most trusted real estate partner, dedicated to delivering premium living spaces and high-value land investments.
+                        {aboutUs.heroSubtitle}
                     </p>
                 </div>
             </div>
@@ -32,26 +35,23 @@ const AboutUsPage: React.FC = () => {
                         <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#1A71B7]/10 rounded-full z-0"></div>
                         <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#e31e24]/5 rounded-full z-0"></div>
                         <img
-                            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+                            src={aboutUs.storyImage}
                             alt="Team meeting"
                             className="relative z-10 rounded-lg shadow-2xl w-full h-auto object-cover"
                         />
                         <div className="absolute -bottom-8 -left-8 bg-white p-6 shadow-xl rounded-lg border-l-4 border-[#1A71B7] z-20 hidden md:block">
-                            <p className="text-4xl font-bold text-[#1A71B7] mb-1">10+</p>
+                            <p className="text-4xl font-bold text-[#1A71B7] mb-1">{aboutUs.yearsOfExperience}</p>
                             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Years of Excellence</p>
                         </div>
                     </div>
                     <div>
                         <h4 className="text-[#1A71B7] font-bold uppercase tracking-widest text-sm mb-4">Who We Are</h4>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#1C1C1C] mb-6 leading-tight">
-                            Pioneering the Future of <br /> Real Estate Development
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#1C1C1C] mb-6 leading-tight whitespace-pre-line">
+                            {aboutUs.storyTitle}
                         </h2>
-                        <p className="text-gray-600 mb-6 leading-relaxed">
-                            Established with a vision to redefine the real estate landscape, Future Group has grown to become a symbol of trust and transparency. We specialize in identifying high-growth land corridors and creating villa communities that offer both lifestyle upgrades and exceptional appreciation.
-                        </p>
-                        <p className="text-gray-600 mb-8 leading-relaxed">
-                            Our journey is defined by a relentless pursuit of quality, adherence to strict legal standards, and a customer-centric approach that puts your peace of mind first.
-                        </p>
+                        <div className="text-gray-600 mb-6 leading-relaxed whitespace-pre-line">
+                            {aboutUs.storyDescription}
+                        </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             <div className="flex items-start gap-3">
@@ -78,19 +78,19 @@ const AboutUsPage: React.FC = () => {
                 <div className="max-w-[1400px] mx-auto px-6">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20">
                         <div className="p-4">
-                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">50+</h3>
+                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">{aboutUs.stats.projects}</h3>
                             <p className="text-sm uppercase tracking-widest opacity-80">Projects Completed</p>
                         </div>
                         <div className="p-4">
-                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">20M</h3>
+                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">{aboutUs.stats.sqft}</h3>
                             <p className="text-sm uppercase tracking-widest opacity-80">Sq.ft Developed</p>
                         </div>
                         <div className="p-4">
-                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">5K+</h3>
+                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">{aboutUs.stats.families}</h3>
                             <p className="text-sm uppercase tracking-widest opacity-80">Happy Families</p>
                         </div>
                         <div className="p-4">
-                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">100%</h3>
+                            <h3 className="text-4xl md:text-5xl font-extrabold mb-2">{aboutUs.stats.clarity}</h3>
                             <p className="text-sm uppercase tracking-widest opacity-80">Legal Clarity</p>
                         </div>
                     </div>
@@ -106,45 +106,32 @@ const AboutUsPage: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                icon: ShieldCheck,
-                                title: "Integrity & Transparency",
-                                desc: "We believe in complete transparency. Every document, every title, every promise is verified and clear. No hidden clauses, just trust."
-                            },
-                            {
-                                icon: Target,
-                                title: "Strategic Locations",
-                                desc: "We don't just pick land; we pick potential. Our projects are located in high-growth corridors ensuring maximum appreciation for your investment."
-                            },
-                            {
-                                icon: Users,
-                                title: "Customer Centricity",
-                                desc: "You are at the heart of everything we do. From post-sale support to community management, we walk the extra mile for you."
-                            }
-                        ].map((item, idx) => (
-                            <div key={idx} className="bg-white p-8 rounded-lg shadow-lg border-b-4 border-transparent hover:border-[#1A71B7] transition-all duration-300 group">
-                                <div className="w-16 h-16 bg-[#1A71B7]/10 text-[#1A71B7] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1A71B7] group-hover:text-white transition-colors duration-300">
-                                    <item.icon size={32} />
+                        {aboutUs.values.map((item, idx) => {
+                            const Icon = [ShieldCheck, Target, Users][idx] || ShieldCheck;
+                            return (
+                                <div key={idx} className="bg-white p-8 rounded-lg shadow-lg border-b-4 border-transparent hover:border-[#1A71B7] transition-all duration-300 group">
+                                    <div className="w-16 h-16 bg-[#1A71B7]/10 text-[#1A71B7] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1A71B7] group-hover:text-white transition-colors duration-300">
+                                        <Icon size={32} />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-[#1C1C1C] mb-4">{item.title}</h3>
+                                    <p className="text-gray-600 leading-relaxed text-sm">
+                                        {item.desc}
+                                    </p>
                                 </div>
-                                <h3 className="text-xl font-bold text-[#1C1C1C] mb-4">{item.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-sm">
-                                    {item.desc}
-                                </p>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
-            {/* Founder Note (Reuse or simple version) */}
+            {/* Founder Note */}
             <section className="py-20 px-6 max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-bold text-[#1C1C1C] mb-8">A Note from Our Founder</h2>
-                <blockquote className="text-xl md:text-2xl text-gray-600 italic font-serif leading-relaxed mb-8">
-                    "Our mission is simple: to make land investment accessible, secure, and profitable for every Indian. We are building not just communities, but the foundation for your future wealth."
+                <blockquote className="text-xl md:text-2xl text-gray-600 italic font-serif leading-relaxed mb-8 whitespace-pre-line">
+                    "{aboutUs.founderMessage}"
                 </blockquote>
                 <cite className="not-italic font-bold text-[#1A71B7] uppercase tracking-wider block">
-                    - Chairman, Future Group
+                    - {aboutUs.founderName}
                 </cite>
             </section>
 
