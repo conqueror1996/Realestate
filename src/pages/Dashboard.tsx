@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2, Info, Save } from 'lucide-react';
 import { useProjects, type Project } from '../context/ProjectContext';
 import { useContent } from '../context/ContentContext';
+import AuthWrapper from '../components/AuthWrapper';
 
 const Dashboard: React.FC = () => {
     const [activeTab, setActiveTab] = useState('projects');
@@ -592,4 +593,12 @@ const Dashboard: React.FC = () => {
     );
 };
 
-export default Dashboard;
+const ProtectedDashboard: React.FC = () => {
+    return (
+        <AuthWrapper>
+            <Dashboard />
+        </AuthWrapper>
+    );
+};
+
+export default ProtectedDashboard;
