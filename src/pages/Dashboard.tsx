@@ -3,6 +3,7 @@ import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserChe
 import { useProjects, type Project } from '../context/ProjectContext';
 import { useContent } from '../context/ContentContext';
 import AuthWrapper from '../components/AuthWrapper';
+import PasswordSettings from '../components/PasswordSettings';
 
 const Dashboard: React.FC = () => {
     const [activeTab, setActiveTab] = useState('projects');
@@ -24,6 +25,7 @@ const Dashboard: React.FC = () => {
         { id: 'news', label: 'News & Updates', icon: Newspaper },
         { id: 'connect', label: 'Connect Section', icon: LinkIcon },
         { id: 'about', label: 'About Us', icon: Info },
+        { id: 'settings', label: 'Password Settings', icon: Settings },
     ];
 
     // --- Project Handlers ---
@@ -489,6 +491,8 @@ const Dashboard: React.FC = () => {
                 {activeTab === 'leadership' && renderLeadership()}
                 {activeTab === 'connect' && renderConnect()}
                 {activeTab === 'about' && renderAboutUs()}
+                {activeTab === 'settings' && <PasswordSettings />}
+
 
                 {activeTab === 'journey' && renderListEditor(
                     'Journey Milestones',

@@ -20,18 +20,31 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
         setIsLoading(false);
     }, []);
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError('');
 
-        // Change this password to your desired admin password
-        const ADMIN_PASSWORD = 'admin@2025'; // ⚠️ CHANGE THIS!
+        try {
+            const response = await fetch('/api/verify-password.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ password }),
+            });
 
-        if (password === ADMIN_PASSWORD) {
-            setIsAuthenticated(true);
-            sessionStorage.setItem('admin_auth', 'authenticated');
-            setError('');
-        } else {
-            setError('Incorrect password. Please try again.');
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                setIsAuthenticated(true);
+                sessionStorage.setItem('admin_auth', 'authenticated');
+                setPassword('');
+            } else {
+                setError('Incorrect password. Please try again.');
+                setPassword('');
+            }
+        } catch (error) {
+            setError('Login failed. Please try again.');
             setPassword('');
         }
     };
