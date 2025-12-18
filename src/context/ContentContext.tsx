@@ -135,7 +135,8 @@ interface ContentContextType {
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
-const API_URL = import.meta.env.PROD ? '/api/content' : 'http://localhost:3000/api/content';
+// Use PHP API for Hostinger deployment
+const API_URL = import.meta.env.PROD ? '/api/content.php' : 'http://localhost:8000/api/content.php';
 
 export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [content, setContent] = useState<SiteContent>(INITIAL_CONTENT);
