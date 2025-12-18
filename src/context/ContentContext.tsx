@@ -129,19 +129,64 @@ const INITIAL_CONTENT: SiteContent = {
 interface ContentContextType {
     content: SiteContent;
     updateSection: <K extends keyof SiteContent>(section: K, data: SiteContent[K]) => void;
+    isLoading: boolean;
+    saveContent: () => Promise<void>;
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
+const API_URL = import.meta.env.PROD ? '/api/content' : 'http://localhost:3000/api/content';
+
 export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [content, setContent] = useState<SiteContent>(INITIAL_CONTENT);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Load content from API on mount
+    React.useEffect(() => {
+        const loadContent = async () => {
+            try {
+                const response = await fetch(API_URL);
+                if (response.ok) {
+                    const data = await response.json();
+                    setContent(data);
+                }
+            } catch (error) {
+                console.error('Failed to load content:', error);
+                // Fall back to initial content
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        loadContent();
+    }, []);
 
     const updateSection = <K extends keyof SiteContent>(section: K, data: SiteContent[K]) => {
         setContent(prev => ({ ...prev, [section]: data }));
     };
 
+    const saveContent = async () => {
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(content),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save content');
+            }
+
+            return Promise.resolve();
+        } catch (error) {
+            console.error('Failed to save content:', error);
+            return Promise.reject(error);
+        }
+    };
+
     return (
-        <ContentContext.Provider value={{ content, updateSection }}>
+        <ContentContext.Provider value={{ content, updateSection, isLoading, saveContent }}>
             {children}
         </ContentContext.Provider>
     );

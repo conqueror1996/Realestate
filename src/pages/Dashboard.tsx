@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2, Info } from 'lucide-react';
+import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2, Info, Save } from 'lucide-react';
 import { useProjects, type Project } from '../context/ProjectContext';
 import { useContent } from '../context/ContentContext';
 
 const Dashboard: React.FC = () => {
     const [activeTab, setActiveTab] = useState('projects');
     const { projects, deleteProject, addProject, updateProject } = useProjects();
-    const { content, updateSection } = useContent();
+    const { content, updateSection, saveContent } = useContent();
+    const [isSaving, setIsSaving] = useState(false);
 
     // Project Form State
     const [isEditingProject, setIsEditingProject] = useState(false);
@@ -19,7 +20,6 @@ const Dashboard: React.FC = () => {
         { id: 'journey', label: 'Journey', icon: Milestone },
         { id: 'brochures', label: 'Brochures', icon: FileText },
         { id: 'leadership', label: 'Leadership', icon: UserCheck },
-        { id: 'news', label: 'News & Updates', icon: Newspaper },
         { id: 'news', label: 'News & Updates', icon: Newspaper },
         { id: 'connect', label: 'Connect Section', icon: LinkIcon },
         { id: 'about', label: 'About Us', icon: Info },
@@ -57,6 +57,18 @@ const Dashboard: React.FC = () => {
             addProject(projectForm as Project);
         }
         setIsEditingProject(false);
+    };
+
+    const handleSaveContent = async () => {
+        setIsSaving(true);
+        try {
+            await saveContent();
+            alert('Content saved successfully!');
+        } catch (error) {
+            alert('Failed to save content. Please try again.');
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     // --- Helper Components ---
@@ -386,11 +398,22 @@ const Dashboard: React.FC = () => {
             <div className="flex-1 overflow-auto p-8">
                 <header className="mb-8 flex justify-between items-center">
                     <h1 className="text-2xl font-bold text-gray-800 capitalize">{activeTab} Management</h1>
-                    {activeTab === 'projects' && !isEditingProject && (
-                        <button onClick={handleAddProject} className="bg-[#1A71B7] text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-[#155a93]">
-                            <Plus size={16} /> Add Project
-                        </button>
-                    )}
+                    <div className="flex gap-3">
+                        {activeTab === 'projects' && !isEditingProject && (
+                            <button onClick={handleAddProject} className="bg-[#1A71B7] text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-[#155a93]">
+                                <Plus size={16} /> Add Project
+                            </button>
+                        )}
+                        {activeTab !== 'projects' && (
+                            <button
+                                onClick={handleSaveContent}
+                                disabled={isSaving}
+                                className="bg-green-600 text-white px-6 py-2 rounded-md flex items-center gap-2 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <Save size={16} /> {isSaving ? 'Saving...' : 'Save Changes'}
+                            </button>
+                        )}
+                    </div>
                 </header>
 
                 {activeTab === 'projects' && (
