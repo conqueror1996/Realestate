@@ -16,36 +16,26 @@ Your `/admin` page is now protected with a login screen.
 
 ## 🛠️ How to Change the Password
 
-### Step 1: Open the Auth File
+### Step 1: Login to Admin Panel
 
-Navigate to:
-```
-src/components/AuthWrapper.tsx
-```
+1. Go to `/admin`
+2. Login with the default password: `admin@2025`
 
-### Step 2: Find the Password Line
+### Step 2: Go to Settings
 
-Look for line **21**:
-```typescript
-const ADMIN_PASSWORD = 'admin@2025'; // ⚠️ CHANGE THIS!
-```
+1. In the sidebar, click on **Password Settings** tab.
 
-### Step 3: Change the Password
+### Step 3: Update Password
 
-Replace `'admin@2025'` with your desired password:
-```typescript
-const ADMIN_PASSWORD = 'YourSecurePassword123!';
-```
+1. Enter the current password (`admin@2025`)
+2. Enter your new secure password (min 8 chars)
+3. Click **Change Password**
 
-### Step 4: Save and Rebuild
+> **Note:** You will be logged out and asked to login with the new password.
 
-```bash
-npm run build
-```
+### ⚠️ Troubleshooting
 
-### Step 5: Deploy
-
-Upload the new `dist` folder to Hostinger.
+If you forget your password, you can reset it by deleting the `.admin_password` file on the server. It will regenerate with the default `admin@2025` on the next login attempt.
 
 ---
 

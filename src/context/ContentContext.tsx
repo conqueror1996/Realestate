@@ -149,7 +149,9 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
                 const response = await fetch(API_URL);
                 if (response.ok) {
                     const data = await response.json();
-                    setContent(data);
+                    if (data && !data.message) {
+                        setContent(data);
+                    }
                 }
             } catch (error) {
                 console.error('Failed to load content:', error);

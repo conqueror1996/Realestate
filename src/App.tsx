@@ -19,6 +19,7 @@ import Dashboard from './pages/Dashboard';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
+import SEO from './components/SEO';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,6 +35,10 @@ function App() {
 
   const WebsiteLayout = () => (
     <div className="font-sans antialiased text-text-gray bg-white">
+      <SEO
+        title="Home"
+        description="Future Group - South India's Largest & Most Trusted Real Estate Developer. We build legacies with excellence. Premium villa plots and land investments in Mumbai."
+      />
       <TopBar />
       <Navbar onOpenEnquiry={() => setIsModalOpen(true)} />
       <main>
@@ -60,6 +65,7 @@ function App() {
       <Route path="/project/:id" element={<ProjectDetailPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/admin" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

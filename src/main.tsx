@@ -8,14 +8,18 @@ import { BrowserRouter } from 'react-router-dom'
 import { ProjectProvider } from './context/ProjectContext'
 import { ContentProvider } from './context/ContentContext'
 
+import { HelmetProvider } from 'react-helmet-async'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ProjectProvider>
-        <ContentProvider>
-          <App />
-        </ContentProvider>
-      </ProjectProvider>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ProjectProvider>
+          <ContentProvider>
+            <App />
+          </ContentProvider>
+        </ProjectProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   </StrictMode>,
 )

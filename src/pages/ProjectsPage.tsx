@@ -4,6 +4,7 @@ import TopBar from '../components/TopBar';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Filter, Search } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // Mock Data
 import { useProjects } from '../context/ProjectContext';
@@ -33,27 +34,24 @@ const ProjectsPage: React.FC = () => {
         }
     }, [filterCity, projects]);
 
+
+
+    // ... 
+
     // Helper for display name
     const getCityDisplayName = (c: string) => {
         if (c === 'mumbai_3.0') return 'Mumbai 3.0';
         return c.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
     };
 
+    const seoTitle = filterCity === 'all' ? 'All Projects' : `Projects in ${getCityDisplayName(filterCity)}`;
+    const seoDesc = `Explore premium real estate projects in ${filterCity === 'all' ? 'Mumbai and Navi Mumbai' : getCityDisplayName(filterCity)}. Villa plots and land investments by Future Group.`;
+
     return (
         <div className="font-sans antialiased text-text-gray bg-white">
+            <SEO title={seoTitle} description={seoDesc} />
             <TopBar />
             <Navbar />
-
-            {/* Page Header */}
-            <div className="bg-[#1A71B7] py-20 px-6 text-center text-white relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-4 relative z-10 text-white">
-                    {filterCity === 'all' ? 'All Projects' : `Projects in ${getCityDisplayName(filterCity)}`}
-                </h1>
-                <p className="text-lg text-white/80 max-w-2xl mx-auto relative z-10">
-                    Discover premium land parcels and luxury living spaces designed for your future.
-                </p>
-            </div>
 
             <main className="max-w-[1400px] mx-auto px-6 py-12">
 

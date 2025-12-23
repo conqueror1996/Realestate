@@ -29,6 +29,8 @@ export interface Project {
     price: string;
     size: string;
     type: string;
+    totalArea?: string;
+    totalUnits?: string;
     idealFor?: string;
     description?: string;
     reraId?: string;
@@ -55,6 +57,8 @@ const INITIAL_PROJECTS: Project[] = [
         idealFor: 'Living',
         description: "Experience the royal life at Northern Crown. Located in the rapidly expanding corridor of Puzhal, this project offers the perfect blend of connectivity and serenity. With 100+ amenities and world-class infrastructure, it is the ideal place to build your dream home.",
         reraId: "TN/02/Layout/0123/2024",
+        totalArea: "10 Acres",
+        totalUnits: "500+",
         highlights: [
             "2 Minutes from Puzhal Junction",
             "500+ Premium Villa Plots",

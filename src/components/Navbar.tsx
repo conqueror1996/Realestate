@@ -14,6 +14,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
 
     const navGroups = [
         {
+            title: 'Home',
+            items: []
+        },
+        {
             title: 'Projects',
             items: ['Mumbai', 'Navi Mumbai', 'Mumbai 3.0']
         },
@@ -40,14 +44,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
     return (
         <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
             <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-                <div className="flex justify-between items-center h-20">
+                <div className="flex justify-between items-center h-auto py-2 md:py-4">
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <a href="/" className="block">
                             <img
-                                src="/future_group_logo.png"
+                                src="/future_group_logo_header.png"
                                 alt="Future Group"
-                                className="h-10 md:h-12"
+                                className="h-12 md:h-20 w-auto object-contain"
                             />
                         </a>
                     </div>
@@ -64,6 +68,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
                                 <button
                                     className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-[#1A71B7] transition-colors py-8 tracking-wide uppercase"
                                     onClick={() => {
+                                        if (group.title === 'Home') {
+                                            navigate('/');
+                                        }
                                         if (group.title === 'Projects') {
                                             navigate('/projects');
                                         }
@@ -140,9 +147,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
 
                     <div className="mb-10 mt-2">
                         <img
-                            src="/future_group_logo.png"
+                            src="/future_group_logo_header.png"
                             alt="Future Group"
-                            className="h-10 md:h-12"
+                            className="h-12 w-auto object-contain"
                         />
                     </div>
 
@@ -179,7 +186,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
                                 ) : (
                                     <button
                                         onClick={() => {
-                                            if (group.title === 'About Us') {
+                                            if (group.title === 'Home') {
+                                                navigate('/');
+                                                setIsOpen(false);
+                                            } else if (group.title === 'About Us') {
                                                 navigate('/about-us');
                                                 setIsOpen(false);
                                             } else if (group.title === 'Contact') {

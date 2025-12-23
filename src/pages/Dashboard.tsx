@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Settings, Upload, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2, Info, Save } from 'lucide-react';
+import { LayoutDashboard, Settings, LogOut, Milestone, FileText, UserCheck, Newspaper, Link as LinkIcon, Plus, Trash2, Info, Save } from 'lucide-react';
 import { useProjects, type Project } from '../context/ProjectContext';
 import { useContent } from '../context/ContentContext';
 import AuthWrapper from '../components/AuthWrapper';
 import PasswordSettings from '../components/PasswordSettings';
+import ProjectForm from '../components/ProjectForm';
+import ImageUpload from '../components/ImageUpload';
 
 const Dashboard: React.FC = () => {
     const [activeTab, setActiveTab] = useState('projects');
@@ -52,12 +54,11 @@ const Dashboard: React.FC = () => {
         setIsEditingProject(true);
     };
 
-    const submitProject = (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleProjectSubmit = (data: Project) => {
         if (editingProjectId) {
-            updateProject(editingProjectId, projectForm);
+            updateProject(editingProjectId, data);
         } else {
-            addProject(projectForm as Project);
+            addProject(data);
         }
         setIsEditingProject(false);
     };
@@ -74,51 +75,6 @@ const Dashboard: React.FC = () => {
         }
     };
 
-    // --- Helper Components ---
-    const ImageUpload = ({ value, onChange, label }: { value?: string, onChange: (val: string) => void, label: string }) => (
-        <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
-            <div
-                className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-gray-50 transition-colors cursor-pointer relative overflow-hidden"
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={(e) => {
-                    e.preventDefault();
-                    const file = e.dataTransfer.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onloadend = () => onChange(reader.result as string);
-                        reader.readAsDataURL(file);
-                    }
-                }}
-                onClick={() => document.getElementById(`upload-${label.replace(/\s/g, '')}`)?.click()}
-            >
-                {value ? (
-                    <img src={value} alt="Preview" className="h-32 object-cover rounded shadow-sm" />
-                ) : (
-                    <>
-                        <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-2">
-                            <Upload size={20} className="text-[#1A71B7]" />
-                        </div>
-                        <p className="text-sm text-gray-600">Drag & Drop or Click to Upload</p>
-                    </>
-                )}
-                <input
-                    id={`upload-${label.replace(/\s/g, '')}`}
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                            const reader = new FileReader();
-                            reader.onloadend = () => onChange(reader.result as string);
-                            reader.readAsDataURL(file);
-                        }
-                    }}
-                />
-            </div>
-        </div>
-    );
 
     // --- Content Renders ---
 
@@ -422,49 +378,13 @@ const Dashboard: React.FC = () => {
                 {activeTab === 'projects' && (
                     <>
                         {isEditingProject ? (
-                            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 max-w-4xl mx-auto">
-                                <h3 className="text-xl font-bold mb-6">{editingProjectId ? 'Edit Project' : 'Add New Project'}</h3>
-                                <form onSubmit={submitProject} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="md:col-span-2">
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Project Title</label>
-                                        <input required type="text" value={projectForm.title || ''} onChange={e => setProjectForm({ ...projectForm, title: e.target.value })} className="w-full p-2 border rounded" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">City Key</label>
-                                        <select value={projectForm.city || 'mumbai'} onChange={e => setProjectForm({ ...projectForm, city: e.target.value })} className="w-full p-2 border rounded">
-                                            <option value="mumbai">Mumbai</option>
-                                            <option value="navi_mumbai">Navi Mumbai</option>
-                                            <option value="mumbai_3.0">Mumbai 3.0</option>
-                                            <option value="chennai">Chennai</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Price</label>
-                                        <input required type="text" value={projectForm.price || ''} onChange={e => setProjectForm({ ...projectForm, price: e.target.value })} className="w-full p-2 border rounded" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-                                        <input required type="text" value={projectForm.location || ''} onChange={e => setProjectForm({ ...projectForm, location: e.target.value })} className="w-full p-2 border rounded" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                                        <input required type="text" value={projectForm.status || ''} onChange={e => setProjectForm({ ...projectForm, status: e.target.value })} className="w-full p-2 border rounded" />
-                                    </div>
-                                    <div className="md:col-span-2">
-                                        <ImageUpload label="Project Card Image" value={projectForm.image} onChange={val => setProjectForm({ ...projectForm, image: val })} />
-                                    </div>
-                                    <div className="md:col-span-2">
-                                        <ImageUpload label="Hero Image (Detail Page)" value={projectForm.heroImage} onChange={val => setProjectForm({ ...projectForm, heroImage: val })} />
-                                    </div>
-                                    <div className="md:col-span-2">
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                        <textarea className="w-full p-2 border rounded" rows={4} value={projectForm.description || ''} onChange={e => setProjectForm({ ...projectForm, description: e.target.value })} />
-                                    </div>
-                                    <div className="md:col-span-2 flex justify-end gap-4">
-                                        <button type="button" onClick={() => setIsEditingProject(false)} className="px-4 py-2 border rounded text-gray-600">Cancel</button>
-                                        <button type="submit" className="px-6 py-2 bg-[#1A71B7] text-white rounded">Save Project</button>
-                                    </div>
-                                </form>
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                                <ProjectForm
+                                    initialData={projectForm}
+                                    onSubmit={handleProjectSubmit}
+                                    onCancel={() => setIsEditingProject(false)}
+                                    isEditing={!!editingProjectId}
+                                />
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

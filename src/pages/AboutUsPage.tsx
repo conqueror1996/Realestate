@@ -5,12 +5,18 @@ import Footer from '../components/Footer';
 import { Award, Users, Target, ShieldCheck } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 
+import SEO from '../components/SEO';
+
 const AboutUsPage: React.FC = () => {
     const { content } = useContent();
     const { aboutUs } = content;
 
     return (
         <div className="font-sans antialiased text-text-gray bg-white">
+            <SEO
+                title="About Us"
+                description={aboutUs.heroSubtitle || "Learn about Future Group, our story, values, and why we are India's most trusted real estate developer."}
+            />
             <TopBar />
             <Navbar />
 
